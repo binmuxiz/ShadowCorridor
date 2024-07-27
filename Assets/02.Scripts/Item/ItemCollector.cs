@@ -1,12 +1,23 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ItemCollector : MonoBehaviour
 {
-    
+    public Inventory inventory;
+    public ItemDatabase itemDatabase;
+
+    private void Start()
+    {
+        inventory = GetComponent<Inventory>();
+        itemDatabase = GetComponent<ItemDatabase>();
+        
+    }
+
     void Update()
     {
-        // 좌클릭시
-        if (Input.GetMouseButtonUp(0))
+        // 아이템 좌클릭시
+        if (Input.GetMouseButtonDown(0))
         {
             /***
              * Camera.main -> 메인 카메라
@@ -26,16 +37,32 @@ public class ItemCollector : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
+
             // PHysics.Raycast() : 생성된 Ray가 콜라이더와 충돌하는지 확인
-            // hit : 충돌된 물체에 대한 정보를 저장하는 변수 
-            // out 키워드를 사용하여 이 변수가 함수 내부에서 설정된다는 것을 나타낸다.
+
+
             if (Physics.Raycast(ray, out hit))
             {
-                GameObject item = hit.transform.gameObject;
-                Debug.Log("클릭한 오브젝트 : " + item);
-                Destroy(item);
+                string name = hit.transform.name;
+                Destroy(hit.transform.gameObject);
+                Debug.Log("클릭한 ITEM : " + name);
+
+                // TODO Item을 찾지 못한 경우 예외처리 
+                Item item = itemDatabase.GetItemByName(name);
                 
+                if (item == null)
+                {
+                    Debug.Log($"Cannot found {name}");                        
+                }
+                else
+                {
+                    inventory.AddItem(item);
+                }
+                inventory.printInventoryItems();
             }
+            // hit : 충돌된 물체에 대한 정보를 저장하는 변수 
+
+            // out 키워드를 사용하여 이 변수가 함수 내부에서 설정된다는 것을 나타낸다.
         }       
     }
 }
