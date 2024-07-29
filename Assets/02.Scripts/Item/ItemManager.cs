@@ -2,18 +2,42 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class ItemCollector : MonoBehaviour
+public class ItemManager : MonoBehaviour
 {
     public Inventory inventory;
     public ItemDatabase itemDatabase;
+    public InventoryUI inventoryUI;
 
-    private void Start()
+    // private void Start()
+    // {
+    //     // inventory = GetComponent<Inventory>();
+    //     // itemDatabase = GetComponent<ItemDatabase>();
+    //
+    //     if (itemDatabase == null)
+    //     {
+    //         Debug.Log("ItemDatabase 초기화 안됨");
+    //     }
+    //     
+    // }
+
+    private void Awake()
     {
-        inventory = GetComponent<Inventory>();
-        itemDatabase = GetComponent<ItemDatabase>();
-        
-    }
+        // 필드가 Inspector에서 올바르게 연결되었는지 확인
+        if (inventory == null)
+        {
+            Debug.LogError("Inventory 초기화 안됨");
+        }
 
+        if (itemDatabase == null)
+        {
+            Debug.LogError("ItemDatabase 초기화 안됨");
+        }
+
+        if (inventoryUI == null)
+        {
+            Debug.LogError("InventoryUI 초기화 안됨");
+        }
+    }
     void Update()
     {
         // 아이템 좌클릭시
@@ -46,7 +70,7 @@ public class ItemCollector : MonoBehaviour
                 string name = hit.transform.name;
                 Destroy(hit.transform.gameObject);
                 Debug.Log("클릭한 ITEM : " + name);
-
+                
                 // TODO Item을 찾지 못한 경우 예외처리 
                 Item item = itemDatabase.GetItemByName(name);
                 
