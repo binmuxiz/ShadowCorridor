@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class ItemDatabase : MonoBehaviour
 {
+    // Item은 Inspector에서 설정 
     public List<Item> items;
 
-    void Start()
+    public Item FindItemByName(string name)
     {
-        // 아이템 데이터베이스 초기화
-        items = new List<Item>
+        foreach (Item item in items)
         {
-            // new Item("FlashLight", 99, flashLightPrefab, flashLightImage)
-        };
+            if (name == item.itemName)
+            {
+                return item;
+            }
+        }
+
+        return null;
     }
 }
