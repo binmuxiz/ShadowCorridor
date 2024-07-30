@@ -48,12 +48,15 @@ public class Zombie : MonoBehaviour
     void MoveTowardsPlayer(float speed)
     {
         Vector3 direction = (player.position - transform.position).normalized;
+        direction.y = 0; // y축을 0으로 설정하여 수평 이동만 하도록 함
         transform.position += direction * speed * Time.deltaTime;
     }
 
     void MoveForward(float speed)
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        Vector3 forward = transform.forward;
+        forward.y = 0; // y축을 0으로 설정하여 수평 이동만 하도록 함
+        transform.position += forward * speed * Time.deltaTime;
     }
 
     public void TakeDamage()
