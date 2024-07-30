@@ -8,4 +8,16 @@ public class InventoryItem
         this.name = name;
         this.count = count;
     }
+
+    public string Name
+    {
+        get => name;
+        set => name = value;
+    }
+
+    public int Count
+    {
+        get => count;
+        set => count = value;
+    }
 }
