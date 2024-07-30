@@ -5,31 +5,12 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+
     private List<InventoryItem> inventoryItems = new List<InventoryItem>();
-    
-    class InventoryItem
-    {
-        string name;
-        int count;
+    public InventoryUI inventoryUI;
 
-        public InventoryItem(string name, int count)
-        {
-            this.name = name;
-            this.count = count;
-        }
 
-        public string Name
-        {
-            get => name;
-            set => name = value;
-        }
-
-        public int Count
-        {
-            get => count;
-            set => count = value;
-        }
-    }
+    // Inventory Database에 저장하는 개념인가? 왜 필요한건지 모르겠음
 
     public void AddItem(Item item)
     {
@@ -48,20 +29,15 @@ public class Inventory : MonoBehaviour
                 inventoryItem.Count++;
                 Debug.Log($"Added {item.Name}. Current count : {inventoryItem.Count}");
 
-            }
-            else
-            {
-                Debug.Log($"Cannot add {item.Name}. Max count reached.");
-            }
-        }
-    }
+                // InventoryList에 InventoryItem 추가
+                InventoryItem newItem = new InventoryItem(item.name, 1);
+                inventoryItems.Add(newItem);
+                Debug.Log($"Added {item.name} to inventory.");
 
-    public void PrintInventoryItems()
-    {
-        Debug.Log("Inventory");
-        foreach (InventoryItem inventoryItem in inventoryItems)
-        {
-            Debug.Log($"{inventoryItem.Name} : {inventoryItem.Count }");
+                // UI에 아이템 추가
+                inventoryUI.AddItemUI(newItem);
+
+            }
         }
     }
 }
