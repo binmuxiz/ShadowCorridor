@@ -31,8 +31,8 @@ namespace MimicSpace
         [Tooltip("Leg placement radius offset")]
         public float newLegRadius = 3;
 
-        public float minLegDistance = 4.5f;
-        public float maxLegDistance = 6.3f;
+        public float minLegDistance = 1.5f;
+        public float maxLegDistance = 3.3f;
 
         [Range(2, 50)]
         [Tooltip("Number of spline samples per legpart")]
