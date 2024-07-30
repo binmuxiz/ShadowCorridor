@@ -10,10 +10,10 @@ namespace MimicSpace
         public GameObject legPrefab;
 
         [Range(2, 20)]
-        public int numberOfLegs = 5;
+        public int numberOfLegs = 2;
         [Tooltip("The number of splines per leg")]
         [Range(1, 10)]
-        public int partsPerLeg = 4;
+        public int partsPerLeg = 2;
         int maxLegs;
 
         public int legCount;
@@ -29,10 +29,10 @@ namespace MimicSpace
 
         public Vector3 legPlacerOrigin = Vector3.zero;
         [Tooltip("Leg placement radius offset")]
-        public float newLegRadius = 3;
+        public float newLegRadius = 1;
 
-        public float minLegDistance = 1.5f;
-        public float maxLegDistance = 3.3f;
+        public float minLegDistance = 0.3f;
+        public float maxLegDistance = 1.2f;
 
         [Range(2, 50)]
         [Tooltip("Number of spline samples per legpart")]
