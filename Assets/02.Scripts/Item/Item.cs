@@ -1,32 +1,18 @@
-
 using UnityEngine;
-using UnityEngine.UI;
 
 [System.Serializable]
-public class Item 
+public class Item
 {
-
     public string name;
     public int maxCount;
     public GameObject prefab;
+    public Sprite image;
 
-
-    public Item(string name, int maxCount, GameObject prefab)
+    public Item(string name, int maxCount, GameObject prefab, Sprite image)
     {
         this.name = name;
         this.maxCount = maxCount;
         this.prefab = prefab;
-    }
-
-    public string Name
-    {
-        get => name;
-        set => name = value;
-    }
-
-    public int MaxCount
-    {
-        get => maxCount;
-        set => maxCount = value;
+        this.image = image;
     }
 }
