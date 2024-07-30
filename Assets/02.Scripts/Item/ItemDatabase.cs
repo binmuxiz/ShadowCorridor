@@ -14,7 +14,7 @@ public class ItemDatabase : MonoBehaviour
 
     public Item GetItemByName(string name)
     {
-        return items.Find(item => item.name == name);
+        return items.Find(item => item.Name == name);
     }
 }
 

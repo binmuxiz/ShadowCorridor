@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class ItemCollector : MonoBehaviour
 {
@@ -34,22 +32,21 @@ public class ItemCollector : MonoBehaviour
             // 1. 카메라에서 클릭한 위치로 RayCast 생성
             // 현재 마우스 위치(Input.mousePosition)으로부터 시작하는 Ray를 생성
             // Ray는 카메라의 화면 공간에서 월드 공간으로의 방향
+            // hit : 충돌된 물체에 대한 정보를 저장하는 변수 
+            // out 키워드를 사용하여 이 변수가 함수 내부에서 설정된다는 것을 나타낸다.
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
 
             // PHysics.Raycast() : 생성된 Ray가 콜라이더와 충돌하는지 확인
-
-
             if (Physics.Raycast(ray, out hit))
             {
                 string name = hit.transform.name;
                 Destroy(hit.transform.gameObject);
                 Debug.Log("클릭한 ITEM : " + name);
-
-                // TODO Item을 찾지 못한 경우 예외처리 
-                Item item = itemDatabase.GetItemByName(name);
                 
+                Item item = itemDatabase.GetItemByName(name);
+                // item을 찾지 못한 경우 
                 if (item == null)
                 {
                     Debug.Log($"Cannot found {name}");                        
@@ -58,11 +55,8 @@ public class ItemCollector : MonoBehaviour
                 {
                     inventory.AddItem(item);
                 }
-                inventory.printInventoryItems();
+                // inventory.PrintInventoryItems();
             }
-            // hit : 충돌된 물체에 대한 정보를 저장하는 변수 
-
-            // out 키워드를 사용하여 이 변수가 함수 내부에서 설정된다는 것을 나타낸다.
         }       
     }
 }
