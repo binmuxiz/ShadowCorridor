@@ -50,7 +50,7 @@ public class GameEnding : MonoBehaviour
         }
     }
 
-private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == player)
         {
@@ -63,4 +63,3 @@ private void OnTriggerEnter(Collider other)
         _isPlayerCaught = true;
     }
 }
-
