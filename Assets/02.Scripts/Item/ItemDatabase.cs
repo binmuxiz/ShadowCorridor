@@ -5,7 +5,9 @@ using UnityEngine;
 public class ItemDatabase : MonoBehaviour
 {
     // Item은 Inspector에서 설정 
-    public List<Item> items;
+    public List<Item> items = new List<Item>();
+    
+    
 
     public Item FindItemByName(string name)
     {

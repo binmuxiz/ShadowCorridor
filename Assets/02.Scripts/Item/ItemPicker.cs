@@ -22,7 +22,7 @@ public class ItemPicker : MonoBehaviour
                 if (item) 
                 {
                     Debug.Log(item.name);
-                    // inventory.AddItem(item);
+                    inventory.AddItem(item);
                 }
                 else
                 {
