@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6164918350687002688}
   - component: {fileID: 2512604949561864013}
   - component: {fileID: 2336278065694270157}
-  - component: {fileID: 6767541835229114559}
+  - component: {fileID: 3628529391408176111}
   m_Layer: 0
   m_Name: Leg
   m_TagString: Untagged
@@ -257,8 +257,8 @@ MonoBehaviour:
   minOscillationSpeed: 20
   maxOscillationSpeed: 100
   myColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!64 &6767541835229114559
-MeshCollider:
+--- !u!135 &3628529391408176111
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -272,10 +272,9 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
