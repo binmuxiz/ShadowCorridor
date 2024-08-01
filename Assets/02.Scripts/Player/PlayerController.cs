@@ -2,9 +2,9 @@ using TMPro; // TextMeshPro를 사용하기 위한 네임스페이스 추가
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public float walkSpeed = 5.0f;
+    public float walkSpeed = 3.0f;
     public float runSpeed = 10.0f;
     public float crouchSpeed = 2.5f;
     public float mouseSensitivity = 2.0f;
@@ -140,5 +140,14 @@ public class PlayerMovement : MonoBehaviour
         // 게임 오버 상태 처리
         Debug.Log("Player has died!");
         // 필요한 경우 게임 오버 화면 표시 등 추가
+    }
+
+    // 미믹과의 충돌 감지
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Mimic"))
+        {
+            TakeDamage(10); // 미믹에게 닿으면 10의 데미지를 입음
+        }
     }
 }
