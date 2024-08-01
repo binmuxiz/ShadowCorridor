@@ -66,6 +66,7 @@ public class Zombie : MonoBehaviour
         animator.SetBool("isDead", true);
         animator.SetBool("isPlayerDetected", false);
         animator.SetBool("isAttacking", false);
+        animator.SetTrigger("attackTrigger");
     }
 
     private void Resurrect()
@@ -79,11 +80,7 @@ public class Zombie : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            animator.SetTrigger("attackTrigger");
-        }
-        else if (other.CompareTag("Item"))
+        if (other.CompareTag("Item"))
         {
             TakeDamage();
         }
