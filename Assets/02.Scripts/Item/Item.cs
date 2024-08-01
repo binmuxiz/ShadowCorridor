@@ -1,18 +1,10 @@
 using UnityEngine;
 
 [System.Serializable]
-public class Item : MonoBehaviour
+[CreateAssetMenu(fileName = "NewItem", menuName = "Item/Create New Item ")]
+public class Item : ScriptableObject
 {
     public string itemName;
     public int maxCount;
-    public GameObject prefab;
-    public Sprite image;
-
-    public Item(string itemName, int maxCount, GameObject prefab, Sprite image)
-    {
-        this.itemName = itemName;
-        this.maxCount = maxCount;
-        this.prefab = prefab;
-        this.image = image;
-    }
+    public Sprite sprite;
 }
