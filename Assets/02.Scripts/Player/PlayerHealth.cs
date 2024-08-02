@@ -45,5 +45,6 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Player Died!");
         gameOverCanvas.SetActive(true);
         // 추가적인 죽음 처리 로직을 여기에 추가할 수 있습니다.
+        Time.timeScale = 0f; // 게임을 멈추기 위해 TimeScale을 0으로 설정
     }
 }
