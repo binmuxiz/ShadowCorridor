@@ -400,6 +400,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDatabase: {fileID: 1203785817}
   inventory: {fileID: 1949632142}
+  initItemNames:
+  - Flashlight
 --- !u!1 &1203785815
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,26 @@
+using System;
 using UnityEngine;
 
 public class ItemPicker : MonoBehaviour
 {
     public ItemDatabase itemDatabase;
     public Inventory inventory;
-    
+    public string[] initItemNames;
+
+    private void Start()
+    {
+        foreach (string itemName in initItemNames)
+        {
+            Item item = itemDatabase.FindItemByName(itemName);
+
+            if (item)
+            {
+                inventory.AddItem(item);
+            }
+        }
+    }
+
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
