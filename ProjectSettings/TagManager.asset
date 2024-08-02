@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ItemUI
   - Key
+  - Mimic
   layers:
   - Default
   - TransparentFX
