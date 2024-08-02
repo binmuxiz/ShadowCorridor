@@ -21,6 +21,10 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(5);
         }
+        else if (other.gameObject.CompareTag("Zombie")) // 좀비와 충돌을 감지
+        {
+            TakeDamage(currentHealth); // 좀비와 닿았을 때 체력을 0으로 설정
+        }
     }
 
     void TakeDamage(int damage)

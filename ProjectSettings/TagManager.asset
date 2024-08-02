@@ -8,6 +8,7 @@ TagManager:
   - Key
   - Mimic
   - HarmfulObject
+  - Zombie
   layers:
   - Default
   - TransparentFX
