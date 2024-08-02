@@ -6,11 +6,13 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public TextMeshProUGUI healthText; // TextMeshProUGUI 타입의 필드
+    public GameObject gameOverCanvas; // GameOverCanvas 참조
 
     void Start()
     {
         currentHealth = maxHealth;
         UpdateHealthText();
+        gameOverCanvas.SetActive(false); // 시작 시 GameOverCanvas 비활성화
     }
 
     void OnTriggerEnter(Collider other)
@@ -39,8 +41,9 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        // 플레이어가 죽었을 때 처리
+        // 체력이 0이 되었을 때 GameOverCanvas 활성화
         Debug.Log("Player Died!");
-        // 여기서 원하는 죽음 처리 로직을 추가
+        gameOverCanvas.SetActive(true);
+        // 추가적인 죽음 처리 로직을 여기에 추가할 수 있습니다.
     }
 }
