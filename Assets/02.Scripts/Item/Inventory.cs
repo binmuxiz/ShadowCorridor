@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        inventoryItems
+        // inventoryItems
     }
 
     public void AddItem(Item item)
