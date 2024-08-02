@@ -4,6 +4,7 @@ public class Zombie : MonoBehaviour
 {
     public Animator animator;
     public Transform player;
+    public float rotationSpeed = 5f; //회전속도
     public float detectionRange = 10f;
     public float attackRange = 2f;
     public float deathDuration = 3f; // "죽은 척" 지속 시간
@@ -21,9 +22,24 @@ public class Zombie : MonoBehaviour
             return;
         }
        
+        // 애니메이션 상태 확인
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsName("Idle"))
+        {
+            // Idle 상태일 때 이동하지 않음
+            return;
+        }
         //플레이어와의 거리 계산
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
+        //목표 회전 각도 
+        Vector3 direction = player.position - transform.position;
+        direction.y = 0;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        
+        //천천히 목표 회전각도로 회전
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        
         // 조건에 따라 상태를 결정
         if (distanceToPlayer <= attackRange)
         {
