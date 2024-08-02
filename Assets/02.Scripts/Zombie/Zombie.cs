@@ -22,6 +22,13 @@ public class Zombie : MonoBehaviour
             return;
         }
        
+        // 애니메이션 상태 확인
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsName("Idle"))
+        {
+            // Idle 상태일 때 이동하지 않음
+            return;
+        }
         //플레이어와의 거리 계산
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -52,8 +59,6 @@ public class Zombie : MonoBehaviour
             // 정해진 방향으로 걷기
             MoveForward(1f);
         }
-        
-        
     }
 
     void MoveTowardsPlayer(float speed)
