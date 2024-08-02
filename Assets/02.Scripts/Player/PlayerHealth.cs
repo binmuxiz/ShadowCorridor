@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("HarmfulObject")) // Box Collider가 있는 오브젝트에 "HarmfulObject" 태그를 추가
         {
-            TakeDamage(5);
+            TakeDamage(10);
         }
         else if (other.gameObject.CompareTag("Zombie")) // 좀비와 충돌을 감지
         {
