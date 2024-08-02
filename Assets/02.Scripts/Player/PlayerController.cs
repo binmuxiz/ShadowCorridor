@@ -142,12 +142,5 @@ public class PlayerController : MonoBehaviour
         // 필요한 경우 게임 오버 화면 표시 등 추가
     }
 
-    // 미믹과의 충돌 감지
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Mimic"))
-        {
-            TakeDamage(10); // 미믹에게 닿으면 10의 데미지를 입음
-        }
-    }
+    
 }
