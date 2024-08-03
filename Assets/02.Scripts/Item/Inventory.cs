@@ -5,36 +5,34 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public GameObject itemSlotPrefab;
-    
-    private Dictionary<Item, Slot> _inventoryItems = new Dictionary<Item, Slot>();
 
+    private List<Slot> _slotList = new List<Slot>();
     
     // Add 가능 여부에 따른 bool 반환 
     public bool Add(Item item)
     {
-        // 인벤토리에 아이템 O
-        if (_inventoryItems.ContainsKey(item))
+        Slot slot = null;
+        foreach (var s in _slotList)
         {
-            // TODO maxCount를 초과하는 경우 추가 불가능 return false
-            Slot slot = _inventoryItems[item];
-            
-            // 아이템 추가 불가능 
-            if (item.MaxCount <= slot.ItemCount)
+            if (item == s.Item) slot = s;   // 아이템 있는 경우 
+        }
+        
+        if (slot == null) // 인벤토리 슬롯 생성 
+        {
+            slot = InstantiateSlot(item);
+            slot.Item = item;
+            _slotList.Add(slot);
+        }
+        else 
+        {
+            if (slot.Item.MaxCount <= slot.ItemCount)
             {
+                // 아이템 추가 불가
                 Debug.Log("Cannot add item!! " + slot.ItemCount);
                 return false;
             }
-            // 아이템 개수 증가 
-            else
-            {
-                slot.IncreaseCount();
-            }
-
-        }
-        // 인벤토리에 아이템 X 
-        else
-        {
-            _inventoryItems.Add(item, InstantiateSlot(item));
+            // 인벤토리 아이템 개수 증가 
+            slot.IncreaseCount();
         }
         return true;
     }
@@ -52,7 +50,7 @@ public class Inventory : MonoBehaviour
 
         Slot newSlot = new Slot(itemImage, outlineImage, itemCountText);
         newSlot.AttachItemImage(item.Sprite);
-
+        
         return newSlot;
     }
 }

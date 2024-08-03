@@ -1,12 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Slot 
+public class Slot
 {
+    private Item _item;
     private Image _itemImage;
     private Image _outlineImage;
     private Text _countText;
     private int _itemCount;
+
+    public Item Item
+    {
+        get => _item;
+        set => _item = value;
+    }
 
     public int ItemCount => _itemCount;
 
