@@ -1,0 +1,53 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Slot : MonoBehaviour
+{
+    private Image _itemImage;
+    private Image _outlineImage;
+    private Text _countText;
+    private int _itemCount;
+    
+    // itemimage 부착
+    public void AttachItemImage(Sprite sprite)
+    {
+        _itemImage.sprite = sprite;
+    }
+    
+    // outlineImgage toggle
+    public void ToggleOutline()
+    {
+        if (_outlineImage.enabled)
+        {
+            _outlineImage.enabled = false;
+        }
+        else
+        {
+            _outlineImage.enabled = true;
+        }
+    }
+    
+    
+    // itemCount 조정 
+    public void IncreaseCount()
+    {
+        _itemCount++;
+        _countText.text = "X" + _itemCount;
+    }
+    
+    // TODO 아이템 감소 후 0개가 되면 Slot 삭제해야함 
+    public int DecreaseCount()
+    {
+        _itemCount--;
+        if (_itemCount == 1) // ItemCountText 삭제 
+        {
+            _countText.text = null;
+        }
+        else if (_itemCount != 0)
+        {
+            _countText.text = "X" + _itemCount;
+        }
+
+        return _itemCount;
+    }
+}
