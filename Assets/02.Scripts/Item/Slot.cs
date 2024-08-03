@@ -7,7 +7,13 @@ public class Slot : MonoBehaviour
     private Image _outlineImage;
     private Text _countText;
     private int _itemCount;
-    
+
+    public Slot(Image itemImage)
+    {
+        _itemImage = itemImage;
+        _itemCount = 1;
+    }
+
     // itemimage 부착
     public void AttachItemImage(Sprite sprite)
     {
