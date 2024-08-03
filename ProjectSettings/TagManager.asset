@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - ItemUI
-  - Key
   - Mimic
   - HarmfulObject
   - Zombie
   - Flashlight
+  - RustKey
   layers:
   - Default
   - TransparentFX
