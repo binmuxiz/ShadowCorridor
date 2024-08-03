@@ -6,8 +6,16 @@ public class Inventory : MonoBehaviour
 {
     public GameObject itemSlotPrefab;
 
+    // TODO Capacity 설정 
     private List<Slot> _slotList = new List<Slot>();
     
+    public List<Slot> SlotList => _slotList;
+
+    public int SlotCount()
+    {
+        return _slotList.Count;
+    }
+
     // Add 가능 여부에 따른 bool 반환 
     public bool Add(Item item)
     {
@@ -39,7 +47,7 @@ public class Inventory : MonoBehaviour
 
 
     
-    public Slot InstantiateSlot(Item item)
+    private Slot InstantiateSlot(Item item)
     {
         // 새 슬롯 생성 
         Transform slotGB = Instantiate(itemSlotPrefab, transform).transform;

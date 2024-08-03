@@ -11,7 +11,8 @@ public class ItemCollector : MonoBehaviour
     {
         // 초기 아이템 (손전등) 
         Item item = itemDatabase.FindItemByName(_DEFAULT_ITEM);
-        inventory.InstantiateSlot(item);
+        inventory.Add(item);
+        inventory.SlotList[0].ToggleOutline(); // 손전등은 처음에 outline = true
     }
 
     private void Update()

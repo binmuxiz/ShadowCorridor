@@ -22,7 +22,9 @@ public class Slot
         _itemImage = itemImage;
         _outlineImage = outlineImage;
         _countText = countText;
+        
         _itemCount = 1;
+        outlineImage.enabled = false;
     }
 
     // itemimage 부착
