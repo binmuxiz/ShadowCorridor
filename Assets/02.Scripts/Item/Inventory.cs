@@ -1,45 +1,58 @@
-// using System.Collections.Generic;
-// using UnityEngine;
-// using UnityEngine.UI;
-//
-// public class Inventory : MonoBehaviour
-// {
-//     private Dictionary<string, InventoryItem> inventoryItems = new Dictionary<string, InventoryItem>();
-//     public GameObject itemSlotPrefab;
-//
-//     public void AddItem(Item item)
-//     {
-//         if (!inventoryItems.ContainsKey(item.itemName))
-//         {
-//             instantiateItem(item);
-//         }
-//         else
-//         {
-//             InventoryItem inventoryItem = inventoryItems[item.itemName];
-//             if (inventoryItem.count >= item.maxCount)
-//             {
-//                 // TODO 아이템 획득 불가 
-//             }
-//             else
-//             {
-//                 inventoryItem.count++;
-//                 Debug.Log(item.name + ": " + inventoryItem.count);
-//                 // UI Text 변경 
-//             }
-//         }
-//     }
-//
-//     private void instantiateItem(Item item)
-//     {
-//         InventoryItem inventoryItem = new InventoryItem(item);
-//         inventoryItems.Add(item.itemName, inventoryItem);
-//             
-//         // 새 슬롯 생성 
-//         GameObject slot = Instantiate(itemSlotPrefab, transform);
-//
-//         // 이미지 변경 
-//         // Slot의 자식 오브젝트 : ItemImage의 Image 컴포넌트
-//         Image image = slot.transform.Find("ItemImage").gameObject.GetComponent<Image>(); 
-//         image.sprite = item.sprite;
-//     }
-// }
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Inventory : MonoBehaviour
+{
+    public GameObject itemSlotPrefab;
+    
+    private Dictionary<Item, Slot> _inventoryItems = new Dictionary<Item, Slot>();
+
+    
+    // Add 가능 여부에 따른 bool 반환 
+    public bool Add(Item item)
+    {
+        // 인벤토리에 아이템 O
+        if (_inventoryItems.ContainsKey(item))
+        {
+            // TODO maxCount를 초과하는 경우 추가 불가능 return false
+            Slot slot = _inventoryItems[item];
+            
+            // 아이템 추가 불가능 
+            if (item.MaxCount <= slot.ItemCount)
+            {
+                Debug.Log("Cannot add item!! " + slot.ItemCount);
+                return false;
+            }
+            // 아이템 개수 증가 
+            else
+            {
+                slot.IncreaseCount();
+            }
+
+        }
+        // 인벤토리에 아이템 X 
+        else
+        {
+            _inventoryItems.Add(item, InstantiateSlot(item));
+        }
+        return true;
+    }
+
+
+    
+    public Slot InstantiateSlot(Item item)
+    {
+        // 새 슬롯 생성 
+        Transform slotGB = Instantiate(itemSlotPrefab, transform).transform;
+        
+        Image itemImage = slotGB.Find("ItemImage").gameObject.GetComponent<Image>(); 
+        Image outlineImage = slotGB.Find("Outline").gameObject.GetComponent<Image>(); 
+        Text itemCountText = slotGB.Find("ItemCount").gameObject.GetComponent<Text>();
+
+        Slot newSlot = new Slot(itemImage, outlineImage, itemCountText);
+        newSlot.AttachItemImage(item.Sprite);
+
+        return newSlot;
+    }
+}

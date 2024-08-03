@@ -1,16 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour
+public class Slot 
 {
     private Image _itemImage;
     private Image _outlineImage;
     private Text _countText;
     private int _itemCount;
 
-    public Slot(Image itemImage)
+    public int ItemCount => _itemCount;
+
+    public Slot(Image itemImage, Image outlineImage, Text countText)
     {
         _itemImage = itemImage;
+        _outlineImage = outlineImage;
+        _countText = countText;
         _itemCount = 1;
     }
 
