@@ -5,5 +5,5 @@ public enum ItemName
     RustKey,
     Gun,
     FirstAidKit,
-    EnergyBars
+    EnergyBar
 }
