@@ -11,7 +11,7 @@ public class ItemCollector : MonoBehaviour
     {
         // 초기 아이템 (손전등) 
         Item item = itemDatabase.FindItemByName(_DEFAULT_ITEM);
-        inventory.Add(item);
+        inventory.AddSlot(item);
         inventory.SlotList[0].ToggleOutline(); // 손전등은 처음에 outline = true
     }
 
@@ -36,7 +36,7 @@ public class ItemCollector : MonoBehaviour
                 if (item) 
                 {
                     Debug.Log("Find " + item.name);
-                    bool isAdded = inventory.Add(item);
+                    bool isAdded = inventory.AddSlot(item);
                     if (isAdded) Destroy(clickedObject);
                 }
             }

@@ -4,7 +4,9 @@ using UnityEngine;
 public class ItemSelector : MonoBehaviour
 {
     public Inventory inventory;
-    private int currentIdx = 0;
+    private int _currentIdx = 0;
+
+    public int CurrentIdx => _currentIdx;
     
     private void Update()
     {
@@ -18,10 +20,10 @@ public class ItemSelector : MonoBehaviour
         {
             Debug.Log("MouseUp : " + wheelInput);
 
-            if (currentIdx + 1 < inventory.SlotCount())
+            if (_currentIdx + 1 < inventory.SlotCount())
             {
-                inventory.SlotList[currentIdx].ToggleOutline();
-                inventory.SlotList[++currentIdx].ToggleOutline();
+                inventory.SlotList[_currentIdx].ToggleOutline();
+                inventory.SlotList[++_currentIdx].ToggleOutline();
             }
         }
         // 휠을 내렸을 때 : 왼쪽 아이템 선택 
@@ -29,11 +31,16 @@ public class ItemSelector : MonoBehaviour
         {
             Debug.Log("MouseDown : " + wheelInput);
             
-            if (currentIdx - 1 >= 0)
+            if (_currentIdx - 1 >= 0)
             {
-                inventory.SlotList[currentIdx].ToggleOutline();
-                inventory.SlotList[--currentIdx].ToggleOutline();
+                inventory.SlotList[_currentIdx].ToggleOutline();
+                inventory.SlotList[--_currentIdx].ToggleOutline();
             }
         }
+    }
+    
+    public void SelectSlot()
+    {
+        
     }
 }

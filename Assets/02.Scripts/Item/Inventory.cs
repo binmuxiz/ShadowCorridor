@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Add 가능 여부에 따른 bool 반환 
-    public bool Add(Item item)
+    public bool AddSlot(Item item)
     {
         Slot slot = null;
         foreach (var s in _slotList)
@@ -43,6 +43,11 @@ public class Inventory : MonoBehaviour
             slot.IncreaseCount();
         }
         return true;
+    }
+    
+    public void DeleteSlot(int idx)
+    {
+        
     }
 
 

@@ -54,9 +54,13 @@ public class Slot
         _countText.text = "X" + _itemCount;
     }
     
-    // TODO 아이템 감소 후 0개가 되면 Slot 삭제해야함 
     public int DecreaseCount()
     {
+        if (this._item.ItemName == ItemName.Flashlight)
+        {
+            Debug.Log("Cannot decrease count of Flashlight");
+            return -1; 
+        }
         _itemCount--;
         if (_itemCount == 1) // ItemCountText 삭제 
         {
