@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b24a14713274cfcad5313bd8874ba94, type: 3}
-  m_Name: Item 1
+  m_Name: EnergyBar
   m_EditorClassIdentifier: 
-  itemName: Flashlight
-  maxCount: 1
-  sprite: {fileID: 21300000, guid: 71b0498458bf8e142a9c178917c71905, type: 3}
+  _itemName: 4
+  _maxCount: 10
+  _sprite: {fileID: 0}
