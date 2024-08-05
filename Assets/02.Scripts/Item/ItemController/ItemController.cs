@@ -26,8 +26,11 @@ public class ItemController : MonoBehaviour
             int nextIndex = (index + 1) % inventory.SlotCount();
             inventory.SlotList[nextIndex].ToggleOutline();
             inventory.DeleteSlot(index);
-            inventory.CurrentIdx = nextIndex;
-            
+
+            if (nextIndex == 0)
+            {
+                inventory.CurrentIdx = nextIndex;
+            }
         }
     }
 }
