@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel;
 using UnityEngine;
 
 public class ItemController : MonoBehaviour
@@ -29,6 +28,7 @@ public class ItemController : MonoBehaviour
         switch (name)
         {
             case ItemName.Flashlight:
+                Flashlight.GetInstance().ToggleLight();
                 break;
             case ItemName.RustKey:
                 break;
@@ -59,4 +59,6 @@ public class ItemController : MonoBehaviour
             }
         }
     }
+    
+
 }
