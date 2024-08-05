@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: 2
   _maxCount: 7
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 887da11240abefa40a9805eb2873753b, type: 3}

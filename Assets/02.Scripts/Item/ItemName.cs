@@ -4,6 +4,6 @@ public enum ItemName
     Flashlight,
     RustKey,
     Gun,
-    FirstAidKit,
-    EnergyBar
+    Firstaid,
+    CannedFood
 }

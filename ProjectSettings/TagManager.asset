@@ -10,6 +10,10 @@ TagManager:
   - Zombie
   - Flashlight
   - RustKey
+  - Key
+  - Gun
+  - CannedFood
+  - Firstaid
   layers:
   - Default
   - TransparentFX

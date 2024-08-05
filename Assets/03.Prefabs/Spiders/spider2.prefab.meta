@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4bbe8b9850f3c344fbcbe4509a1a1a54
+timeCreated: 1436898845
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 9864
+  packageName: Animated Spiders Pack
+  packageVersion: 1.2
+  assetPath: Assets/Spiders/prefabs/spider2.prefab
+  uploadId: 72598

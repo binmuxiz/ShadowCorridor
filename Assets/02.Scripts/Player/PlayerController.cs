@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 3.0f;
     public float runSpeed = 10.0f;
     public float crouchSpeed = 2.5f;
-    public float mouseSensitivity = 1.3f;
+    public float mouseSensitivity = 0.5f;
     public float crouchHeight = 1.0f;
     private float originalHeight;
     private float verticalLookRotation;
@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.visible = false; 
+        
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         cameraTransform = Camera.main.transform;
