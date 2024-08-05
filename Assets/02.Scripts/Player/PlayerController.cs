@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 3.0f;
     public float runSpeed = 10.0f;
     public float crouchSpeed = 2.5f;
-    public float mouseSensitivity = 2.0f;
+    public float mouseSensitivity = 1.3f;
     public float crouchHeight = 1.0f;
     private float originalHeight;
     private float verticalLookRotation;
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         transform.Rotate(0, mouseX, 0);
 
-        verticalLookRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+        verticalLookRotation += Input.GetAxis("Mouse Y") * mouseSensitivity; // 상하 반전 수정
         verticalLookRotation = Mathf.Clamp(verticalLookRotation, -90, 90);
         cameraTransform.localEulerAngles = Vector3.left * verticalLookRotation;
 
@@ -141,6 +141,4 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player has died!");
         // 필요한 경우 게임 오버 화면 표시 등 추가
     }
-
-    
 }
