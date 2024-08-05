@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b24a14713274cfcad5313bd8874ba94, type: 3}
-  m_Name: FirstAidKit
+  m_Name: Firstaid
   m_EditorClassIdentifier: 
   _itemName: 3
   _maxCount: 2
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 388fa055c8b26e545a201c93f1db17b9, type: 3}
