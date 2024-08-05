@@ -8647,7 +8647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04148c2496a0bc94e9582ca32ff9dd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 1703240074}
 --- !u!4 &1814420391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000101247158624, guid: 71d42f13891e48c4487496fd15802eda, type: 3}
@@ -9416,8 +9415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbefeb010243c484783af657ba7090a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  itemSelector: {fileID: 0}
 --- !u!1001 &2062434100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9655,5 +9652,5 @@ SceneRoots:
   - {fileID: 1940268754}
   - {fileID: 1398512851}
   - {fileID: 537792609}
-  - {fileID: 979281257}
   - {fileID: 1718488471}
+  - {fileID: 979281257}
