@@ -12,7 +12,6 @@ public class ItemController : MonoBehaviour
             // TODO 아이템 사용
             int currentIdx = inventory.CurrentIdx;
             
-            
             if (currentIdx == 0) return; // 손전등은 개수 감소 x
             ControlItemCount(currentIdx);
         }
@@ -22,7 +21,7 @@ public class ItemController : MonoBehaviour
     {
         int count = inventory.SlotList[index].DecreaseCount();
 
-        if (count == 0)
+        if (count == 0) // 아이템 개수가 0이 되면 슬롯 삭제 
         {
             int nextIndex = (index + 1) % inventory.SlotCount();
             inventory.SlotList[nextIndex].ToggleOutline();

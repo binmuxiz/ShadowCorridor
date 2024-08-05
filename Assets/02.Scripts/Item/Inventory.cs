@@ -18,18 +18,21 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("현재 아이템슬롯 개수 : " + SlotCount());
+        // Debug.Log("현재 아이템슬롯 개수 : " + SlotCount());
+        
         if (SlotCount() == 1) return;
         
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
                                          
         if (wheelInput > 0) // 휠을 올렸을 때 : 오른쪽 아이템 선택
-        {
+        { 
+            
             if (_currentIdx + 1 < SlotCount())
             {
                 SlotList[_currentIdx].ToggleOutline();
                 SlotList[++_currentIdx].ToggleOutline();
             }
+            Debug.Log("currentIdx : " + _currentIdx);
         }
         
         else if (wheelInput < 0) // 휠을 내렸을 때 : 왼쪽 아이템 선택 
@@ -39,6 +42,7 @@ public class Inventory : MonoBehaviour
                 SlotList[_currentIdx].ToggleOutline();
                 SlotList[--_currentIdx].ToggleOutline();
             }
+            Debug.Log("currentIdx : " + _currentIdx);
         }
     }
 
@@ -66,8 +70,7 @@ public class Inventory : MonoBehaviour
         {
             if (slot.Item.MaxCount <= slot.ItemCount)
             {
-                // 아이템 추가 불가
-                Debug.Log("Cannot add item!! " + slot.ItemCount);
+                // Debug.Log("Cannot add item!! " + slot.ItemCount); // 아이템 추가 불가
                 return false;
             }
             // 인벤토리 아이템 개수 증가 

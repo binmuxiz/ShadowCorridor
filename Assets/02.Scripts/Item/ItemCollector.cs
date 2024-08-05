@@ -35,7 +35,7 @@ public class ItemCollector : MonoBehaviour
                 
                 if (item) 
                 {
-                    Debug.Log("Find " + item.name);
+                    // Debug.Log("Find " + item.name);
                     bool isAdded = inventory.AddSlot(item);
                     if (isAdded) Destroy(clickedObject);
                 }
