@@ -1,3 +1,5 @@
+using System;
+using System.ComponentModel;
 using UnityEngine;
 
 public class ItemController : MonoBehaviour
@@ -11,12 +13,36 @@ public class ItemController : MonoBehaviour
         {
             // TODO 아이템 사용
             int currentIdx = inventory.CurrentIdx;
+
+            UseItem(currentIdx);
             
             if (currentIdx == 0) return; // 손전등은 개수 감소 x
             ControlItemCount(currentIdx);
         }
     }
-    
+
+    private void UseItem(int index)
+    {
+        Slot slot = inventory.SlotList[index];
+        ItemName name = slot.Item.ItemName;
+
+        switch (name)
+        {
+            case ItemName.Flashlight:
+                break;
+            case ItemName.RustKey:
+                break;
+            case ItemName.Gun:
+                break;
+            case ItemName.Firstaid:
+                break;
+            case ItemName.CannedFood:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
     private void ControlItemCount(int index)
     {
         int count = inventory.SlotList[index].DecreaseCount();
