@@ -62,6 +62,7 @@ public class Slot
             return -1; 
         }
         _itemCount--;
+        
         if (_itemCount == 1) // ItemCountText 삭제 
         {
             _countText.text = null;
