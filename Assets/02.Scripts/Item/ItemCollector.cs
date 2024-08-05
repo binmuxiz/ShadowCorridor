@@ -25,7 +25,7 @@ public class ItemCollector : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 GameObject clickedObject = hit.transform.gameObject;
-                Debug.Log("ClickedObject : " + clickedObject.name);
+                // Debug.Log("ClickedObject : " + clickedObject.name);
                 
                 // 각 GameObject의 이름이 아닌 Tag로 찾기
                 Item item = null;
