@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +6,23 @@ public class ItemDatabase : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
 
-    public Item FindItemByName(string name)
+    public Item FindItemByName(string itemName)
     {
-        foreach (Item item in items)
+        try
         {
-            if (name == item.itemName)
+            foreach (Item item in items)
             {
-                return item;
+                // TODO Equals, ==, CompareTo 비교 
+                if (EnumUtil<ItemName>.StringToEnum(itemName) == item.ItemName)
+                {
+                    return item;
+                }
             }
+
+        }
+        catch (ArgumentException e)
+        {
+            Debug.Log(e.Message);
         }
 
         return null;

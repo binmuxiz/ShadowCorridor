@@ -1,51 +1,69 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    private Dictionary<string, InventoryItem> inventoryItems = new Dictionary<string, InventoryItem>();
     public GameObject itemSlotPrefab;
 
-    private void Start()
+    // TODO Capacity 설정 
+    private List<Slot> _slotList = new List<Slot>();
+    
+    public List<Slot> SlotList => _slotList;
+
+    public int SlotCount()
     {
-        // inventoryItems
+        return _slotList.Count;
     }
 
-    public void AddItem(Item item)
+    // Add 가능 여부에 따른 bool 반환 
+    public bool AddSlot(Item item)
     {
-        if (!inventoryItems.ContainsKey(item.itemName))
+        Slot slot = null;
+        foreach (var s in _slotList)
         {
-            instantiateItem(item);
+            if (item == s.Item) slot = s;   // 아이템 있는 경우 
         }
-        else
+        
+        if (slot == null) // 인벤토리 슬롯 생성 
         {
-            InventoryItem inventoryItem = inventoryItems[item.itemName];
-            if (inventoryItem.count >= item.maxCount)
-            {
-                // TODO 아이템 획득 불가 
-            }
-            else
-            {
-                inventoryItem.count++;
-                Debug.Log(item.name + ": " + inventoryItem.count);
-                // UI Text 변경 
-            }
+            slot = InstantiateSlot(item);
+            slot.Item = item;
+            _slotList.Add(slot);
         }
+        else 
+        {
+            if (slot.Item.MaxCount <= slot.ItemCount)
+            {
+                // 아이템 추가 불가
+                Debug.Log("Cannot add item!! " + slot.ItemCount);
+                return false;
+            }
+            // 인벤토리 아이템 개수 증가 
+            slot.IncreaseCount();
+        }
+        return true;
+    }
+    
+    public void DeleteSlot(int idx)
+    {
+        
     }
 
-    private void instantiateItem(Item item)
+
+    
+    private Slot InstantiateSlot(Item item)
     {
-        InventoryItem inventoryItem = new InventoryItem(item);
-        inventoryItems.Add(item.itemName, inventoryItem);
-            
         // 새 슬롯 생성 
-        GameObject slot = Instantiate(itemSlotPrefab, transform);
+        Transform slotGB = Instantiate(itemSlotPrefab, transform).transform;
+        
+        Image itemImage = slotGB.Find("ItemImage").gameObject.GetComponent<Image>(); 
+        Image outlineImage = slotGB.Find("Outline").gameObject.GetComponent<Image>(); 
+        Text itemCountText = slotGB.Find("ItemCount").gameObject.GetComponent<Text>();
 
-        // 이미지 변경 
-        // Slot의 자식 오브젝트 : ItemImage의 Image 컴포넌트
-        Image image = slot.transform.Find("ItemImage").gameObject.GetComponent<Image>(); 
-        image.sprite = item.sprite;
+        Slot newSlot = new Slot(itemImage, outlineImage, itemCountText);
+        newSlot.AttachItemImage(item.Sprite);
+        
+        return newSlot;
     }
 }
