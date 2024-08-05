@@ -96,9 +96,9 @@ public class Zombie : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Item"))
-        {
-            TakeDamage();
-        }
+        // if (other.CompareTag("Item"))
+        // {
+        //     TakeDamage();
+        // }
     }
 }
