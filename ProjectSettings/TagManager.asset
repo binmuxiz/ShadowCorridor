@@ -14,6 +14,7 @@ TagManager:
   - Gun
   - CannedFood
   - Firstaid
+  - Door
   layers:
   - Default
   - TransparentFX
