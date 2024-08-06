@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,11 @@ public class Inventory : MonoBehaviour
     {
         get => _currentIdx;
         set => _currentIdx = value;
+    }
+
+    public void Start()
+    {
+        Debug.Log("Inventory Start()");
     }
 
     private void Update()

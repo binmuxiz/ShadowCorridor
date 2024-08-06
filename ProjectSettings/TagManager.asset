@@ -9,11 +9,10 @@ TagManager:
   - HarmfulObject
   - Zombie
   - Flashlight
-  - RustKey
-  - Key
   - Gun
   - CannedFood
   - Firstaid
+  - Door
   - Light
   layers:
   - Default
