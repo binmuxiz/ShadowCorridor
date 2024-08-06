@@ -22,10 +22,7 @@ public class Spider : MonoBehaviour
     {
         // 현재 방향에서 목표 방향으로의 회전 각도 계산
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-
-        // 회전 속도를 고려하여 부드럽게 회전
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
+        
         // 설정된 방향으로 이동
         transform.position += moveDirection * speed * Time.deltaTime;
     }
