@@ -17,10 +17,18 @@ public class PlayerController : MonoBehaviour
     private Transform cameraTransform;
     private bool isCrouching = false;
 
+    public float rotationSpeed = 1.0f; // 회전 속도 변수 추가
+
     // 체력 관련 변수
     public int maxHealth = 100;
     private int currentHealth;
     public TextMeshProUGUI healthText; // UI에 표시될 체력 텍스트
+
+    // 좀비의 위치 (예제)
+    public Transform zombieTransform;
+
+    private float yaw = 0f; // 수평 회전을 추적하기 위한 변수
+    private float pitch = 0f; // 수직 회전을 추적하기 위한 변수
 
     void Start()
     {
@@ -33,6 +41,20 @@ public class PlayerController : MonoBehaviour
         originalHeight = capsuleCollider.height;
         rb.freezeRotation = true;
 
+        // 초기 방향을 설정 (좀비를 바라보도록)
+        if (zombieTransform != null)
+        {
+            Vector3 directionToZombie = (zombieTransform.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(directionToZombie);
+
+            // 플레이어의 초기 회전 설정
+            transform.rotation = lookRotation;
+
+            // yaw와 pitch 값을 설정
+            yaw = transform.eulerAngles.y;
+            pitch = cameraTransform.localEulerAngles.x;
+        }
+
         // 체력 초기화
         currentHealth = maxHealth;
         UpdateHealthUI();
@@ -40,13 +62,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // 플레이어 시점 회전
+        // 마우스 입력에 따른 회전 값 업데이트
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        transform.Rotate(0, mouseX, 0);
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        verticalLookRotation += Input.GetAxis("Mouse Y") * mouseSensitivity; // 상하 반전 수정
-        verticalLookRotation = Mathf.Clamp(verticalLookRotation, -90, 90);
-        cameraTransform.localEulerAngles = Vector3.left * verticalLookRotation;
+        yaw += mouseX;
+        pitch -= mouseY;
+
+        // 수평 회전 제한
+        yaw = Mathf.Clamp(yaw, -90, 90);
+        // 수직 회전 제한
+        pitch = Mathf.Clamp(pitch, -45, 45);
+
+        // 회전 적용
+        transform.localEulerAngles = new Vector3(0, yaw, 0);
+        cameraTransform.localEulerAngles = new Vector3(pitch, 0, 0);
 
         // 앉기 상태 전환
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -87,7 +117,7 @@ public class PlayerController : MonoBehaviour
         if (move != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(move);
-            rb.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * speed));
+            rb.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed));
         }
     }
 
