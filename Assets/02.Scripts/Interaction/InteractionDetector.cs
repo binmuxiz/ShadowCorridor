@@ -1,12 +1,12 @@
-using System;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class InteractionDetector : MonoBehaviour
 {
+    // TODO cam component 부착하기 
     public Camera cam;
     public float rayDistance = 5f;
-    public InteractionUI InteractionUI;
+
+    private IInteractable _interactable;
 
     private void Update()
     {
@@ -22,22 +22,19 @@ public class InteractionDetector : MonoBehaviour
         {
             // Debug.Log(raycastHit.transform.gameObject.name);
             
-            IInteractable interactable = raycastHit.transform.GetComponent<IInteractable>();
+            IInteractable iInteractable = raycastHit.transform.GetComponent<IInteractable>();
             
-            if (interactable != null)
+            if (iInteractable == null)
             {
-                // Debug.Log("InteractableType : " + interactable.GetType());
-                InteractionUI.Show("열기/닫기");
-                interactable.Interact();
+                _interactable.HideMessage();
+                _interactable = null;
             }
             else
             {
-                InteractionUI.Hide();
+                Debug.Log("InteractableType : " + iInteractable.GetType());
+                iInteractable.ShowMessage();
+                _interactable = iInteractable;
             }
-        }
-        else
-        {
-            InteractionUI.Hide();
         }
     }
 }
