@@ -13,7 +13,7 @@ public class Spider : MonoBehaviour
     {
         // 랜덤 방향 설정
         moveDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
-        
+      
         // 일정 시간 후 오브젝트 삭제
         Destroy(gameObject, lifeTime);
     }
