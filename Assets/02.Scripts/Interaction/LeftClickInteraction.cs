@@ -28,8 +28,6 @@ public class LeftClickInteraction : MonoBehaviour
 
             if (iInteractable != null)
             {
-                // Debug.Log("InteractableType : " + iInteractable.GetType());
-
                 iInteractable.Interact();
             }
         }

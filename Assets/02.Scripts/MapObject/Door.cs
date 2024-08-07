@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
 {
-    public bool open;
-    public float openAngle;
-    public float closedAngle;
+    public bool open = false;
+    public float openAngle = -90f;
+    public float closedAngle = 0f;
     public float smoot = 2f;
     
     private const string Message = "열기/닫기";

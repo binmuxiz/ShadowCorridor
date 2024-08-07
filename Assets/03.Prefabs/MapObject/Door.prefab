@@ -119,13 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80feba7b96f612340957ed1dece16883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLocked: 0
   open: 0
-  openAngle: 0
+  openAngle: -90
   closedAngle: 0
   smoot: 2
-  interactionUI: {fileID: 0}
-  lockedDoorText: {fileID: 0}
 --- !u!1001 &3115491660727618479
 PrefabInstance:
   m_ObjectHideFlags: 0
