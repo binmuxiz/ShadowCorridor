@@ -1,5 +1,5 @@
 using UnityEngine;
 
-public class Rustkey : Collectable
+public class Rustkey 
 {
 }

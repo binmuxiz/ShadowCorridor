@@ -11,12 +11,14 @@ public class Collectable: MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        // Item item = itemDatabase.FindItemByName(gameObject.tag);
-        //     
-        // if (item) 
-        // {
-        //     bool isAdded = inventory.AddSlot(item);
-        //     if (isAdded) Destroy(gameObject);
-        // }
+        if (PickUp())
+        {
+            Destroy(gameObject);    
+        }
+    }
+    
+    public bool PickUp()
+    {
+        return Inventory.Instance.AddSlot(gameObject.tag);
     }
 }

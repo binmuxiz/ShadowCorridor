@@ -26,18 +26,15 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        CreateDefaultItem();
+        CreateDefaultSlot();
     }
     
-    private void CreateDefaultItem()
+    private void CreateDefaultSlot()
     {
         // Flashlight 슬롯 생성 
-        Item item = ItemDatabase.Instance.FindItemByName("Flashlight");
-        AddSlot(item);
+        AddSlot("Flashlight");
         _slotList[0].ToggleOutline();
     }
-
-    
 
     public int SlotCount()
     {
@@ -45,8 +42,10 @@ public class Inventory : MonoBehaviour
     }
 
     // Add 가능 여부에 따른 bool 반환 
-    public bool AddSlot(Item item)
+    public bool AddSlot(string itemTag)
     {
+        Item item = ItemDatabase.Instance.FindItemByName(itemTag);
+        
         Slot slot = null;
         foreach (var s in _slotList)
         {

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Flashlight {
+public class Flashlight: IUsable {
     
-    private static Flashlight _flashlight;
+    private static Flashlight _instance;
     private Light _light;
 
     private Flashlight(Light light)
@@ -10,24 +10,17 @@ public class Flashlight {
         _light = light;
     }
 
-    public static Flashlight GetInstance()
+    public static Flashlight Instance()
     {
-        if (_flashlight == null)
+        if (_instance == null)
         {
-            _flashlight = new Flashlight(GameObject.FindWithTag("Light").GetComponent<Light>());
+            _instance = new Flashlight(GameObject.FindWithTag("Light").GetComponent<Light>());
         }
-        return _flashlight;
+        return _instance;
     }
 
-    public void ToggleLight()
+    public void Use()
     {
-        if (_light.enabled)
-        {
-            _light.enabled = false;
-        }
-        else
-        {
-            _light.enabled = true;
-        }
+        _light.enabled = !_light.enabled;
     }
 }

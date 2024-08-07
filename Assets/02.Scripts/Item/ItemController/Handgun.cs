@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Handgun : Collectable
+public class Handgun
 {
     
 }
