@@ -97,8 +97,8 @@ public class Inventory : MonoBehaviour
     {
         if (_currentIdx + 1 < SlotCount())
         {
-            SlotList[_currentIdx].ToggleOutline();
-            SlotList[++_currentIdx].ToggleOutline();
+            _slotList[_currentIdx].ToggleOutline();
+            _slotList[++_currentIdx].ToggleOutline();
         }
     }
     
@@ -106,8 +106,23 @@ public class Inventory : MonoBehaviour
     {
         if (_currentIdx - 1 >= 0)
         {
-            SlotList[_currentIdx].ToggleOutline();
-            SlotList[--_currentIdx].ToggleOutline();
+            _slotList[_currentIdx].ToggleOutline();
+            _slotList[--_currentIdx].ToggleOutline();
+        }
+    }
+    
+    public void ControlItemCount(int index)
+    {
+        if (index == 0) return; // flashlight는 개수 감소 없음 
+        int count = _slotList[index].DecreaseCount();
+
+        if (count == 0) // 슬롯 삭제
+        {
+            int nextIdx = (index + 1) % SlotCount();
+            _slotList[nextIdx].ToggleOutline();
+            DeleteSlot(index);
+
+            if (nextIdx == 0) CurrentIdx = nextIdx;
         }
     }
 }
