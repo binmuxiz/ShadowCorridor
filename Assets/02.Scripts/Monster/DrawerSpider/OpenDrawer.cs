@@ -7,11 +7,9 @@ public class OpenDrawer : MonoBehaviour
     public Animator ANI;
 
     public GameObject openText;
-
     public GameObject closedText;
 
     public AudioSource openSound;
-
     public AudioSource closeSound;
 
     private bool open;
@@ -31,12 +29,12 @@ public class OpenDrawer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "player" && !open)
+        if (other.gameObject.tag == "Reach" && !open)
         {
             inReach = true;
             openText.SetActive(true);
         }
-        else if (other.gameObject.tag == "player" && open)
+        else if (other.gameObject.tag == "Reach" && open)
         {
             inReach = true;
             closedText.SetActive(true);
@@ -46,7 +44,7 @@ public class OpenDrawer : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "player")
+        if (other.gameObject.tag == "Reach")
         {
             inReach = false;
             openText.SetActive(false);
