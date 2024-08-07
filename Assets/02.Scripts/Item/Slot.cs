@@ -45,6 +45,7 @@ public class Slot
             _outlineImage.enabled = true;
         }
     }
+
     
     
     // itemCount 조정 

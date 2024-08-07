@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class InteractionUI : MonoBehaviour
 {
-    public TextMeshProUGUI interactionText;
     public static InteractionUI Instance;
+    public TextMeshProUGUI interactionText;
 
     private void Awake()
     {

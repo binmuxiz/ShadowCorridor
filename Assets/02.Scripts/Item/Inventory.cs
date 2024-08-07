@@ -1,15 +1,20 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Slot> SlotList => _slotList;
+    public static Inventory Instance;
     public GameObject itemSlotPrefab;
-    
+
     private int _currentIdx = 0;
-    private List<Slot> _slotList = new List<Slot>(); // TODO Capacity 설정 
+    private List<Slot> _slotList = new List<Slot>(); // TODO Capacity 설정
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public int CurrentIdx
     {
@@ -17,40 +22,22 @@ public class Inventory : MonoBehaviour
         set => _currentIdx = value;
     }
 
-    public void Start()
+    public List<Slot> SlotList => _slotList;
+
+    private void Start()
     {
-        Debug.Log("Inventory Start()");
+        CreateDefaultItem();
+    }
+    
+    private void CreateDefaultItem()
+    {
+        // Flashlight 슬롯 생성 
+        Item item = ItemDatabase.Instance.FindItemByName("Flashlight");
+        AddSlot(item);
+        _slotList[0].ToggleOutline();
     }
 
-    private void Update()
-    {
-        // Debug.Log("현재 아이템슬롯 개수 : " + SlotCount());
-        
-        if (SlotCount() == 1) return;
-        
-        float wheelInput = Input.GetAxis("Mouse ScrollWheel");
-                                         
-        if (wheelInput > 0) // 휠을 올렸을 때 : 오른쪽 아이템 선택
-        { 
-            
-            if (_currentIdx + 1 < SlotCount())
-            {
-                SlotList[_currentIdx].ToggleOutline();
-                SlotList[++_currentIdx].ToggleOutline();
-            }
-            // Debug.Log("currentIdx : " + _currentIdx);
-        }
-        
-        else if (wheelInput < 0) // 휠을 내렸을 때 : 왼쪽 아이템 선택 
-        {
-            if (_currentIdx - 1 >= 0)
-            {
-                SlotList[_currentIdx].ToggleOutline();
-                SlotList[--_currentIdx].ToggleOutline();
-            }
-            // Debug.Log("currentIdx : " + _currentIdx);
-        }
-    }
+    
 
     public int SlotCount()
     {
@@ -104,5 +91,24 @@ public class Inventory : MonoBehaviour
         newSlot.AttachItemImage(item.Sprite);
         
         return newSlot;
+    }
+    
+        
+    public void SelectRightSlot()
+    {
+        if (_currentIdx + 1 < SlotCount())
+        {
+            SlotList[_currentIdx].ToggleOutline();
+            SlotList[++_currentIdx].ToggleOutline();
+        }
+    }
+    
+    public void SelectLeftSlot()
+    {
+        if (_currentIdx - 1 >= 0)
+        {
+            SlotList[_currentIdx].ToggleOutline();
+            SlotList[--_currentIdx].ToggleOutline();
+        }
     }
 }

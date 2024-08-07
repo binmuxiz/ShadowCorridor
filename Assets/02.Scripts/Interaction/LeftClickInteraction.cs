@@ -7,7 +7,7 @@ public class LeftClickInteraction : MonoBehaviour
     
     // public ItemDatabase itemDatabase;
     // public Inventory inventory;
-    //
+    
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) 

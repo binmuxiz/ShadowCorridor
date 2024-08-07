@@ -14,7 +14,7 @@ public class ItemController : MonoBehaviour
             int currentIdx = inventory.CurrentIdx;
 
             UseItem(currentIdx);
-            
+
             if (currentIdx == 0) return; // 손전등은 개수 감소 x
             ControlItemCount(currentIdx);
         }
