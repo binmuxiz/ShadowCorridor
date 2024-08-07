@@ -3,38 +3,23 @@ using UnityEngine;
 public class InteractionDetector : MonoBehaviour
 {
     // TODO cam component 부착하기 
-    public Camera cam;
+    public Camera mainCam;
     public float rayDistance = 5f;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, rayDistance))
-            {
-                if (hit.collider.CompareTag("Door"))
-                {
-                    hit.collider.transform.GetComponent<Door>().ChangeDoorState();
-                }
-            }
-        }
-        
-        // DetectInteractableObject();
+        DetectInteractableObject();
     }
     
+    // 상호작용 가능한 오브젝트는 "열기/닫기", "줍기" 등의 메시지 표시를 한다.
     void DetectInteractableObject()
     {
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        RaycastHit raycastHit;
+        Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
+        RaycastHit hit;
 
-        if (Physics.Raycast(ray, out raycastHit, rayDistance))
+        if (Physics.Raycast(ray, out hit, rayDistance))
         {
-            // Debug.Log(raycastHit.transform.gameObject.name);
-            
-            IInteractable iInteractable = raycastHit.transform.GetComponent<IInteractable>();
+            IInteractable iInteractable = hit.transform.GetComponent<IInteractable>();
             
             if (iInteractable != null)
             {
