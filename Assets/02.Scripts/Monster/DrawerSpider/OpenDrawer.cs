@@ -9,6 +9,8 @@ public class OpenDrawer : MonoBehaviour
     public GameObject openText;
     public GameObject closedText;
 
+    public GameObject spider;
+    
     public AudioSource openSound;
     public AudioSource closeSound;
 
@@ -25,6 +27,8 @@ public class OpenDrawer : MonoBehaviour
         ANI.SetBool("close", false);
 
         open = false;
+        
+        spider.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -57,6 +61,7 @@ public class OpenDrawer : MonoBehaviour
         if (!open && inReach && Input.GetMouseButtonDown(0))
         {
             openSound.Play();
+            ShowSpider();
             ANI.SetBool("open", true);
             ANI.SetBool("close", false);
             open = true;
@@ -74,4 +79,9 @@ public class OpenDrawer : MonoBehaviour
         }
     }
 
+    public void ShowSpider()
+    {
+        spider.SetActive(true); //거미 활성화
+    }
+    
 }
