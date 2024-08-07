@@ -3,7 +3,7 @@ using UnityEngine;
 public class Spider : MonoBehaviour
 {
     public float speed = 2f; // 이동 속도
-    public float lifeTime = 1f; // 거미가 나타난 후 사라지기까지의 시간
+    public float lifeTime = 3f; // 거미가 나타난 후 사라지기까지의 시간
     public int damage = 20; // 플레이어에게 줄 데미지
     public float rotationSpeed = 360f; // 회전 속도 (도/초)
 
