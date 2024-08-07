@@ -8,7 +8,21 @@ public class InteractionDetector : MonoBehaviour
 
     private void Update()
     {
-        DetectInteractableObject();
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, rayDistance))
+            {
+                if (hit.collider.CompareTag("Door"))
+                {
+                    hit.collider.transform.GetComponent<Door>().ChangeDoorState();
+                }
+            }
+        }
+        
+        // DetectInteractableObject();
     }
     
     void DetectInteractableObject()
