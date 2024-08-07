@@ -6,8 +6,6 @@ public class InteractionDetector : MonoBehaviour
     public Camera cam;
     public float rayDistance = 5f;
 
-    private IInteractable _interactable;
-
     private void Update()
     {
         DetectInteractableObject();
@@ -24,16 +22,10 @@ public class InteractionDetector : MonoBehaviour
             
             IInteractable iInteractable = raycastHit.transform.GetComponent<IInteractable>();
             
-            if (iInteractable == null)
-            {
-                _interactable.HideMessage();
-                _interactable = null;
-            }
-            else
+            if (iInteractable != null)
             {
                 Debug.Log("InteractableType : " + iInteractable.GetType());
                 iInteractable.ShowMessage();
-                _interactable = iInteractable;
             }
         }
     }

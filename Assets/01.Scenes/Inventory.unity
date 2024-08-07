@@ -1161,7 +1161,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLocked: 0
-  isClosed: 0
+  open: 0
+  doorOpenAngle: 90
+  doorClosedAngle: 0
+  smoot: 2
   interactionUI: {fileID: 7916405}
   lockedDoorText: {fileID: 1757264492}
 --- !u!1001 &1162883843
@@ -2306,7 +2309,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLocked: 0
-  isClosed: 0
+  open: 0
+  doorOpenAngle: 90
+  doorClosedAngle: 0
+  smoot: 2
   interactionUI: {fileID: 7916405}
   lockedDoorText: {fileID: 1757264492}
 --- !u!1 &1903918233
