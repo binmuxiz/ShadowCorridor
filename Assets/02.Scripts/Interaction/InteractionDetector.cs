@@ -20,12 +20,20 @@ public class InteractionDetector : MonoBehaviour
         if (Physics.Raycast(ray, out hit, rayDistance))
         {
             IInteractable iInteractable = hit.transform.GetComponent<IInteractable>();
-            
+
             if (iInteractable != null)
             {
                 Debug.Log("InteractableType : " + iInteractable.GetType());
                 iInteractable.ShowMessage();
             }
+            else
+            {
+                InteractionUI.Instance.Hide();
+            }
+        }
+        else
+        {
+            InteractionUI.Instance.Hide();
         }
     }
 }

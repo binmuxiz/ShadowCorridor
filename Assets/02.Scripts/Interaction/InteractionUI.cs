@@ -4,6 +4,12 @@ using UnityEngine.UI;
 public class InteractionUI : MonoBehaviour
 {
     public Text interactionText;
+    public static InteractionUI Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void Show(string message)
     {
@@ -15,5 +21,4 @@ public class InteractionUI : MonoBehaviour
     {
         interactionText.enabled = false;
     }
-    
 }
