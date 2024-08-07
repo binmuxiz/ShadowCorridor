@@ -15,6 +15,9 @@ TagManager:
   - Door
   - Light
   - Reach
+  - Key
+  - RustKey
+  - InteractionUI
   layers:
   - Default
   - TransparentFX

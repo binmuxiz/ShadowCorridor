@@ -14,33 +14,4 @@ public class ItemCollector : MonoBehaviour
         inventory.AddSlot(item);
         inventory.SlotList[0].ToggleOutline(); // 손전등은 처음에 outline = true
     }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                GameObject clickedObject = hit.transform.gameObject;
-                // Debug.Log("ClickedObject : " + clickedObject.name);
-                
-                // 각 GameObject의 이름이 아닌 Tag로 찾기
-                Item item = null;
-                
-                if (clickedObject.tag != null)
-                    item = itemDatabase.FindItemByName(clickedObject.tag);
-                
-                if (item) 
-                {
-                    // Debug.Log("Find " + item.name);
-                    bool isAdded = inventory.AddSlot(item);
-                    if (isAdded) Destroy(clickedObject);
-                }
-            }
-        }
-    }
-    
 }

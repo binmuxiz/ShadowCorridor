@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3230931827877687504}
   - component: {fileID: 1025845015421111336}
   - component: {fileID: 8171299357335686401}
+  - component: {fileID: 3150337921646324735}
   m_Layer: 0
   m_Name: Firstaid
   m_TagString: Firstaid
@@ -131,3 +132,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.9, y: 0.4, z: 0.62949526}
   m_Center: {x: 0, y: 0.14, z: 0}
+--- !u!114 &3150337921646324735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467047340945385430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2e8a2447a49f349a32e69130afe24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

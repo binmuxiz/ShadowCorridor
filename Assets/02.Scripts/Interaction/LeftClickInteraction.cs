@@ -1,21 +1,27 @@
 using UnityEngine;
 
-public class InteractionDetector : MonoBehaviour
+public class LeftClickInteraction : MonoBehaviour
 {
     public Camera mainCam;
     public float rayDistance = 5f;
-
-    private void Update()
+    
+    // public ItemDatabase itemDatabase;
+    // public Inventory inventory;
+    //
+    void Update()
     {
-        DetectInteractableObject();
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            Interaction();
+        }
     }
     
-    // 상호작용 가능한 오브젝트는 "열기/닫기", "줍기" 등의 메시지 표시를 한다.
-    void DetectInteractableObject()
+    void Interaction()
     {
         Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
         RaycastHit hit;
 
+        // 세번쨰 매개값 : raycast의 최대거리. 기본적으로는 무한대로 설정됨
         if (Physics.Raycast(ray, out hit, rayDistance))
         {
             IInteractable iInteractable = hit.transform.GetComponent<IInteractable>();
@@ -23,16 +29,9 @@ public class InteractionDetector : MonoBehaviour
             if (iInteractable != null)
             {
                 // Debug.Log("InteractableType : " + iInteractable.GetType());
-                iInteractable.ShowMessage();
+
+                iInteractable.Interact();
             }
-            else
-            {
-                InteractionUI.Instance.Hide();
-            }
-        }
-        else
-        {
-            InteractionUI.Instance.Hide();
         }
     }
 }

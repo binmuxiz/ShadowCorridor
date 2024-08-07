@@ -1,9 +1,9 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InteractionUI : MonoBehaviour
 {
-    public Text interactionText;
+    public TextMeshProUGUI interactionText;
     public static InteractionUI Instance;
 
     private void Awake()
