@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
                 SlotList[_currentIdx].ToggleOutline();
                 SlotList[++_currentIdx].ToggleOutline();
             }
-            Debug.Log("currentIdx : " + _currentIdx);
+            // Debug.Log("currentIdx : " + _currentIdx);
         }
         
         else if (wheelInput < 0) // 휠을 내렸을 때 : 왼쪽 아이템 선택 
@@ -48,7 +48,7 @@ public class Inventory : MonoBehaviour
                 SlotList[_currentIdx].ToggleOutline();
                 SlotList[--_currentIdx].ToggleOutline();
             }
-            Debug.Log("currentIdx : " + _currentIdx);
+            // Debug.Log("currentIdx : " + _currentIdx);
         }
     }
 
