@@ -63,7 +63,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479918, guid: 9c25864566bc2a7489bef25ecb47dd6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.078
       objectReference: {fileID: 0}
     - target: {fileID: 479918, guid: 9c25864566bc2a7489bef25ecb47dd6c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 0
   open: 0
-  doorOpenAngle: -90
-  doorClosedAngle: 0
+  openAngle: 0
+  closedAngle: 0
   smoot: 2
   interactionUI: {fileID: 0}
   lockedDoorText: {fileID: 0}
