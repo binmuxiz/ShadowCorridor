@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ItemController : MonoBehaviour
+public class RightClickInteraction : MonoBehaviour
 {
     // private void Update()
     // {
