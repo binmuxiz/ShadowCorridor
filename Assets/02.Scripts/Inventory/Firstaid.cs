@@ -1,9 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-public class FirstaidCountUI : MonoBehaviour
+public class Firstaid : MonoBehaviour
 {
-    public static FirstaidCountUI Instance;
+    public static Firstaid Instance;
     public TextMeshProUGUI countText;
     private const int MaxCount = 3;
     private int _count;

@@ -21,7 +21,7 @@ public class Collectable: MonoBehaviour, IInteractable
     {
         if (gameObject.CompareTag("Firstaid"))
         {
-            return FirstaidCountUI.Instance.IncreaseCount();
+            return Firstaid.Instance.IncreaseCount();
         }
         return Inventory.Instance.AddSlot(gameObject.tag);
     }
