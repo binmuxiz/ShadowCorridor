@@ -13,6 +13,12 @@ public class Firstaid : MonoBehaviour
         Instance = this;
     }
     
+    public bool AllCollected()
+    {
+        if (_count == MaxCount) return true;
+        return false;
+    }
+    
     // count를 증가시킬 수 있다면 return true
     public bool IncreaseCount()
     {
