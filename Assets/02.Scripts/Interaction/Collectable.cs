@@ -19,6 +19,10 @@ public class Collectable: MonoBehaviour, IInteractable
     
     public bool PickUp()
     {
+        if (gameObject.CompareTag("Firstaid"))
+        {
+            return FirstaidCountUI.Instance.IncreaseCount();
+        }
         return Inventory.Instance.AddSlot(gameObject.tag);
     }
 }

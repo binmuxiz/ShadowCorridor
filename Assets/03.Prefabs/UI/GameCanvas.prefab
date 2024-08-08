@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1707102216842467944}
   - component: {fileID: 69339408840604539}
   - component: {fileID: 2415000928676032206}
+  - component: {fileID: 4128027422330612332}
   m_Layer: 5
-  m_Name: CountText
+  m_Name: FirstaidCountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,6 +139,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4128027422330612332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288026589849232381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e800de3088f0e7d4491c9bbf32ffc656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countText: {fileID: 2415000928676032206}
 --- !u!1 &2306542095051737898
 GameObject:
   m_ObjectHideFlags: 0
