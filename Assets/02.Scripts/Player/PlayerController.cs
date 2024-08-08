@@ -23,6 +23,13 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
     public TextMeshProUGUI healthText; // UI에 표시될 체력 텍스트
+    [SerializeField] private RawImage healthImage; // UI에 표시될 체력 이미지
+
+    // 게임 오버 패널
+    [SerializeField] private GameObject gameOverPanel;
+
+    // 중심점 UI 오브젝트
+    [SerializeField] private GameObject crosshair; // 중심점 UI 오브젝트
 
     void Start()
     {
@@ -35,6 +42,18 @@ public class PlayerController : MonoBehaviour
         // 체력 초기화
         currentHealth = maxHealth;
         UpdateHealthUI();
+
+        // 게임 오버 패널 초기화
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false); // 초기에는 비활성화 상태
+        }
+
+        // 중심점 초기화
+        if (crosshair != null)
+        {
+            crosshair.SetActive(true); // 초기에는 활성화 상태
+        }
     }
 
     void Update()
@@ -138,6 +157,39 @@ public class PlayerController : MonoBehaviour
     {
         // 게임 오버 상태 처리
         Debug.Log("Player has died!");
+
+        // 체력 바와 이미지 비활성화
+        if (healthText != null)
+        {
+            healthText.gameObject.SetActive(false);
+        }
+
+        if (healthImage != null)
+        {
+            healthImage.gameObject.SetActive(false);
+        }
+
+        // 중심점 비활성화
+        if (crosshair != null)
+        {
+            crosshair.SetActive(false);
+        }
+
+        // 게임 오버 패널 활성화
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+        }
+
         // 필요한 경우 게임 오버 화면 표시 등 추가
+    }
+
+    // 플레이어와 좀비의 충돌 감지
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Zombie"))
+        {
+            Die();
+        }
     }
 }
