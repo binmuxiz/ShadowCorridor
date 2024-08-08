@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80feba7b96f612340957ed1dece16883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockedDoor: 0
+  lockedDoor: 1
   unlocked: 0
   open: 0
   openAngle: -90

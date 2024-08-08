@@ -19,15 +19,36 @@ public class RightClickInteraction : MonoBehaviour
         if (Input.GetMouseButtonDown(1)) // 우클릭 
         {
             int currentIdx = Inventory.Instance.CurrentIdx;
-            UseItem(currentIdx);
+            IUsable item = GetItem(currentIdx);
+            
+            if (item is Rustkey  && !IsLockedDoorClicked()) return;
+            
+            item.Use();
             Inventory.Instance.ControlItemCount(currentIdx);
         }
     }
-    
-    private void UseItem(int index)
+
+    private IUsable GetItem(int index)
     {
         Slot slot = Inventory.Instance.SlotList[index];
         ItemName name = slot.Item.ItemName;
-        usableItemDict[name].Use();
+        return usableItemDict[name];
+    }
+    
+    private bool IsLockedDoorClicked()
+    {
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            Door door = hit.transform.GetComponent<Door>();
+
+            if (door != null) // 열쇠를 문을 향해 사용한 경우 
+            {
+                if (door.Unlock()) return true;
+            }
+        }
+        return false;
     }
 }

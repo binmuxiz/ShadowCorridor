@@ -3,7 +3,7 @@ using UnityEngine;
 public class Door : MonoBehaviour, IInteractable
 {
     public bool lockedDoor = false; // 잠겨있었던 문인지  
-    public bool unlocked = false; // 잠겨있었던 문이 잠금해제 되었는지. lockedDoor = false이면 이 멤버의 값은 관계없음 
+    public bool unlocked = false; // 잠겨있었던 문이 잠금해제 되었는지. 
     
     public bool open = false;
     public float openAngle = -90f;
@@ -42,10 +42,23 @@ public class Door : MonoBehaviour, IInteractable
     public void ChangeDoorState()
     {
         open = !open;
+        if (lockedDoor && unlocked) lockedDoor = false;
+    }
+    
+    public bool Unlock()
+    {
+        if (lockedDoor)
+        {
+            unlocked = true;
+            return true;
+        }
+        return false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if (!unlocked) return;
+        
         if (open)
         {
             Quaternion targetRotation = Quaternion.Euler(0, openAngle, 0);
