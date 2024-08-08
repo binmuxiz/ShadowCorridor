@@ -22,7 +22,7 @@ public class InteractionDetector : MonoBehaviour
 
             if (iInteractable != null)
             {
-                // Debug.Log("InteractableType : " + iInteractable.GetType());
+                Debug.Log("InteractableType : " + iInteractable.GetType());
                 iInteractable.ShowMessage();
             }
             else

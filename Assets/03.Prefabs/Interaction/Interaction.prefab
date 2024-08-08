@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
-  rayDistance: 5
+  rayDistance: 100
 --- !u!1 &4537902335839656358
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
-  rayDistance: 5
+  rayDistance: 100
 --- !u!1 &6794420308745150969
 GameObject:
   m_ObjectHideFlags: 0
