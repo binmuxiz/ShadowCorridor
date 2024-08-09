@@ -6,9 +6,6 @@ public class OpenDrawer : MonoBehaviour
 {
     public Animator ANI;
 
-    public GameObject openText;
-    public GameObject closedText;
-
     public GameObject spider;
     
     public AudioSource openSound;
@@ -20,9 +17,6 @@ public class OpenDrawer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        openText.SetActive(false);
-        closedText.SetActive(false);
-        
         ANI.SetBool("open", false);
         ANI.SetBool("close", false);
 
@@ -36,12 +30,10 @@ public class OpenDrawer : MonoBehaviour
         if (other.gameObject.tag == "Reach" && !open)
         {
             inReach = true;
-            openText.SetActive(true);
         }
         else if (other.gameObject.tag == "Reach" && open)
         {
             inReach = true;
-            closedText.SetActive(true);
         }
         
     }
@@ -51,8 +43,6 @@ public class OpenDrawer : MonoBehaviour
         if (other.gameObject.tag == "Reach")
         {
             inReach = false;
-            openText.SetActive(false);
-            closedText.SetActive(false);
         }
     }
 
@@ -65,7 +55,6 @@ public class OpenDrawer : MonoBehaviour
             ANI.SetBool("open", true);
             ANI.SetBool("close", false);
             open = true;
-            openText.SetActive(false);
             inReach = false;
         }
         else if (open && inReach && Input.GetMouseButtonDown(0))
@@ -74,7 +63,6 @@ public class OpenDrawer : MonoBehaviour
             ANI.SetBool("open", false);
             ANI.SetBool("close", true);
             open = false;
-            closedText.SetActive(false);
             inReach = false;
         }
     }
