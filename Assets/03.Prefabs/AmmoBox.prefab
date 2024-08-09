@@ -354,7 +354,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7954026676911931466}
-  - component: {fileID: 8734204468192488588}
   - component: {fileID: 251433976295303689}
   - component: {fileID: 4715312964586518214}
   - component: {fileID: 8918186032563545185}
@@ -384,22 +383,6 @@ Transform:
   - {fileID: 5202296473936435362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8734204468192488588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8114934782952851108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aca647c374a7504e91e9dc4258be5c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ANI: {fileID: 251433976295303689}
-  spider: {fileID: 8604569343360626261}
-  openSound: {fileID: 4285126674469620060}
-  closeSound: {fileID: 1981428199283867821}
 --- !u!95 &251433976295303689
 Animator:
   serializedVersion: 7
@@ -455,6 +438,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5832ed9c5040988499e40d80098d90a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ANI: {fileID: 251433976295303689}
+  spider: {fileID: 8604569343360626261}
+  openSound: {fileID: 4285126674469620060}
+  closeSound: {fileID: 1981428199283867821}
 --- !u!1 &8206189888985229942
 GameObject:
   m_ObjectHideFlags: 0

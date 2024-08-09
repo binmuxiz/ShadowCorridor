@@ -2,7 +2,27 @@ using UnityEngine;
 
 public class Box : MonoBehaviour, IInteractable
 {
+    public Animator ANI;
+
+    public GameObject spider;
+    
+    public AudioSource openSound;
+    public AudioSource closeSound;
+
+    private bool open;
+
     private const string Message = "열기/닫기";
+    
+    void Start()
+    {
+        ANI.SetBool("open", false);
+        ANI.SetBool("close", false);
+
+        open = false;
+        
+        spider.SetActive(false);
+    }
+    
         
     public void ShowMessage()
     {
@@ -11,6 +31,27 @@ public class Box : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        Debug.Log("Box.Interact()");
         
+        if (!open)
+        {
+            openSound.Play();
+            ShowSpider();
+            ANI.SetBool("open", true);
+            ANI.SetBool("close", false);
+            open = true;
+        }
+        else 
+        {
+            closeSound.Play();
+            ANI.SetBool("open", false);
+            ANI.SetBool("close", true);
+            open = false;
+        }
+    }
+    
+    public void ShowSpider()
+    {
+        spider.SetActive(true); //거미 활성화
     }
 }

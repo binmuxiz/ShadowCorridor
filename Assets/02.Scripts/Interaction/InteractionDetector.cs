@@ -16,13 +16,14 @@ public class InteractionDetector : MonoBehaviour
         Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, rayDistance))
+        if (Physics.Raycast(ray, out hit, rayDistance,
+                LayerMask.GetMask("Default"), QueryTriggerInteraction.Collide))
         {
-            IInteractable iInteractable = hit.transform.GetComponent<IInteractable>();
+            IInteractable iInteractable = hit.transform.GetComponentInParent<IInteractable>();
 
             if (iInteractable != null)
             {
-                Debug.Log("InteractableType : " + iInteractable.GetType());
+                // Debug.Log("InteractableType : " + iInteractable.GetType());
                 iInteractable.ShowMessage();
             }
             else

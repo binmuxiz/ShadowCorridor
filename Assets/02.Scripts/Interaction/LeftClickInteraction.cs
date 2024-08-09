@@ -3,7 +3,7 @@ using UnityEngine;
 public class LeftClickInteraction : MonoBehaviour
 {
     public Camera mainCam;
-    public float rayDistance = 5f;
+    public float rayDistance = 100f;
     
     void Update()
     {
