@@ -8,7 +8,7 @@ public class Box : MonoBehaviour, IInteractable
     
     public AudioSource openSound;
     public AudioSource closeSound;
-
+    public float activationChance = 0.5f; // 50% 확률로 활성화
     private bool open;
 
     private const string Message = "열기/닫기";
@@ -52,6 +52,9 @@ public class Box : MonoBehaviour, IInteractable
     
     public void ShowSpider()
     {
-        spider.SetActive(true); //거미 활성화
+        if (Random.value < activationChance)
+        {
+            spider.SetActive(true); // 일정 확률로 거미 활성화
+        }
     }
 }
