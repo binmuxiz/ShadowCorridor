@@ -3,14 +3,23 @@ using TMPro; // TextMeshPro를 사용하기 위해 필요
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static PlayerHealth Instance;
+    
     public int maxHealth = 100;
-    public int currentHealth;
+    private int currentHealth;
     public TextMeshProUGUI healthText; // TextMeshProUGUI 타입의 필드
     public GameObject gameOverCanvas; // GameOverCanvas 참조
 
-    public void IncreaseHealth()
+    public void IncreaseHealth(int health)
     {
-        
+        currentHealth += health;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
+        UpdateHealthText();
+    }
+
+    void Awake()
+    {
+        Instance = this;
     }
     
     void Start()
@@ -35,17 +44,15 @@ public class PlayerHealth : MonoBehaviour
     void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        if (currentHealth < 0) currentHealth = 0;
         UpdateHealthText();
         
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
+        if (currentHealth <= 0) Die();
     }
 
     void UpdateHealthText()
     {
-        healthText.text = "Health: " + currentHealth.ToString();
+        healthText.text = "Health: " + currentHealth;
     }
 
     void Die()

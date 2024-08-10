@@ -4,6 +4,7 @@ using UnityEngine;
 public class Cannedfood : IUsable
 {
     private static Cannedfood _instance;
+    private int health = 40;
 
     private Cannedfood()
     {
@@ -22,5 +23,6 @@ public class Cannedfood : IUsable
     public void Use()
     {
         Debug.Log("Use CannedFood");
+        PlayerHealth.Instance.IncreaseHealth(health);
     }
 }
