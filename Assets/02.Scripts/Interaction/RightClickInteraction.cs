@@ -16,7 +16,8 @@ public class RightClickInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1)) // 우클릭 
+        // 우클릭 시 인벤토리에 초점이 맞춰진 아이템 사용 
+        if (Input.GetMouseButtonDown(1)) 
         {
             int currentIdx = Inventory.Instance.CurrentIdx;
             IUsable item = GetItem(currentIdx);
