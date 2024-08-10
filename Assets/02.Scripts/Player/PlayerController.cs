@@ -1,9 +1,10 @@
-using TMPro; // TextMeshPro를 사용하기 위한 네임스페이스 추가
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    // 기존 변수들
     public float walkSpeed = 3.0f;
     public float runSpeed = 10.0f;
     public float crouchSpeed = 2.5f;
@@ -17,19 +18,26 @@ public class PlayerController : MonoBehaviour
     private Transform cameraTransform;
     private bool isCrouching = false;
 
-    public float rotationSpeed = 1.0f; // 회전 속도 변수 추가
+    public float rotationSpeed = 1.0f;
 
     // 체력 관련 변수
     public int maxHealth = 100;
     private int currentHealth;
-    public TextMeshProUGUI healthText; // UI에 표시될 체력 텍스트
-    [SerializeField] private RawImage healthImage; // UI에 표시될 체력 이미지
+    public TextMeshProUGUI healthText;
+    [SerializeField] private RawImage healthImage;
 
     // 게임 오버 패널
     [SerializeField] private GameObject gameOverPanel;
 
     // 중심점 UI 오브젝트
-    [SerializeField] private GameObject crosshair; // 중심점 UI 오브젝트
+    [SerializeField] private GameObject crosshair;
+
+    // 스테미너 바 UI 오브젝트
+    public GameObject staminaBar;
+
+    // 캐비닛 관련 변수
+    private bool isInsideCabinet = false;
+    private Vector3 originalCameraPosition;
 
     void Start()
     {
@@ -39,71 +47,82 @@ public class PlayerController : MonoBehaviour
         originalHeight = capsuleCollider.height;
         rb.freezeRotation = true;
 
-        // 체력 초기화
         currentHealth = maxHealth;
         UpdateHealthUI();
 
-        // 게임 오버 패널 초기화
         if (gameOverPanel != null)
         {
-            gameOverPanel.SetActive(false); // 초기에는 비활성화 상태
+            gameOverPanel.SetActive(false);
         }
 
-        // 중심점 초기화
         if (crosshair != null)
         {
-            crosshair.SetActive(true); // 초기에는 활성화 상태
+            crosshair.SetActive(true);
         }
+
+        originalCameraPosition = cameraTransform.localPosition;
     }
 
     void Update()
     {
-        // 마우스 입력에 따른 카메라 회전
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-
-        // 수평 회전 (Yaw)
-        transform.Rotate(Vector3.up * mouseX);
-
-        // 수직 회전 (Pitch)
-        verticalLookRotation -= mouseY;
-        verticalLookRotation = Mathf.Clamp(verticalLookRotation, -90f, 90f);
-        cameraTransform.localEulerAngles = Vector3.right * verticalLookRotation;
-
-        // 앉기 상태 전환
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (!isInsideCabinet)
         {
-            Crouch();
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+            transform.Rotate(Vector3.up * mouseX);
+
+            verticalLookRotation -= mouseY;
+            verticalLookRotation = Mathf.Clamp(verticalLookRotation, -90f, 90f);
+            cameraTransform.localEulerAngles = Vector3.right * verticalLookRotation;
+
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                Crouch();
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                StandUp();
+            }
+
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                TakeDamage(10);
+            }
+
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                Heal(10);
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            StandUp();
-        }
 
-        // 체력 감소 테스트
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetMouseButtonDown(0) && !isInsideCabinet)
         {
-            TakeDamage(10); // H 키를 눌러 10만큼 체력 감소
-        }
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-        // 체력 증가 테스트
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            Heal(10); // J 키를 눌러 10만큼 체력 증가
+            if (Physics.Raycast(ray, out hit, 25.0f))
+            {
+                if (hit.collider.CompareTag("Cabinet"))
+                {
+                    EnterCabinet(hit.collider.gameObject);
+                }
+            }
         }
     }
 
     void FixedUpdate()
     {
-        // 이동 속도 설정
-        float speed = isCrouching ? crouchSpeed : (Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed);
+        if (!isInsideCabinet)
+        {
+            float speed = isCrouching ? crouchSpeed : (Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed);
 
-        // 플레이어 이동
-        float moveForward = Input.GetAxis("Vertical") * speed * Time.fixedDeltaTime;
-        float moveSide = Input.GetAxis("Horizontal") * speed * Time.fixedDeltaTime;
+            float moveForward = Input.GetAxis("Vertical") * speed * Time.fixedDeltaTime;
+            float moveSide = Input.GetAxis("Horizontal") * speed * Time.fixedDeltaTime;
 
-        Vector3 move = transform.right * moveSide + transform.forward * moveForward;
-        rb.MovePosition(rb.position + move);
+            Vector3 move = transform.right * moveSide + transform.forward * moveForward;
+            rb.MovePosition(rb.position + move);
+        }
     }
 
     void Crouch()
@@ -120,7 +139,6 @@ public class PlayerController : MonoBehaviour
         cameraTransform.localPosition = new Vector3(cameraTransform.localPosition.x, originalHeight / 2, cameraTransform.localPosition.z);
     }
 
-    // 체력 감소 메서드
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -132,7 +150,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 체력 증가 메서드
     public void Heal(int amount)
     {
         currentHealth += amount;
@@ -143,7 +160,6 @@ public class PlayerController : MonoBehaviour
         UpdateHealthUI();
     }
 
-    // 체력 UI 업데이트
     private void UpdateHealthUI()
     {
         if (healthText != null)
@@ -152,13 +168,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 플레이어 사망 처리
     private void Die()
     {
-        // 게임 오버 상태 처리
         Debug.Log("Player has died!");
 
-        // 체력 바와 이미지 비활성화
         if (healthText != null)
         {
             healthText.gameObject.SetActive(false);
@@ -169,22 +182,46 @@ public class PlayerController : MonoBehaviour
             healthImage.gameObject.SetActive(false);
         }
 
-        // 중심점 비활성화
         if (crosshair != null)
         {
             crosshair.SetActive(false);
         }
 
-        // 게임 오버 패널 활성화
+        if (staminaBar != null)
+        {
+            staminaBar.SetActive(false); // 스테미너 바 비활성화
+        }
+
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
         }
-
-        // 필요한 경우 게임 오버 화면 표시 등 추가
     }
 
-    // 플레이어와 좀비의 충돌 감지
+    private void EnterCabinet(GameObject cabinet)
+    {
+        isInsideCabinet = true;
+        originalCameraPosition = cameraTransform.localPosition;
+
+        // 캐비닛 안쪽으로 카메라 위치 이동
+        cameraTransform.position = cabinet.transform.Find("CameraPosition").position;
+        cameraTransform.rotation = Quaternion.LookRotation(cabinet.transform.forward);
+
+        // 플레이어 움직임과 회전 비활성화
+        rb.isKinematic = true;
+    }
+
+    private void ExitCabinet()
+    {
+        isInsideCabinet = false;
+
+        // 카메라를 원래 위치로 복귀
+        cameraTransform.localPosition = originalCameraPosition;
+
+        // 플레이어 움직임과 회전 활성화
+        rb.isKinematic = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Zombie"))
