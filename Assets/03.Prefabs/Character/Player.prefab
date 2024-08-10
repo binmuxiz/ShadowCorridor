@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 3628405927614441454}
   - component: {fileID: 6189736461089799351}
   - component: {fileID: 3407051484960725846}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spotlight
   m_TagString: Light
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 2182834788144253822}
   - component: {fileID: 1856030867045489007}
   - component: {fileID: 2525999402317195254}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -925,7 +925,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6767389374121637287}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Flashlight
   m_TagString: Flashlight
   m_Icon: {fileID: 0}
@@ -958,7 +958,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9222743367931993700}
   - component: {fileID: 6611227947637784092}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CursorController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
