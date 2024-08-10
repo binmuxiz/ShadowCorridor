@@ -531,8 +531,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4730684724465254103}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.8347069, z: -0, w: 0.5506944}
-  m_LocalPosition: {x: 0.26300028, y: -1.14, z: 2.2260003}
+  m_LocalRotation: {x: -0, y: -0.410703, z: -0, w: 0.9117692}
+  m_LocalPosition: {x: 0, y: -1.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -571,17 +571,17 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5067525015038192383}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3.88, y: 1.21, z: 0.08}
+  m_LocalRotation: {x: -0, y: -0.9756738, z: -0, w: 0.21922757}
+  m_LocalPosition: {x: 1.654, y: 1.21, z: 0.343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 9222743367931993700}
+  - {fileID: 6583204469085338015}
   - {fileID: 8535430978636016841}
   - {fileID: 6767389374121637287}
-  - {fileID: 6583204469085338015}
-  - {fileID: 9222743367931993700}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -154.673, z: 0}
 --- !u!143 &8654587067775962875
 CharacterController:
   m_ObjectHideFlags: 0
@@ -739,8 +739,8 @@ Rigidbody:
   m_GameObject: {fileID: 5067525015038192383}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 10
-  m_AngularDrag: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -753,9 +753,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!82 &3671477272768733896
 AudioSource:
@@ -764,7 +764,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5067525015038192383}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -892,7 +892,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -940,8 +940,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6214003473494707309}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.8000001, z: 0}
+  m_LocalRotation: {x: 0.5974507, y: 0.3782231, z: -0.3782231, w: 0.5974507}
+  m_LocalPosition: {x: -2.1245427, y: 1.27, z: -0.7145387}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
