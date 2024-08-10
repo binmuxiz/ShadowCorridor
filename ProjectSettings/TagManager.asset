@@ -18,6 +18,8 @@ TagManager:
   - Key
   - RustKey
   - InteractionUI
+  - WayPoints
+  - Cabinet
   layers:
   - Default
   - TransparentFX
