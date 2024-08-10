@@ -664,7 +664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284643563}
   m_Layer: 0
-  m_Name: WayPoint (1)
+  m_Name: wayPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1791,7 +1791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 972487625}
   m_Layer: 0
-  m_Name: WayPoint (2)
+  m_Name: wayPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2351,7 +2351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1334680177}
   m_Layer: 0
-  m_Name: WayPoint
+  m_Name: wayPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3135,8 +3135,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1889525942}
   m_Layer: 0
-  m_Name: WayPoint
-  m_TagString: Untagged
+  m_Name: WayPoints
+  m_TagString: WayPoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4160,6 +4160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4467757276689041}
   - component: {fileID: 4467757276689042}
+  - component: {fileID: 4467757276689043}
   m_Layer: 0
   m_Name: GhoulTest2
   m_TagString: Zombie
@@ -5550,6 +5551,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &4467757276689043
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309486178026083}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 100
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!4 &4507626018395019
 Transform:
   m_ObjectHideFlags: 0
