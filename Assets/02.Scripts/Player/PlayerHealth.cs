@@ -8,6 +8,11 @@ public class PlayerHealth : MonoBehaviour
     public TextMeshProUGUI healthText; // TextMeshProUGUI 타입의 필드
     public GameObject gameOverCanvas; // GameOverCanvas 참조
 
+    public void IncreaseHealth()
+    {
+        
+    }
+    
     void Start()
     {
         currentHealth = maxHealth;
