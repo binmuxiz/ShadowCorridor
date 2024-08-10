@@ -47,7 +47,7 @@ public class Door : MonoBehaviour, IInteractable
     
     public bool Unlock()
     {
-        if (lockedDoor)
+        if (lockedDoor && !unlocked)
         {
             unlocked = true;
             return true;

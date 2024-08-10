@@ -1409,6 +1409,11 @@ Transform:
   - {fileID: 651591804}
   m_Father: {fileID: 551377687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &1270639177 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 8530789977864695321, guid: bd0d1f4ca1329ca4e84f65cb9e0ede52, type: 3}
+  m_PrefabInstance: {fileID: 670381593}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1284024001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2011,7 +2016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 1
-  exitCanvasGroup: {fileID: 0}
+  exitCanvasGroup: {fileID: 1270639177}
   exitAudio: {fileID: 0}
 --- !u!4 &2088774733
 Transform:

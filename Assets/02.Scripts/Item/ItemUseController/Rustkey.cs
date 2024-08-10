@@ -6,7 +6,6 @@ public class Rustkey : IUsable
 
     private Rustkey()
     {
-        
     }
     
     public static Rustkey Instance()
@@ -21,7 +20,5 @@ public class Rustkey : IUsable
     public void Use()
     {
         Debug.Log("Use RustKey");
-        
-        
     }
 }
