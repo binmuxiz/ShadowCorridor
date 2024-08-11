@@ -45,6 +45,15 @@ public class Door : MonoBehaviour, IInteractable
     public void ChangeDoorState()
     {
         open = !open;
+
+        if (open)
+        {
+            openSound.Play();
+        }
+        else
+        {
+            closeSound.Play();
+        }
         if (lockedDoor && unlocked) lockedDoor = false;
     }
     
@@ -64,13 +73,11 @@ public class Door : MonoBehaviour, IInteractable
         
         if (open)
         {
-            openSound.Play();
             Quaternion targetRotation = Quaternion.Euler(0, openAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smoot * Time.deltaTime);
         }
         else
         {
-            closeSound.Play();
             Quaternion targetRotation = Quaternion.Euler(0, closedAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smoot * Time.deltaTime);
         }
