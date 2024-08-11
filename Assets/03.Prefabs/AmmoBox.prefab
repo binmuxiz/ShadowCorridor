@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 251433976295303689}
   - component: {fileID: 4715312964586518214}
   - component: {fileID: 8918186032563545185}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AmmoBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,6 +442,7 @@ MonoBehaviour:
   spider: {fileID: 8604569343360626261}
   openSound: {fileID: 4285126674469620060}
   closeSound: {fileID: 1981428199283867821}
+  activationChance: 0.5
 --- !u!1 &8206189888985229942
 GameObject:
   m_ObjectHideFlags: 0

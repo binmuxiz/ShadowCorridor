@@ -1,10 +1,17 @@
 
+using System;
 using UnityEngine;
 
 public class InteractionDetector : MonoBehaviour
 {
     public Camera mainCam;
-    public float rayDistance = 5f;
+    public float rayDistance = 3f;
+    private int _layerMask;
+
+    private void Start()
+    {
+        _layerMask = 1 << LayerMask.NameToLayer("Interactable");
+    }
 
     private void Update()
     {
@@ -17,8 +24,7 @@ public class InteractionDetector : MonoBehaviour
         Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, rayDistance,
-                LayerMask.GetMask("Interactable"), QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(ray, out hit, rayDistance, _layerMask))
         {
             IInteractable iInteractable = hit.transform.GetComponentInParent<IInteractable>();
 
