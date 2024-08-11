@@ -19,6 +19,14 @@ public class Handgun : IUsable
     public void Use()
     {
         Debug.Log("Use Handgun");
-
+        
+    }
+    
+    private void Aim()
+    {
+        // 조준점 ui 생성
+        
+        
+        // 총 오브젝트 생성 (PLAYER의 자식으로) 
     }
 }
