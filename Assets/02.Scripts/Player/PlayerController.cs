@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     // 캐비닛 관련 변수
     private bool isInsideCabinet = false;
     private Vector3 originalCameraPosition;
+    private Vector3 originalCameraRotation;
 
     void Start()
     {
@@ -210,6 +211,7 @@ public class PlayerController : MonoBehaviour
     {
         isInsideCabinet = true;
         originalCameraPosition = cameraTransform.localPosition;
+        originalCameraRotation = cameraTransform.localEulerAngles;
 
         // 캐비닛 안쪽으로 카메라 위치 이동
         cameraTransform.position = cabinet.transform.Find("CameraPosition").position;
@@ -224,10 +226,12 @@ public class PlayerController : MonoBehaviour
         isInsideCabinet = false;
 
         // 카메라를 원래 위치로 복귀
-        cameraTransform.localPosition = originalCameraPosition;
+        cameraTransform.localPosition = originalCameraPosition + new Vector3(0,0,3);
+        cameraTransform.localEulerAngles = originalCameraRotation;
 
         // 플레이어 움직임과 회전 활성화
         rb.isKinematic = false;
+        rb.linearVelocity = Vector3.zero;
     }
 
     private void OnTriggerEnter(Collider other)
