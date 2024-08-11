@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 4060254536115356501}
   - component: {fileID: 3547984455957027902}
   m_Layer: 5
-  m_Name: Center
+  m_Name: CenterPointUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
