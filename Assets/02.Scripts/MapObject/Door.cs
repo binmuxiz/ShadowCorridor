@@ -9,6 +9,9 @@ public class Door : MonoBehaviour, IInteractable
     public float openAngle = -90f;
     public float closedAngle = 0f;
     public float smoot = 2f;
+
+    public AudioSource openSound;
+    public AudioSource closeSound;
     
     private const string Message = "열기/닫기";
     private const string LockedMessage = "열기/닫기\n잠겨 있다";
@@ -61,11 +64,13 @@ public class Door : MonoBehaviour, IInteractable
         
         if (open)
         {
+            openSound.Play();
             Quaternion targetRotation = Quaternion.Euler(0, openAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smoot * Time.deltaTime);
         }
         else
         {
+            closeSound.Play();
             Quaternion targetRotation = Quaternion.Euler(0, closedAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smoot * Time.deltaTime);
         }
