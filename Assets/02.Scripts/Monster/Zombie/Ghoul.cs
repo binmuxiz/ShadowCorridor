@@ -22,14 +22,7 @@ public class Ghoul : MonoBehaviour
             animator.SetTrigger("damage");
         }
         
-        ///활이긴함 script
-        /// 
-        ///
-        /// private void OnTriggerEnter(Collider other)
-        /// {
-        /// Destroy(transform.GetComponet<Rigidbody>());
-        /// if(other.tag == "Zombie")
-        /// { other.GetComponent<Zombie>().TakeDamage(20);
+
         
     }
 }

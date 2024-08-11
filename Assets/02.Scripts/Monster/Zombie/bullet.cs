@@ -10,12 +10,12 @@ public class bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
         Destroy(transform.GetComponent<Rigidbody>());
-       // if (other.tag == "Zombie")
-     //   {    transform.parent = other.transform;
-       //     other.GetComponent<Zombie>().TakeDamage(damageAmount);
-      //  }
+       if (other.tag == "Zombie")
+      {    transform.parent = other.transform;
+         //   other.GetComponent<Zombie>().TakeDamage(damageAmount);
+       }
     }
 }
