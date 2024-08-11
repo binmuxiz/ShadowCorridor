@@ -985,6 +985,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 829784791983144314, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
     - target: {fileID: 3768450681897453521, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
       propertyPath: m_Name
       value: Ghoul

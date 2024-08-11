@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI healthText;
     [SerializeField] private RawImage healthImage;
 
+    // 체력 증가 관련 변수
+    private float healthRegenTimer = 0f; // 체력 회복 타이머
+    public float healthRegenInterval = 2f; // 2초마다 회복
+
     // 게임 오버 패널
     [SerializeField] private GameObject gameOverPanel;
 
@@ -68,6 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isInsideCabinet)
         {
+            // 마우스 입력 처리
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -94,6 +99,17 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.J))
             {
                 Heal(10);
+            }
+
+            // 체력 증가 로직
+            healthRegenTimer += Time.deltaTime;
+            if (healthRegenTimer >= healthRegenInterval)
+            {
+                if (currentHealth < maxHealth)
+                {
+                    Heal(1);
+                }
+                healthRegenTimer = 0f; // 타이머 초기화
             }
         }
         else
@@ -166,7 +182,7 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        UpdateHealthUI();
+        UpdateHealthUI(); // UI 업데이트
     }
 
     private void UpdateHealthUI()
@@ -225,13 +241,8 @@ public class PlayerController : MonoBehaviour
     {
         isInsideCabinet = false;
 
-        // 카메라를 원래 위치로 복귀
-        cameraTransform.localPosition = originalCameraPosition + new Vector3(0,0,3);
-        cameraTransform.localEulerAngles = originalCameraRotation;
-
         // 플레이어 움직임과 회전 활성화
         rb.isKinematic = false;
-        rb.linearVelocity = Vector3.zero;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -242,4 +253,3 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
- 
