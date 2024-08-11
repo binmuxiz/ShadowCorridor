@@ -11,14 +11,14 @@ public class Ghoul : MonoBehaviour
         if (HP <= 0)
         {
             //PLAY DEATH ANIMATION
-            //AudioManger.instance.Play("")
+            //AudioManager.instance.Play("")
             //animator.SetTrigger("die");
             //GetComponent<Collider>().enabled = false;
         }
         else
         {
             //Play Get Hit Animation
-            //AudioManger.instance.Play("ZombieDamage")
+            AudioManager.instance.Play("ZombieDamage");
             animator.SetTrigger("damage");
         }
         
