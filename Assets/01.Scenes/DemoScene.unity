@@ -8288,7 +8288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8340450743198709900, guid: 9ddcf137e63ab0e49a5ce4abd0666bea, type: 3}
       propertyPath: m_Name
-      value: locker_01b
+      value: locker_01
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7445075453785929530, guid: 9ddcf137e63ab0e49a5ce4abd0666bea, type: 3}
