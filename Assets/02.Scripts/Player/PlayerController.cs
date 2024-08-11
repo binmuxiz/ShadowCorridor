@@ -95,6 +95,14 @@ public class PlayerController : MonoBehaviour
                 Heal(10);
             }
         }
+        else
+        {
+            // 캐비닛 내부에 있을 때 E 키를 누르면 캐비닛에서 나옴
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ExitCabinet();
+            }
+        }
 
         if (Input.GetMouseButtonDown(0) && !isInsideCabinet)
         {
@@ -230,3 +238,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+ 
