@@ -33,10 +33,13 @@ public class SimpleShoot : MonoBehaviour
     void Update()
     {
         //If you want a different input, change it here
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0))
         {
             //Calls animation on the gun that has the relevant animation events that will fire
             gunAnimator.SetTrigger("Fire");
+            
+            // todo 총을 쏘고 난 뒤에 인벤토리에서 총 카운드 조절
+            // Inventory.Instance.ControlItemCount();
         }
     }
 

@@ -9,7 +9,7 @@ public class RightClickInteraction : MonoBehaviour
     private void Start()
     {
         usableItemDict.Add(ItemName.Flashlight, Flashlight.Instance());
-        usableItemDict.Add(ItemName.Gun, HandgunController.Instance());
+        usableItemDict.Add(ItemName.Gun, Handgun.Instance);
         usableItemDict.Add(ItemName.CannedFood, Cannedfood.Instance());
         usableItemDict.Add(ItemName.RustKey, Rustkey.Instance());
     }
@@ -23,6 +23,11 @@ public class RightClickInteraction : MonoBehaviour
             IUsable item = GetItem(currentIdx);
             
             if (item is Rustkey  && !IsLockedDoorClicked()) return;
+            if (item is Handgun)
+            {
+                item.Use();
+                return;
+            }
             
             item.Use();
             Inventory.Instance.ControlItemCount(currentIdx);
