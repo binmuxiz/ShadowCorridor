@@ -18,7 +18,7 @@ public class InteractionDetector : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, rayDistance,
-                LayerMask.GetMask("Default"), QueryTriggerInteraction.Collide))
+                LayerMask.GetMask("Interactable"), QueryTriggerInteraction.Collide))
         {
             IInteractable iInteractable = hit.transform.GetComponentInParent<IInteractable>();
 

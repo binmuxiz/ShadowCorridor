@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 919079028881798923}
   - component: {fileID: 5747744699921954178}
   - component: {fileID: 3068570600826788398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RustKey
   m_TagString: Key
   m_Icon: {fileID: 0}
