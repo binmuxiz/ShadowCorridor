@@ -44,6 +44,8 @@ public class Door : MonoBehaviour, IInteractable
 
     public void ChangeDoorState()
     {
+        if (lockedDoor && !unlocked) return;
+        
         open = !open;
 
         if (open)
