@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // 기존 변수들
     public float walkSpeed = 3.0f;
-    public float runSpeed = 10.0f;
+    public float runSpeed = 2.0f;
     public float crouchSpeed = 2.5f;
     public float mouseSensitivity = 1.3f;
     public float crouchHeight = 1.0f;
@@ -33,9 +33,6 @@ public class PlayerController : MonoBehaviour
     // 게임 오버 패널
     [SerializeField] private GameObject gameOverPanel;
 
-    // 중심점 UI 오브젝트
-    [SerializeField] private GameObject crosshair;
-
     // 스테미너 바 UI 오브젝트
     public GameObject staminaBar;
 
@@ -43,6 +40,8 @@ public class PlayerController : MonoBehaviour
     private bool isInsideCabinet = false;
     private Vector3 originalCameraPosition;
     private Vector3 originalCameraRotation;
+    
+    private int _layerMask;
 
     void Start()
     {
@@ -60,12 +59,10 @@ public class PlayerController : MonoBehaviour
             gameOverPanel.SetActive(false);
         }
 
-        if (crosshair != null)
-        {
-            crosshair.SetActive(true);
-        }
-
         originalCameraPosition = cameraTransform.localPosition;
+        
+        _layerMask = 1 << LayerMask.NameToLayer("Cabinet");
+
     }
 
     void Update()
@@ -126,7 +123,7 @@ public class PlayerController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 25.0f))
+            if (Physics.Raycast(ray, out hit, 25.0f, _layerMask))
             {
                 if (hit.collider.CompareTag("Cabinet"))
                 {
@@ -197,25 +194,20 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player has died!");
 
-        if (healthText != null)
-        {
-            healthText.gameObject.SetActive(false);
-        }
-
-        if (healthImage != null)
-        {
-            healthImage.gameObject.SetActive(false);
-        }
-
-        if (crosshair != null)
-        {
-            crosshair.SetActive(false);
-        }
-
-        if (staminaBar != null)
-        {
-            staminaBar.SetActive(false); // 스테미너 바 비활성화
-        }
+        // if (healthText != null)
+        // {
+        //     healthText.gameObject.SetActive(false);
+        // }
+        //
+        // if (healthImage != null)
+        // {
+        //     healthImage.gameObject.SetActive(false);
+        // }
+        //
+        // if (staminaBar != null)
+        // {
+        //     staminaBar.SetActive(false); // 스테미너 바 비활성화
+        // }
 
         if (gameOverPanel != null)
         {
