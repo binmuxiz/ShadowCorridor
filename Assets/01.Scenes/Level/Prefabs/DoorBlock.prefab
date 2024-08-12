@@ -954,19 +954,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2817214403486548947}
     m_Modifications:
+    - target: {fileID: 47243853141123244, guid: 48e346ad56f0b8c45a2289c7ac662f61, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 324912407464096945, guid: 48e346ad56f0b8c45a2289c7ac662f61, type: 3}
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
-    - target: {fileID: 324912407464096945, guid: 48e346ad56f0b8c45a2289c7ac662f61, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912184576732435616, guid: 48e346ad56f0b8c45a2289c7ac662f61, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3115491660727732541, guid: 48e346ad56f0b8c45a2289c7ac662f61, type: 3}
+    - target: {fileID: 2508934686507172748, guid: 48e346ad56f0b8c45a2289c7ac662f61, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1009,6 +1005,10 @@ PrefabInstance:
     - target: {fileID: 8213366362997295721, guid: 48e346ad56f0b8c45a2289c7ac662f61, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973957483229123623, guid: 48e346ad56f0b8c45a2289c7ac662f61, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
