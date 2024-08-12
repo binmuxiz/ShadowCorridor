@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class LightFlicker : MonoBehaviour
@@ -16,7 +17,7 @@ public class LightFlicker : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
         LightsFlickering();
     }
