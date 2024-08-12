@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // 기존 변수들
     public float walkSpeed = 3.0f;
-    public float runSpeed = 10.0f;
+    public float runSpeed = 2.0f;
     public float crouchSpeed = 2.5f;
     public float mouseSensitivity = 1.3f;
     public float crouchHeight = 1.0f;
@@ -194,20 +194,20 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player has died!");
 
-        if (healthText != null)
-        {
-            healthText.gameObject.SetActive(false);
-        }
-
-        if (healthImage != null)
-        {
-            healthImage.gameObject.SetActive(false);
-        }
-
-        if (staminaBar != null)
-        {
-            staminaBar.SetActive(false); // 스테미너 바 비활성화
-        }
+        // if (healthText != null)
+        // {
+        //     healthText.gameObject.SetActive(false);
+        // }
+        //
+        // if (healthImage != null)
+        // {
+        //     healthImage.gameObject.SetActive(false);
+        // }
+        //
+        // if (staminaBar != null)
+        // {
+        //     staminaBar.SetActive(false); // 스테미너 바 비활성화
+        // }
 
         if (gameOverPanel != null)
         {

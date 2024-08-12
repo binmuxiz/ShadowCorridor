@@ -822,7 +822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6691286216436677841, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.64
+      value: -1.38
       objectReference: {fileID: 0}
     - target: {fileID: 6691286216436677841, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -871,7 +871,7 @@ PrefabInstance:
     - target: {fileID: 8553044049593290817, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: gameOverPanel
       value: 
-      objectReference: {fileID: 2088715506}
+      objectReference: {fileID: 533767328179189355}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3837,11 +3837,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4396417133449288, guid: 674adf642abf5614aae2995443c8250f, type: 3}
   m_PrefabInstance: {fileID: 2079484520}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2088715506 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5924963031220879256, guid: 3de7e981dfaf9584a83382296b09c167, type: 3}
-  m_PrefabInstance: {fileID: 533767328179189354}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &2088715507 stripped
 RectTransform:
