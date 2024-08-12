@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     private bool isInsideCabinet = false;
     private Vector3 originalCameraPosition;
     private Vector3 originalCameraRotation;
+    
+    private int _layerMask;
 
     void Start()
     {
@@ -58,6 +60,9 @@ public class PlayerController : MonoBehaviour
         }
 
         originalCameraPosition = cameraTransform.localPosition;
+        
+        _layerMask = 1 << LayerMask.NameToLayer("Cabinet");
+
     }
 
     void Update()
@@ -118,7 +123,7 @@ public class PlayerController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 25.0f))
+            if (Physics.Raycast(ray, out hit, 25.0f, _layerMask))
             {
                 if (hit.collider.CompareTag("Cabinet"))
                 {
