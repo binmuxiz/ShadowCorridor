@@ -12,7 +12,6 @@ public class LightFlicker : MonoBehaviour
     void Start()
     {
         timer = Random.Range(minTime, maxTime);
-        lightOB.enabled = false; //시작할때 꺼져있어야 하는 거 다시 설정해야함!!
     }
 
     // Update is called once per frame
