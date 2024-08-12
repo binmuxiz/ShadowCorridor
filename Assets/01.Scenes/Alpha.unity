@@ -3649,15 +3649,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 184178279620442767, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.919
+      value: 2.015
       objectReference: {fileID: 0}
     - target: {fileID: 184178279620442767, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.466
+      value: -0.6289614
       objectReference: {fileID: 0}
     - target: {fileID: 184178279620442767, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.685
+      value: -0.081
       objectReference: {fileID: 0}
     - target: {fileID: 184178279620442767, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3687,9 +3687,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 654858222473951495, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310265851487086874, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878051265234332732, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883381778654009711, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2229688416436511784, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110847774225402311, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571944372300984063, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7519638922659821298, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562064327959839693, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872036214798024843, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8392720446249855151, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
       propertyPath: m_Name
       value: Handgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392720446249855151, guid: b1b38f57f57d5fc449a7a950aceea56e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
