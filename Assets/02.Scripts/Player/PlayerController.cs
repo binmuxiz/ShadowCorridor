@@ -33,9 +33,6 @@ public class PlayerController : MonoBehaviour
     // 게임 오버 패널
     [SerializeField] private GameObject gameOverPanel;
 
-    // 중심점 UI 오브젝트
-    [SerializeField] private GameObject crosshair;
-
     // 스테미너 바 UI 오브젝트
     public GameObject staminaBar;
 
@@ -58,11 +55,6 @@ public class PlayerController : MonoBehaviour
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(false);
-        }
-
-        if (crosshair != null)
-        {
-            crosshair.SetActive(true);
         }
 
         originalCameraPosition = cameraTransform.localPosition;
@@ -205,11 +197,6 @@ public class PlayerController : MonoBehaviour
         if (healthImage != null)
         {
             healthImage.gameObject.SetActive(false);
-        }
-
-        if (crosshair != null)
-        {
-            crosshair.SetActive(false);
         }
 
         if (staminaBar != null)
