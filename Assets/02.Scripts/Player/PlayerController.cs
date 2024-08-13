@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
 
     // 스테미너 바 UI 오브젝트
-    public GameObject staminaBar;
+    // public GameObject staminaBar;
 
     // 스테미너 관련 변수
     public float maxStamina = 100f;

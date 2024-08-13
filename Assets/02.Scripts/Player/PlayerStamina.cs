@@ -6,8 +6,8 @@ public class PlayerStamina : MonoBehaviour
     public Image staminaBar; // 실제 스테미너를 나타내는 UI 이미지
     public float maxStamina = 100f;
     private float currentStamina;
-    public float staminaUsageRate = 10f; // 스테미너 소모율
-    public float staminaRecoveryRate = 5f; // 스테미너 회복율
+    public float staminaUsageRate = 50f; // 스테미너 소모율
+    public float staminaRecoveryRate = 10f; // 스테미너 회복율
 
     void Start()
     {

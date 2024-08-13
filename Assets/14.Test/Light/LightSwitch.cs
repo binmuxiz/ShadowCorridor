@@ -1,75 +1,48 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
-public class LightSwitch : MonoBehaviour
+public class LightSwitch : MonoBehaviour, IInteractable
 {
 
-    public GameObject onOB;
-
-    public GameObject offOB;
-
-   // public GameObject lightsText;
-
-    public GameObject lightOB;
-
-    public AudioSource switchClick;
-
-    public bool lightsAreOn;
-
-    public bool lightsAreOff;
-
-    public bool inReach;
+    public GameObject light;
+    public AudioSource audio;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool _isOn;
+
+    private static string Message = "끄기/켜기";
+    
     void Start()
     {
-        inReach = false;
-        lightsAreOn = false;
-        lightsAreOff = true;
-        onOB.SetActive(false);
-        offOB.SetActive(true);
-        lightOB.SetActive(false);
+        _isOn = false;
+        light.SetActive(false);
     }
 
-    void OnTriggerEnter(Collider other)
+    public void ShowMessage()
     {
-        if (other.gameObject.tag == "Reach")
-        {
-            inReach = true;
-         //   lightsText.SetActive(true);
-        }
+        InteractionUI.Instance.Show(Message);
     }
 
-    void OnTriggerExit(Collider other)
+    public void Interact()
     {
-        if (other.gameObject.tag == "Reach")
+        if (_isOn) // 켜져 있었던 경우 끈다
         {
-            inReach = false;
-          //  lightsText.SetActive(false);
+            _isOn = false;
+            light.SetActive(false);
+            audio.Play();
+            
+        } 
+        else // 꺼져 있었던 경우 켠다 
+        {
+            _isOn = true;
+            light.SetActive(true);
+            audio.Play();
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if (lightsAreOn && inReach && Input.GetButtonDown("Interact"))
-        {
-            lightOB.SetActive(false);
-            onOB.SetActive(false);
-            offOB.SetActive(true);
-            switchClick.Play();
-            lightsAreOff = true;
-            lightsAreOn = false;
-        }
-        else if (lightsAreOff && inReach && Input.GetButtonDown("Interact"))
-        {
-            lightOB.SetActive(true);
-            onOB.SetActive(true);
-            offOB.SetActive(false);
-            switchClick.Play();
-            lightsAreOff = false;
-            lightsAreOn = true;
 
-        }
+    }
+
+    public bool IsOn => _isOn;
+
+    public void ToggleLight()
+    {
+        _isOn = !_isOn;
     }
 }

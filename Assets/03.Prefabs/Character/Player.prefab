@@ -168,6 +168,7 @@ Transform:
   m_Children:
   - {fileID: 7223686470168108871}
   - {fileID: 4934612156546117427}
+  - {fileID: 6767389374121637287}
   m_Father: {fileID: 6691286216436677841}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &9212827723352133753
@@ -209,7 +210,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -432,20 +433,20 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 0
-  m_Color: {r: 1, g: 0.9695101, b: 0.8989217, a: 1}
-  m_Intensity: 50
-  m_Range: 100
-  m_SpotAngle: 45.004757
-  m_InnerSpotAngle: 17.030613
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 25
+  m_Range: 17.026325
+  m_SpotAngle: 91.43602
+  m_InnerSpotAngle: 39.35527
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: 128
     m_CustomResolution: -1
-    m_Strength: 0.2
+    m_Strength: 0.772
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.1
+    m_NearPlane: 1.11
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -472,7 +473,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -719,7 +720,6 @@ Transform:
   - {fileID: 9222743367931993700}
   - {fileID: 6583204469085338015}
   - {fileID: 8535430978636016841}
-  - {fileID: 6767389374121637287}
   - {fileID: 2875158887635694191}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -154.673, z: 0}
@@ -922,7 +922,6 @@ MonoBehaviour:
   healthImage: {fileID: 0}
   healthRegenInterval: 2
   gameOverPanel: {fileID: 0}
-  staminaBar: {fileID: 0}
 --- !u!54 &3915549090962270686
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -974,13 +973,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6214003473494707309}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3628405927614441454}
-  m_Father: {fileID: 6691286216436677841}
+  m_Father: {fileID: 6583204469085338015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7458753103610169029
 GameObject:
