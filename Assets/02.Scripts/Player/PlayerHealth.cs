@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro; // TextMeshPro를 사용하기 위해 필요
+using UnityEngine.SceneManagement; // 씬 관리를 위해 필요
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class PlayerHealth : MonoBehaviour
     public GameObject gameOverCanvas; // GameOverCanvas 참조
 
     private float healthRegenTimer = 0f; // 체력 회복 타이머
-    public float healthRegenInterval = 10f; // 2초마다 회복
+    public float healthRegenInterval = 10f; // 10초마다 회복
+
+    private bool isGameOver = false; // 게임 오버 상태를 추적
 
     void Awake()
     {
@@ -27,13 +30,24 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+        if (isGameOver)
+        {
+            // 게임 오버 상태에서 스페이스바 입력을 감지
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                // 씬 0으로 이동
+                SceneManager.LoadScene(0);
+            }
+            return; // 게임 오버 상태에서는 아래 로직을 실행하지 않음
+        }
+
         // 체력 증가 로직
         healthRegenTimer += Time.deltaTime;
         if (healthRegenTimer >= healthRegenInterval)
         {
             if (currentHealth < maxHealth)
             {
-                IncreaseHealth(1);  // 2초마다 체력 1 회복
+                IncreaseHealth(1);  // 10초마다 체력 1 회복
             }
             healthRegenTimer = 0f; // 타이머 초기화
         }
@@ -77,7 +91,8 @@ public class PlayerHealth : MonoBehaviour
         // 체력이 0이 되었을 때 GameOverCanvas 활성화
         Debug.Log("Player Died!");
         gameOverCanvas.SetActive(true);
-        // 추가적인 죽음 처리 로직을 여기에 추가할 수 있습니다.
+        isGameOver = true; // 게임 오버 상태로 설정
         Time.timeScale = 0f; // 게임을 멈추기 위해 TimeScale을 0으로 설정
     }
 }
+ 
