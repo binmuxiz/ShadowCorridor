@@ -118,6 +118,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &30130515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5924963031220879256, guid: 3de7e981dfaf9584a83382296b09c167, type: 3}
+  m_PrefabInstance: {fileID: 533767328179189354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &35595606
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +812,7 @@ PrefabInstance:
     - target: {fileID: 2525999402317195254, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: gameOverCanvas
       value: 
-      objectReference: {fileID: 533767328179189355}
+      objectReference: {fileID: 30130515}
     - target: {fileID: 2624139564439035788, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: staminaBar
       value: 
@@ -4530,7 +4535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5924963031220879256, guid: 3de7e981dfaf9584a83382296b09c167, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7675300155177068751, guid: 3de7e981dfaf9584a83382296b09c167, type: 3}
       propertyPath: m_Pivot.x
@@ -4611,6 +4616,10 @@ PrefabInstance:
     - target: {fileID: 7675300155177068751, guid: 3de7e981dfaf9584a83382296b09c167, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830319296123347361, guid: 3de7e981dfaf9584a83382296b09c167, type: 3}
+      propertyPath: m_Name
+      value: BG
       objectReference: {fileID: 0}
     - target: {fileID: 8830319296123347361, guid: 3de7e981dfaf9584a83382296b09c167, type: 3}
       propertyPath: m_IsActive
