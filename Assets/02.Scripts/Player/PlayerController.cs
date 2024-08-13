@@ -36,6 +36,15 @@ public class PlayerController : MonoBehaviour
     // 스테미너 바 UI 오브젝트
     // public GameObject staminaBar;
 
+    // 스테미너 관련 변수
+    public float maxStamina = 100f;
+    private float currentStamina;
+    public float staminaRegenRate = 5f; // 스테미너 회복 속도
+    public float staminaDrainRate = 10f; // 스테미너 감소 속도
+    public float staminaThreshold = 40f; // 속도가 감소하는 스테미너 임계값
+    public float lowStaminaSpeed = 1.5f; // 스테미너가 낮을 때의 속도
+    public Slider staminaSlider; // 스테미너 UI
+
     // 캐비닛 관련 변수
     private bool isInsideCabinet = false;
     private Vector3 originalCameraPosition;
@@ -63,6 +72,13 @@ public class PlayerController : MonoBehaviour
         
         _layerMask = 1 << LayerMask.NameToLayer("Cabinet");
 
+        // 스테미너 초기화
+        currentStamina = maxStamina;
+        if (staminaSlider != null)
+        {
+            staminaSlider.maxValue = maxStamina;
+            staminaSlider.value = currentStamina;
+        }
     }
 
     void Update()
@@ -96,6 +112,23 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.J))
             {
                 Heal(10);
+            }
+
+            // 스테미너 감소 및 회복 로직
+            if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
+            {
+                currentStamina -= staminaDrainRate * Time.deltaTime;
+                currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
+            }
+            else
+            {
+                currentStamina += staminaRegenRate * Time.deltaTime;
+                currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
+            }
+
+            if (staminaSlider != null)
+            {
+                staminaSlider.value = currentStamina;
             }
 
             // 체력 증가 로직
@@ -137,7 +170,16 @@ public class PlayerController : MonoBehaviour
     {
         if (!isInsideCabinet)
         {
-            float speed = isCrouching ? crouchSpeed : (Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed);
+            float speed;
+
+            if (currentStamina <= staminaThreshold)
+            {
+                speed = lowStaminaSpeed;
+            }
+            else
+            {
+                speed = isCrouching ? crouchSpeed : (Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed);
+            }
 
             float moveForward = Input.GetAxis("Vertical") * speed * Time.fixedDeltaTime;
             float moveSide = Input.GetAxis("Horizontal") * speed * Time.fixedDeltaTime;
