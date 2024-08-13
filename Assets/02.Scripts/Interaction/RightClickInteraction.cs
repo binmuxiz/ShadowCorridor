@@ -23,14 +23,14 @@ public class RightClickInteraction : MonoBehaviour
             IUsable item = GetItem(currentIdx);
             
             if (item is Rustkey  && !IsLockedDoorClicked()) return;
-            if (item is Handgun)
-            {
-                item.Use();
-                return;
-            }
             
             item.Use();
-            Inventory.Instance.ControlItemCount(currentIdx);
+
+            if (item is not Handgun)
+            {
+                Inventory.Instance.ControlItemCount(currentIdx);
+            }
+
         }
     }
 

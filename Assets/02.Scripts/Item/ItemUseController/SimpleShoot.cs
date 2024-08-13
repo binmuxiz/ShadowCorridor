@@ -62,53 +62,47 @@ public class SimpleShoot : MonoBehaviour
 
     /**
      * Shoot(), CasingRelease()는 애니메이션 이벤트를 통해 호출된다.
-     * 애니메이션 이벤트 : 애니메이션 클립의 특정 프레임에 메서드를 호출할 수 있는 기능
+     * 애니메이션 이벤트 : 애니메이션 클립의 특정 프레임에 메서드를 호출할 수 있는 기능 - 애니메이션 이벤트에 의해 메소드가 호출된다. 
      * 
      */
-
     //This function creates the bullet behavior
     // 총알 발사와 관련된 모든 행동을 수행하는 메소드 
     void Shoot()
     {
-        Debug.Log("SimpleShoot.Shoot()");
-        if (muzzleFlashPrefab) // null 체크
+        if (muzzleFlashPrefab && bulletPrefab) // null 체크
         {
-            //Create the muzzle flash
+            // 섬광 효과 인스턴스화 
             GameObject tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
-
-            //Destroy the muzzle flash effect
+            // Create a bullet and add force on it in direction of the barrel
+            // 총알 프리팹을 인스턴스화
+            // 총알을 현재 총구의 position, rotation에 생성 
+            // 총알에 shotPower 크기의 힘을 Rigidbody를 통해 적용하여 발사 
+            GameObject tempBullet = Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation);
+            tempBullet.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+            
             Destroy(tempFlash, destroyTimer);
+            Destroy(tempBullet, destroyTimer);
         }
-
-        //cancels if there's no bullet prefeb
-        if (!bulletPrefab)
-        { return; }
-
-        // Create a bullet and add force on it in direction of the barrel
-        Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
-
     }
 
-    //This function creates a casing at the ejection slot
+    // This function creates a casing at the ejection slot
     // 탄피 배출과 관련된 모든 행동을 수행하는 메서드 
     void CasingRelease()
-    {
-        Debug.Log("SimpleShoot.CasingRelease");
-
-        //Cancels function if ejection slot hasn't been set or there's no casing
-        if (!casingExitLocation || !casingPrefab)
-        { return; }
-
-        //Create the casing
-        GameObject tempCasing;
-        tempCasing = Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation) as GameObject;
-        //Add force on casing to push it out
-        tempCasing.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(ejectPower * 0.7f, ejectPower), (casingExitLocation.position - casingExitLocation.right * 0.3f - casingExitLocation.up * 0.6f), 1f);
-        //Add torque to make casing spin in random direction
-        tempCasing.GetComponent<Rigidbody>().AddTorque(new Vector3(0, Random.Range(100f, 500f), Random.Range(100f, 1000f)), ForceMode.Impulse);
-
-        //Destroy casing after X seconds
-        Destroy(tempCasing, destroyTimer);
-    }
-
+     {
+    // TODO 코드 이해하기 8/14 할일 
+         //Cancels function if ejection slot hasn't been set or there's no casing
+         if (!casingExitLocation || !casingPrefab)
+         { return; }
+    
+         //Create the casing
+         GameObject tempCasing;
+         tempCasing = Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation) as GameObject;
+         //Add force on casing to push it out
+         tempCasing.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(ejectPower * 0.7f, ejectPower), (casingExitLocation.position - casingExitLocation.right * 0.3f - casingExitLocation.up * 0.6f), 1f);
+         //Add torque to make casing spin in random direction
+         tempCasing.GetComponent<Rigidbody>().AddTorque(new Vector3(0, Random.Range(100f, 500f), Random.Range(100f, 1000f)), ForceMode.Impulse);
+    
+         //Destroy casing after X seconds
+         Destroy(tempCasing, destroyTimer);
+     }
 }

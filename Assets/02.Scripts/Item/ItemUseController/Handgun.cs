@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Handgun : MonoBehaviour, IUsable
@@ -11,6 +10,7 @@ public class Handgun : MonoBehaviour, IUsable
         gameObject.SetActive(false);
     }
     
+    // 
     public void Use()
     {
         // 조준점 ui 생성, Center ui 제거
