@@ -13,11 +13,6 @@ public class Handgun : MonoBehaviour, IUsable
     
     public void Use()
     {
-        Aim();
-    }
-    
-    private void Aim()
-    {
         // 조준점 ui 생성, Center ui 제거
         CenterPointUI.Instance.DisableUI();
         AimingPointUI.Instance.EnableUI(); 
