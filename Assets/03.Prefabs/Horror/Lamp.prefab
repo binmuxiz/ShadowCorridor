@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 3365130943606020315}
   - component: {fileID: 6430477350998567435}
   - component: {fileID: 1600972245903364315}
+  - component: {fileID: 4520397966831797251}
   m_Layer: 0
   m_Name: PointLight
   m_TagString: Untagged
@@ -246,6 +247,23 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &4520397966831797251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638009088167548108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6bbf5a965333c4b87f05913ad8990c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 6430477350998567435}
+  triggerDistance: 5
+  minTime: 0.1
+  maxTime: 0.4
+  timer: 0
 --- !u!1 &5971074788816197794
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7310566090607489737
 Transform:
   m_ObjectHideFlags: 0

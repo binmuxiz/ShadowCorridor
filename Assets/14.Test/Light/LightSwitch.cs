@@ -28,6 +28,7 @@ public class LightSwitch : MonoBehaviour, IInteractable
             _isOn = false;
             light.SetActive(false);
             audio.Play();
+            
         } 
         else // 꺼져 있었던 경우 켠다 
         {
@@ -35,5 +36,13 @@ public class LightSwitch : MonoBehaviour, IInteractable
             light.SetActive(true);
             audio.Play();
         }
+
+    }
+
+    public bool IsOn => _isOn;
+
+    public void ToggleLight()
+    {
+        _isOn = !_isOn;
     }
 }
