@@ -1,14 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[AddComponentMenu("Nokobot/Modern Guns/Simple Shoot")]
+//TODO 이거 먼지 이해하기
+// [AddComponentMenu("Nokobot/Modern Guns/Simple Shoot")]
 public class SimpleShoot : MonoBehaviour
 {
-    // Header : Inspector창에서 변수 그룹의 제목을 정할 수 있다.
-    // SerializedField : 멤버변수가 private이라도 Inspector 창에서 편집 가능하도록 
-    // Tooltip : Inspector 창에서 변수에 마우스를 올려놓으면 설명 텍스트 제공 
+    public Camera mainCam;
+    public float rayDistance = 3f;
     
+    private int _layerMask;
+    
+    // Header : Inspector창에서 변수 그룹의 제목을 정할 수 있다.
+    // SerializedField : 멤버변수가 private이라도 Inspector 창에서 편집 가능하도록
+    // Tooltip : Inspector 창에서 변수에 마우스를 올려놓으면 설명 텍스트 제공 
     
     [Header("Prefab Refrences")]
     // 총알 프리팹
@@ -45,6 +48,9 @@ public class SimpleShoot : MonoBehaviour
 
         if (gunAnimator == null)
             gunAnimator = GetComponentInChildren<Animator>();
+        
+        // todo 이거 이해하기 
+        _layerMask = 1 << LayerMask.NameToLayer("Zombie");
     }
 
     void Update()
@@ -57,6 +63,20 @@ public class SimpleShoot : MonoBehaviour
             
             // todo 총을 쏘고 난 뒤에 인벤토리에서 총 카운드 조절
             // Inventory.Instance.ControlItemCount();
+            
+            // todo 좀비에 ray 닿으면 좀비 damage 호출
+            Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, rayDistance, _layerMask))
+            {
+                Debug.Log("좀비 hit");
+                //todo 좀비 너무 빠름 
+
+                Ghoul ghoul = hit.transform.gameObject.GetComponent<Ghoul>();
+                ghoul.TakeDamage();
+            }
+
         }
     }
 

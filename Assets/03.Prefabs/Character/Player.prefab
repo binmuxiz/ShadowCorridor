@@ -210,7 +210,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 439
+    m_Bits: 951
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -860,7 +860,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -883,6 +883,7 @@ MonoBehaviour:
   maxHealth: 100
   healthText: {fileID: 0}
   gameOverCanvas: {fileID: 0}
+  healthRegenInterval: 10
 --- !u!114 &2624139564439035788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,6 +923,12 @@ MonoBehaviour:
   healthImage: {fileID: 0}
   healthRegenInterval: 2
   gameOverPanel: {fileID: 0}
+  maxStamina: 100
+  staminaRegenRate: 5
+  staminaDrainRate: 10
+  staminaThreshold: 40
+  lowStaminaSpeed: 1.5
+  staminaSlider: {fileID: 0}
 --- !u!54 &3915549090962270686
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1175,9 +1182,17 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2579651822997372422, guid: 0fdfc6b68b247aa4a82971087bdd3ea4, type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 9212827723352133753}
+    - target: {fileID: 2579651822997372422, guid: 0fdfc6b68b247aa4a82971087bdd3ea4, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2579651822997372422, guid: 0fdfc6b68b247aa4a82971087bdd3ea4, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 6804990658058999119, guid: 65c9f6563c561ee4e8905d1e6a32548b, type: 3}
     - target: {fileID: 2907130726564326276, guid: 0fdfc6b68b247aa4a82971087bdd3ea4, type: 3}
       propertyPath: m_Layer
       value: 6

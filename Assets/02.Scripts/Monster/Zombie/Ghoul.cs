@@ -2,27 +2,15 @@ using UnityEngine;
 
 public class Ghoul : MonoBehaviour
 {
-    public int HP = 10000; //이거 100필요 없는데 일단..뭐..
     public Animator animator;
     
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage()
     {
-        HP -= damageAmount;
-        if (HP <= 0)
-        {
-            //PLAY DEATH ANIMATION
-            //AudioManager.instance.Play("")
-            //animator.SetTrigger("die");
-            //GetComponent<Collider>().enabled = false;
-        }
-        else
-        {
-            //Play Get Hit Animation
-            AudioManager.instance.Play("ZombieDamage");
-            animator.SetTrigger("damage");
-        }
+        Debug.Log("Ghoul.TakeDamage()");
+        //Play Get Hit Animation
+        AudioManager.instance.Play("ZombieDamage");
+        animator.SetTrigger("damage");
         
-
-        
+        //TODO 경민아 Animation 클립이 너무 짧음(좀비가 넘어져 있는 시간이 너무 짧음) 그리고 좀비 속도 너무 빨라
     }
 }
