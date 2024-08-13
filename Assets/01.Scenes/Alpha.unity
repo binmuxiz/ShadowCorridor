@@ -872,7 +872,7 @@ PrefabInstance:
     - target: {fileID: 8553044049593290817, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: gameOverPanel
       value: 
-      objectReference: {fileID: 533767328179189355}
+      objectReference: {fileID: 30130515}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4626,11 +4626,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3de7e981dfaf9584a83382296b09c167, type: 3}
---- !u!1 &533767328179189355 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8830319296123347361, guid: 3de7e981dfaf9584a83382296b09c167, type: 3}
-  m_PrefabInstance: {fileID: 533767328179189354}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
