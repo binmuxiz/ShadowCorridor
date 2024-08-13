@@ -8,9 +8,12 @@ public class InventoryItemSelector: MonoBehaviour
         if (Inventory.Instance.SlotCount() == 1) return;
         
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
-                                         
-        if (wheelInput > 0) Inventory.Instance.SelectRightSlot();
-        else if (wheelInput < 0) Inventory.Instance.SelectLeftSlot();
-        
+        if (wheelInput == 0) return;
+
+        if (Inventory.Instance.GetCurrentSlotItem() == ItemName.Gun)
+        {
+            Handgun.Instance.Cancel();
+        } 
+        Inventory.Instance.SelectOtherSlot(wheelInput);
     }
 }

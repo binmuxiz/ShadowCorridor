@@ -10,12 +10,19 @@ public class Inventory : MonoBehaviour
     private int _currentIdx = 0;
     private List<Slot> _slotList = new List<Slot>(); // TODO Capacity 설정
 
-
+    /**
+     * public
+     */
     private void Awake()
     {
         Instance = this;
     }
-
+    
+    private void Start()
+    {
+        CreateDefaultSlot();
+    }
+    
     public int CurrentIdx
     {
         get => _currentIdx;
@@ -23,18 +30,6 @@ public class Inventory : MonoBehaviour
     }
 
     public List<Slot> SlotList => _slotList;
-
-    private void Start()
-    {
-        CreateDefaultSlot();
-    }
-    
-    private void CreateDefaultSlot()
-    {
-        // Flashlight 슬롯 생성 
-        AddSlot("Flashlight");
-        _slotList[0].ToggleOutline();
-    }
 
     public int SlotCount()
     {
@@ -52,59 +47,28 @@ public class Inventory : MonoBehaviour
             if (item == s.Item) slot = s;   // 아이템 있는 경우 
         }
         
-        if (slot == null) // 인벤토리 슬롯 생성 
+        if (slot == null) 
         {
-            slot = InstantiateSlot(item);
+            slot = InstantiateSlot(item); // 인벤토리 슬롯 생성 
             slot.Item = item;
             _slotList.Add(slot);
         }
         else 
         {
-            if (slot.Item.MaxCount <= slot.ItemCount)
-            {
-                // Debug.Log("Cannot add item!! " + slot.ItemCount); // 아이템 추가 불가
-                return false;
-            }
-            // 인벤토리 아이템 개수 증가 
+            if (slot.Item.MaxCount <= slot.ItemCount) return false;
             slot.IncreaseCount();
         }
         return true;
     }
     
-    public void DeleteSlot(int index)
+    public void SelectOtherSlot(float input)
     {
-        Destroy(transform.GetChild(index).gameObject);
-        _slotList.RemoveAt(index);
-    }
-
-    private Slot InstantiateSlot(Item item)
-    {
-        // 새 슬롯 생성 
-        Transform slotGB = Instantiate(itemSlotPrefab, transform).transform;
-        
-        Image itemImage = slotGB.Find("ItemImage").gameObject.GetComponent<Image>(); 
-        Image outlineImage = slotGB.Find("Outline").gameObject.GetComponent<Image>(); 
-        Text itemCountText = slotGB.Find("ItemCount").gameObject.GetComponent<Text>();
-
-        Slot newSlot = new Slot(itemImage, outlineImage, itemCountText);
-        newSlot.AttachItemImage(item.Sprite);
-        
-        return newSlot;
-    }
-    
-        
-    public void SelectRightSlot()
-    {
-        if (_currentIdx + 1 < SlotCount())
+        if (input > 0 && _currentIdx + 1 < SlotCount())
         {
             _slotList[_currentIdx].ToggleOutline();
             _slotList[++_currentIdx].ToggleOutline();
         }
-    }
-    
-    public void SelectLeftSlot()
-    {
-        if (_currentIdx - 1 >= 0)
+        else if (input < 0 && _currentIdx - 1 >= 0)
         {
             _slotList[_currentIdx].ToggleOutline();
             _slotList[--_currentIdx].ToggleOutline();
@@ -125,4 +89,42 @@ public class Inventory : MonoBehaviour
             if (nextIdx == 0) CurrentIdx = nextIdx;
         }
     }
+    
+    public ItemName GetCurrentSlotItem()
+    {
+        Slot slot = Inventory.Instance.SlotList[_currentIdx];
+        return slot.Item.ItemName;
+    }
+    
+    /**
+     * private
+     */
+    private Slot InstantiateSlot(Item item)
+    {
+        // 새 슬롯 생성 
+        Transform slotGB = Instantiate(itemSlotPrefab, transform).transform;
+        
+        Image itemImage = slotGB.Find("ItemImage").gameObject.GetComponent<Image>(); 
+        Image outlineImage = slotGB.Find("Outline").gameObject.GetComponent<Image>(); 
+        Text itemCountText = slotGB.Find("ItemCount").gameObject.GetComponent<Text>();
+
+        Slot newSlot = new Slot(itemImage, outlineImage, itemCountText);
+        newSlot.AttachItemImage(item.Sprite);
+        
+        return newSlot;
+    }
+    
+    private void CreateDefaultSlot()
+    {
+        // Flashlight 슬롯 생성 
+        AddSlot("Flashlight");
+        _slotList[0].ToggleOutline();
+    }
+    
+    private void DeleteSlot(int index)
+    {
+        Destroy(transform.GetChild(index).gameObject);
+        _slotList.RemoveAt(index);
+    }
+
 }
