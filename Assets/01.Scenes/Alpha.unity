@@ -1055,6 +1055,10 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 507755298}
+    - target: {fileID: 3915549090962270686, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5067525015038192383, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5179,6 +5183,10 @@ PrefabInstance:
     - target: {fileID: 4426539610834324626, guid: c1d877df4cb98df418b689f5dca60fc8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724781419009258981, guid: c1d877df4cb98df418b689f5dca60fc8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.346699
       objectReference: {fileID: 0}
     - target: {fileID: 6037065032964614761, guid: c1d877df4cb98df418b689f5dca60fc8, type: 3}
       propertyPath: m_Range
