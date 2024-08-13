@@ -23,6 +23,13 @@ public class Handgun : MonoBehaviour, IUsable
         AimingPointUI.Instance.EnableUI(); 
         
         gameObject.SetActive(true);
+    }
+    
+    public void Cancel()
+    {
+        CenterPointUI.Instance.EnableUI();
+        AimingPointUI.Instance.DisableUI(); 
         
+        gameObject.SetActive(false);
     }
 }
