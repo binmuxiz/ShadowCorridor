@@ -17,7 +17,7 @@ public class Rustkey : IUsable
         return _instance;
     }
     
-    public void Use()
+    public void Use() 
     {
         Debug.Log("Use RustKey");
     }

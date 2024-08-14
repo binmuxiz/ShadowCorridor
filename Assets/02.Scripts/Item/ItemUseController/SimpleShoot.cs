@@ -6,6 +6,7 @@ public class SimpleShoot : MonoBehaviour
 {
     public Camera mainCam;
     public float rayDistance = 3f;
+    public AudioSource audioSource;
     
     private int _layerMask;
     
@@ -58,11 +59,17 @@ public class SimpleShoot : MonoBehaviour
         //If you want a different input, change it here
         if (Input.GetMouseButtonDown(0))
         {
+            
+            
             //Calls animation on the gun that has the relevant animation events that will fire
             gunAnimator.SetTrigger("Fire");
             
-            // todo 총을 쏘고 난 뒤에 인벤토리에서 총 카운드 조절
-            // Inventory.Instance.ControlItemCount();
+            // TODO 총 사운드
+
+            // 인벤토리에 총 사용 -> 개수 감소 
+            int currentIdx = Inventory.Instance.CurrentIdx;
+            Inventory.Instance.ControlItemCount(currentIdx);
+            Handgun.Instance.Cancel();
             
             // todo 좀비에 ray 닿으면 좀비 damage 호출
             Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
