@@ -49,8 +49,13 @@ public class PlayerController : MonoBehaviour
     private bool isInsideCabinet = false;
     private Vector3 originalCameraPosition;
     private Vector3 originalCameraRotation;
-    
+
     private int _layerMask;
+
+    // 오디오 관련 변수
+    public AudioSource audioSource; // 오디오 소스
+    public AudioClip enterCabinetSound; // 캐비닛에 들어갈 때 사운드
+    public AudioClip exitCabinetSound; // 캐비닛에서 나올 때 사운드
 
     void Start()
     {
@@ -69,7 +74,7 @@ public class PlayerController : MonoBehaviour
         }
 
         originalCameraPosition = cameraTransform.localPosition;
-        
+
         _layerMask = 1 << LayerMask.NameToLayer("Cabinet");
 
         // 스테미너 초기화
@@ -78,6 +83,12 @@ public class PlayerController : MonoBehaviour
         {
             staminaSlider.maxValue = maxStamina;
             staminaSlider.value = currentStamina;
+        }
+
+        // 오디오 소스 초기화
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
     }
 
@@ -269,6 +280,12 @@ public class PlayerController : MonoBehaviour
 
         // 플레이어 움직임과 회전 비활성화
         rb.isKinematic = true;
+
+        // 캐비닛에 들어갈 때 사운드 재생
+        if (audioSource != null && enterCabinetSound != null)
+        {
+            audioSource.PlayOneShot(enterCabinetSound);
+        }
     }
 
     private void ExitCabinet()
@@ -277,6 +294,12 @@ public class PlayerController : MonoBehaviour
 
         // 플레이어 움직임과 회전 활성화
         rb.isKinematic = false;
+
+        // 캐비닛에서 나올 때 사운드 재생
+        if (audioSource != null && exitCabinetSound != null)
+        {
+            audioSource.PlayOneShot(exitCabinetSound);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

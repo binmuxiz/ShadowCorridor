@@ -804,6 +804,14 @@ PrefabInstance:
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 30130515}
+    - target: {fileID: 8553044049593290817, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: exitCabinetSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7975f480e88c7b64a83256f8a1f102d5, type: 3}
+    - target: {fileID: 8553044049593290817, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: enterCabinetSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9485bf88f1650ae478281426b0bff7aa, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
