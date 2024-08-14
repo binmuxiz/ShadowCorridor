@@ -210,6 +210,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 5, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &120205015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 772779828490763553, guid: 88a3a6ddca079b147a95cb1ac139bbe6, type: 3}
+  m_PrefabInstance: {fileID: 836888724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &159378836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -747,6 +752,14 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1456741579}
+    - target: {fileID: 4799266627302893037, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: aimPointUI
+      value: 
+      objectReference: {fileID: 120205015}
+    - target: {fileID: 4799266627302893037, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: centerPointUI
+      value: 
+      objectReference: {fileID: 1767677057}
     - target: {fileID: 5067525015038192383, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2029,7 +2042,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3463568959695302233, guid: 88a3a6ddca079b147a95cb1ac139bbe6, type: 3}
+    - {fileID: 7834047559821946317, guid: 88a3a6ddca079b147a95cb1ac139bbe6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3648,6 +3663,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1767677057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8229039598065352437, guid: 88a3a6ddca079b147a95cb1ac139bbe6, type: 3}
+  m_PrefabInstance: {fileID: 836888724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1800414386
 PrefabInstance:
   m_ObjectHideFlags: 0
