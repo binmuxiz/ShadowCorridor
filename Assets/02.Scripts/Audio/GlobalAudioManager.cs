@@ -1,39 +1,31 @@
 using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Reflection;
 using UnityEngine;
 
-public class GlobalAudioManager : MonoBehaviour {
-
+public class GlobalAudioManager : MonoBehaviour
+{
     public static GlobalAudioManager Instance;
 
-    public Sound[] sounds;
-    public SoundEx[] soundsEx;
-
-    void Awake ()
+    private void Awake()
     {
         Instance = this;
-        
-        sounds.AddRange(soundsEx);
-        
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.name = s.name.ToString();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
-            s.source.playOnAwake = s.playOnAwake;
-        }
     }
 
-    public void Play(GlobalAudioName audioName)
+    public void Play(GlobalAudioName name)
     {
-        Array.Find(sounds, item => item.name == audioName).source.Play();
+        Debug.Log(this.GetType().Name + ": " + MethodBase.GetCurrentMethod().Name);
+        
+        // todo 예외처리 
+        // GlobalAudioManager 게임오브젝트의 자식 오브젝트를 이륾으로 가져온다. 
+        GameObject audioGO = gameObject.transform.Find(name.ToString()).gameObject;
+        audioGO.GetComponent<AudioSource>().Play();
     }
-    public void Stop(GlobalAudioName audioName)
+    
+    public void Stop(GlobalAudioName name)
     {
-        Array.Find(sounds, item => item.name == audioName).source.Stop();
+        Debug.Log(this.GetType().Name + ": " + MethodBase.GetCurrentMethod().Name);
+        
+        GameObject audioGO = gameObject.transform.Find(name.ToString()).gameObject;
+        audioGO.GetComponent<AudioSource>().Stop();
     }
 }

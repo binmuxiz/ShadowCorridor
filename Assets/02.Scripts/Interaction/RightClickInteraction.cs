@@ -21,8 +21,12 @@ public class RightClickInteraction : MonoBehaviour
         {
             int currentIdx = Inventory.Instance.CurrentIdx;
             IUsable item = GetItem(currentIdx);
-            
-            if (item is Rustkey  && !IsLockedDoorClicked()) return;
+
+            if (item is Rustkey && !IsLockedDoorClicked())
+            {
+                item.Use();
+                return;
+            }
 
             item.Use();
             

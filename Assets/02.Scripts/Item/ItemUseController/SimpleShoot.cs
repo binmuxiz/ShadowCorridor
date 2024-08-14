@@ -6,7 +6,6 @@ public class SimpleShoot : MonoBehaviour
 {
     public Camera mainCam;
     public float rayDistance = 3f;
-    public AudioSource audioSource;
     
     private int _layerMask;
     
@@ -63,7 +62,7 @@ public class SimpleShoot : MonoBehaviour
             gunAnimator.SetTrigger("Fire");
             
             // TODO 총 사운드
-            audioSource.Play();
+            GlobalAudioManager.Instance.Play(GlobalAudioName.GunShoot);
             
             Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
             RaycastHit hit;

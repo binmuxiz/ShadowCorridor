@@ -32,12 +32,12 @@ public class LeftClickInteraction : MonoBehaviour
                         if (c.gameObject.CompareTag("Firstaid"))
                         {
                             GlobalAudioManager.Instance.Play(GlobalAudioName.FirstAidPickUp);
-                            iInteractable.Interact();
-                            return;
-
+                        }
+                        else
+                        {
+                            GlobalAudioManager.Instance.Play(GlobalAudioName.ItemPickUp);
                         }
                     }
-                    GlobalAudioManager.Instance.Play(GlobalAudioName.ItemPickUp);
                     iInteractable.Interact();
                 }
             }

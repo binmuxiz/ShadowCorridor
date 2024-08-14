@@ -22,7 +22,7 @@ public class Cannedfood : IUsable
 
     public void Use()
     {
-        Debug.Log("Use CannedFood");
+        GlobalAudioManager.Instance.Play(GlobalAudioName.CannedFood);
         PlayerHealth.Instance.IncreaseHealth(health);
     }
 }
