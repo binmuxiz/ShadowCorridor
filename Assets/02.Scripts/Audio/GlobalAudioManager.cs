@@ -1,16 +1,21 @@
 using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GlobalAudioManager : MonoBehaviour {
 
     public static GlobalAudioManager Instance;
 
-    public Sound[] sounds ;
+    public Sound[] sounds;
+    public SoundEx[] soundsEx;
 
     void Awake ()
     {
         Instance = this;
-
+        
+        sounds.AddRange(soundsEx);
+        
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();

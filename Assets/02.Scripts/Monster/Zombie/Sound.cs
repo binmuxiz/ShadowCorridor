@@ -20,3 +20,10 @@ public class Sound {
     [HideInInspector]
     public AudioSource source;
 }
+
+[System.Serializable]
+public class SoundEx : Sound
+{
+    [Range(-3f, 3f)]
+    public float spatialBlend = 0f;
+}
