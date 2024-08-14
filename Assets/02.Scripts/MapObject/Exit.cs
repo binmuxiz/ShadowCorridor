@@ -19,10 +19,12 @@ public class Exit : MonoBehaviour, IInteractable
     
     public void Interact()
     {
+        Debug.Log("Exit.Interact()");
         if (Firstaid.Instance.AllCollected())
         {
             // 게임 종료
-            GameEnding.Instance.IsPlayerAtExit = true;
+            Debug.Log("AllCollected");
+            GameEnding.Instance.EndLevel();
         }
     }
 }
