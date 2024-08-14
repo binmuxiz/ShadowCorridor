@@ -14,7 +14,7 @@ public class Flashlight: IUsable {
     {
         if (_instance == null)
         {
-            _instance = new Flashlight(GameObject.FindWithTag("Light").GetComponent<Light>());
+            _instance = new Flashlight(GameObject.FindWithTag("Flashlight").GetComponent<Light>());
         }
         return _instance;
     }

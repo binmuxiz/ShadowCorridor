@@ -4,7 +4,6 @@ public class InventoryItemSelector: MonoBehaviour
 {
     private void Update()
     {
-        // Debug.Log("현재 아이템슬롯 개수 : " + SlotCount());
         if (Inventory.Instance.SlotCount() == 1) return;
         
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");

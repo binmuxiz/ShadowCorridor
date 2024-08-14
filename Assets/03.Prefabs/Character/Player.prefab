@@ -168,7 +168,7 @@ Transform:
   m_Children:
   - {fileID: 7223686470168108871}
   - {fileID: 4934612156546117427}
-  - {fileID: 6767389374121637287}
+  - {fileID: 3628405927614441454}
   m_Father: {fileID: 6691286216436677841}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &9212827723352133753
@@ -402,8 +402,8 @@ GameObject:
   - component: {fileID: 6189736461089799351}
   - component: {fileID: 3407051484960725846}
   m_Layer: 2
-  m_Name: Spotlight
-  m_TagString: Light
+  m_Name: Flashlight
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -416,12 +416,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3593454197567908676}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6767389374121637287}
+  m_Father: {fileID: 6583204469085338015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &6189736461089799351
 Light:
@@ -951,43 +951,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &6214003473494707309
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6767389374121637287}
-  m_Layer: 2
-  m_Name: Flashlight
-  m_TagString: Flashlight
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6767389374121637287
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6214003473494707309}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3628405927614441454}
-  m_Father: {fileID: 6583204469085338015}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7458753103610169029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,6 +1158,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2579651822997372422, guid: 0fdfc6b68b247aa4a82971087bdd3ea4, type: 3}
+      propertyPath: rayDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579651822997372422, guid: 0fdfc6b68b247aa4a82971087bdd3ea4, type: 3}
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 6804990658058999119, guid: 65c9f6563c561ee4e8905d1e6a32548b, type: 3}
@@ -1215,7 +1187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3614310742896881400, guid: 0fdfc6b68b247aa4a82971087bdd3ea4, type: 3}
       propertyPath: m_TagString
-      value: HandgunActive
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5406606345220501378, guid: 0fdfc6b68b247aa4a82971087bdd3ea4, type: 3}
       propertyPath: m_Enabled
