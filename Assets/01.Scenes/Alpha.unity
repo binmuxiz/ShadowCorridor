@@ -851,7 +851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3768450681897453521, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3969704113946790350, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -892,6 +892,46 @@ PrefabInstance:
     - target: {fileID: 3969704113946790350, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262766780615238590, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262766780615238590, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262766780615238590, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262766780615238590, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: cc799b554a3068c4a891cd93bbccca96, type: 3}
+    - target: {fileID: 4262766780615238590, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
+      propertyPath: MaxDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262766780615238590, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cc799b554a3068c4a891cd93bbccca96, type: 3}
+    - target: {fileID: 4262766780615238590, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
+      propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262766780615238590, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262766780615238590, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262766780615238590, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
