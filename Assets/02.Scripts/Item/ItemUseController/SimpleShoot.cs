@@ -59,19 +59,12 @@ public class SimpleShoot : MonoBehaviour
         //If you want a different input, change it here
         if (Input.GetMouseButtonDown(0))
         {
-            
-            
             //Calls animation on the gun that has the relevant animation events that will fire
             gunAnimator.SetTrigger("Fire");
             
             // TODO 총 사운드
-
-            // 인벤토리에 총 사용 -> 개수 감소 
-            int currentIdx = Inventory.Instance.CurrentIdx;
-            Inventory.Instance.ControlItemCount(currentIdx);
-            Handgun.Instance.Cancel();
+            audioSource.Play();
             
-            // todo 좀비에 ray 닿으면 좀비 damage 호출
             Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
             RaycastHit hit;
 
@@ -83,7 +76,11 @@ public class SimpleShoot : MonoBehaviour
                 Ghoul ghoul = hit.transform.gameObject.GetComponent<Ghoul>();
                 ghoul.TakeDamage();
             }
-
+            
+            // 인벤토리에 총 사용 -> 개수 감소 
+            // int currentIdx = Inventory.Instance.CurrentIdx;
+            // Inventory.Instance.ControlItemCount(currentIdx);
+            // Handgun.Instance.Cancel();                         
         }
     }
 
