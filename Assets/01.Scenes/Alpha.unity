@@ -747,9 +747,45 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1456741579}
+    - target: {fileID: 3407051484960725846, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5067525015038192383, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189736461089799351, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_Range
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189736461089799351, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8760108
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189736461089799351, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.77866226
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189736461089799351, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7402409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189736461089799351, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_Intensity
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189736461089799351, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_SpotAngle
+      value: 77
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189736461089799351, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189736461089799351, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 6691286216436677841, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2763,7 +2799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1277396033
 MonoBehaviour:
   m_ObjectHideFlags: 0
