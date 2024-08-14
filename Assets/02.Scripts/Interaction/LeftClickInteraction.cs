@@ -27,6 +27,10 @@ public class LeftClickInteraction : MonoBehaviour
                 if (iInteractable != null)
                 {
                     iInteractable.Interact();
+                    
+                    // 아이템 줍기 사운드
+                    GlobalAudioManager.Instance.Play("ItemPickUp");
+                    
                 }
             }
         }

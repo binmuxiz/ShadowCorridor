@@ -8,7 +8,7 @@ public class Ghoul : MonoBehaviour
     {
         Debug.Log("Ghoul.TakeDamage()");
         //Play Get Hit Animation
-        AudioManager.Instance.Play("ZombieDamage");
+        GlobalAudioManager.Instance.Play("ZombieDamage");
         animator.SetTrigger("damage");
         
         //그리고 좀비 속도 너무 빨라
