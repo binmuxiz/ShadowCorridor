@@ -759,72 +759,6 @@ Transform:
   - {fileID: 5926310317098597822}
   m_Father: {fileID: 2340214764082352961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2657526578556586951
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2902688714339278693}
-  - component: {fileID: 8078205966620572216}
-  m_Layer: 0
-  m_Name: GhoulAudio
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2902688714339278693
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2657526578556586951}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.38032404, y: 2.5647063, z: 4.2299514}
-  m_LocalScale: {x: 1.1764705, y: 1.1764705, z: 1.1764705}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3969704113946790350}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8078205966620572216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2657526578556586951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47cc7674a12212a41af6bb4dd493222b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: ZombieDamage
-    clip: {fileID: 8300000, guid: b771cd0787c16e64e8e8ba11c3c83734, type: 3}
-    mixer: {fileID: 0}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    mixer: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    mixer: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
 --- !u!1 &2717569766988377442
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,7 +1144,6 @@ Transform:
   m_LocalScale: {x: 0.63, y: 0.63, z: 0.63}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 2902688714339278693}
   - {fileID: 4939785393917114782}
   - {fileID: 5120439330521387247}
   - {fileID: 1371376169115020540}
@@ -1324,7 +1257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eea1164a9fe2fc4a8a167f7c616a63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
   animator: {fileID: 2513648047851533078}
 --- !u!82 &4262766780615238590
 AudioSource:

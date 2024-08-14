@@ -22,5 +22,6 @@ public class Flashlight: IUsable {
     public void Use()
     {
         _light.enabled = !_light.enabled;
+        
     }
 }
