@@ -5,16 +5,16 @@ public class PlayTimeManager : MonoBehaviour
 {
     public TextMeshProUGUI playTimeText; // 플레이타임을 표시할 TextMeshPro UI
 
-    private float startTime;
+    private float _startTime;
 
     void Start()
     {
-        startTime = Time.time; // 게임이 시작된 시간
+        _startTime = Time.time; // 게임이 시작된 시간
     }
 
     void Update()
     {
-        float elapsedTime = Time.time - startTime; // 경과 시간 계산
+        float elapsedTime = Time.time - _startTime; // 경과 시간 계산
 
         // 경과 시간을 분, 초, 밀리초로 변환
         int minutes = Mathf.FloorToInt(elapsedTime / 60F);

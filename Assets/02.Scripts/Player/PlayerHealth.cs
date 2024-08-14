@@ -86,7 +86,7 @@ public class PlayerHealth : MonoBehaviour
 
     void UpdateHealthText()
     {
-        healthText.text = "Health: " + currentHealth;
+        healthText.text = "" + currentHealth;
     }
 
     void Die()
