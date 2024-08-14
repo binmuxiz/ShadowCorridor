@@ -70,9 +70,6 @@ public class SimpleShoot : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, rayDistance, _layerMask))
             {
-                Debug.Log("좀비 hit");
-                //todo 좀비 너무 빠름 
-
                 Ghoul ghoul = hit.transform.gameObject.GetComponent<Ghoul>();
                 ghoul.TakeDamage();
             }
