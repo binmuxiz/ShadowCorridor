@@ -2112,6 +2112,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 35595607}
     m_Modifications:
+    - target: {fileID: 2478672036631395398, guid: 88a3a6ddca079b147a95cb1ac139bbe6, type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478672036631395398, guid: 88a3a6ddca079b147a95cb1ac139bbe6, type: 3}
+      propertyPath: m_margin.z
+      value: -68.349945
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478672036631395398, guid: 88a3a6ddca079b147a95cb1ac139bbe6, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163837668536291033, guid: 88a3a6ddca079b147a95cb1ac139bbe6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -447.7
+      objectReference: {fileID: 0}
     - target: {fileID: 5358711884338324964, guid: 88a3a6ddca079b147a95cb1ac139bbe6, type: 3}
       propertyPath: m_Name
       value: GameCanvas
