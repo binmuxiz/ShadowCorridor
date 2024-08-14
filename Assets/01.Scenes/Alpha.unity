@@ -842,6 +842,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2525999402317195254, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: hurtAudio
+      value: 
+      objectReference: {fileID: 1618542537}
+    - target: {fileID: 2525999402317195254, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: healthText
       value: 
       objectReference: {fileID: 261269653}
@@ -853,6 +857,22 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1456741579}
+    - target: {fileID: 3671477272768733896, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_Volume
+      value: 0.543
+      objectReference: {fileID: 0}
+    - target: {fileID: 3671477272768733896, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: d21ea97289ca1da45ac6db57c5a17d54, type: 3}
+    - target: {fileID: 3671477272768733896, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d21ea97289ca1da45ac6db57c5a17d54, type: 3}
+    - target: {fileID: 3671477272768733896, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4799266627302893037, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: aimPointUI
       value: 
@@ -952,7 +972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3768450681897453521, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3969704113946790350, guid: 084d7da29f259e14bb9971e3f546854c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3832,6 +3852,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8675915457954794082, guid: 3fc537e92bf3d2449b5be72cfd6cb447, type: 3}
   m_PrefabInstance: {fileID: 1609388872}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1618542537 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3671477272768733896, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+  m_PrefabInstance: {fileID: 452388361}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1624792353
 GameObject:
   m_ObjectHideFlags: 0
@@ -4233,7 +4258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &2019883242
 AudioSource:
   m_ObjectHideFlags: 0
