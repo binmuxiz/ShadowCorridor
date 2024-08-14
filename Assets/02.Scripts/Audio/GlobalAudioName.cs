@@ -4,5 +4,11 @@ public enum GlobalAudioName
     GameClear,
     ItemPickUp,
     FirstAidPickUp,
-     
+    HeartBeat,
+    GunShoot,   
+    CannedFood,
+    FlashLight,
+    Key,
+    Walk,
+    Run
 }

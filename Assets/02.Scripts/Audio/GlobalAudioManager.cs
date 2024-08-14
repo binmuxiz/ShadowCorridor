@@ -14,7 +14,7 @@ public class GlobalAudioManager : MonoBehaviour {
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
-            s.source.name = s.name;
+            s.source.name = s.name.ToString();
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
@@ -22,12 +22,12 @@ public class GlobalAudioManager : MonoBehaviour {
         }
     }
 
-    public void Play(string soundName)
+    public void Play(GlobalAudioName audioName)
     {
-        Array.Find(sounds, item => item.name == soundName).source.Play();
+        Array.Find(sounds, item => item.name == audioName).source.Play();
     }
-    public void Stop(string soundName)
+    public void Stop(GlobalAudioName audioName)
     {
-        Array.Find(sounds, item => item.name == soundName).source.Stop();
+        Array.Find(sounds, item => item.name == audioName).source.Stop();
     }
 }
