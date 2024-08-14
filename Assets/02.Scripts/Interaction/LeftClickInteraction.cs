@@ -26,8 +26,18 @@ public class LeftClickInteraction : MonoBehaviour
 
                 if (iInteractable != null)
                 {
-                    // 아이템 줍기 사운드
-                    GlobalAudioManager.Instance.Play(GlobalAudioName.ItemPickUp);
+                    if (iInteractable is Collectable)
+                    {
+                        Collectable c = (Collectable) iInteractable;
+                        if (c.gameObject.CompareTag("Firstaid"))
+                        {
+                            GlobalAudioManager.Instance.Play(GlobalAudioName.FirstAidPickUp);
+                        }
+                    }
+                    else
+                    {
+                        GlobalAudioManager.Instance.Play(GlobalAudioName.ItemPickUp);
+                    }
                     iInteractable.Interact();
                 }
             }
