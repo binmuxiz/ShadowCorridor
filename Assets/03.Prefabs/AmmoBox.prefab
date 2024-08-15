@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6053074924058333952}
   - component: {fileID: 9048497027445802371}
   - component: {fileID: 5943412667627912520}
-  m_Layer: 0
-  m_Name: Object005
+  m_Layer: 7
+  m_Name: BoxLid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,8 +106,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1173.763, y: 724.45215, z: 236.05045}
-  m_Center: {x: 0, y: -364.93066, z: -51.536926}
+  m_Size: {x: 1161.1328, y: 800, z: 150.8}
+  m_Center: {x: 6.3163395, y: -364.9307, z: 39.7}
 --- !u!1 &5531403235074357978
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,9 +248,8 @@ GameObject:
   - component: {fileID: 5843557792689911156}
   - component: {fileID: 1965528646474247264}
   - component: {fileID: 8259568768031206906}
-  - component: {fileID: 4371935282145071264}
   m_Layer: 0
-  m_Name: Object004
+  m_Name: BoxBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +264,7 @@ Transform:
   m_GameObject: {fileID: 8015766152664444159}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: -58.780457, z: -21.791565}
+  m_LocalPosition: {x: 0, y: -58.780457, z: -21.791565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -324,27 +323,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4371935282145071264
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8015766152664444159}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1282.2859, y: 719.42426, z: 406.82083}
-  m_Center: {x: 0, y: 0, z: -0.000045776374}
 --- !u!1 &8114934782952851108
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,9 +333,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7954026676911931466}
   - component: {fileID: 251433976295303689}
-  - component: {fileID: 4715312964586518214}
   - component: {fileID: 8918186032563545185}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: AmmoBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,8 +356,8 @@ Transform:
   m_Children:
   - {fileID: 4163466599534245917}
   - {fileID: 3059694585010330329}
-  - {fileID: 5843557792689911156}
   - {fileID: 5202296473936435362}
+  - {fileID: 5843557792689911156}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &251433976295303689
@@ -405,27 +382,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &4715312964586518214
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8114934782952851108}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1300, y: 500, z: 750}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8918186032563545185
 MonoBehaviour:
   m_ObjectHideFlags: 0

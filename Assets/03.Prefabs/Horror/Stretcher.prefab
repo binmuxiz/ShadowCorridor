@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 412390}
   - component: {fileID: 3340732}
   - component: {fileID: 2358668}
-  - component: {fileID: 6587386}
+  - component: {fileID: 2595571654325374979}
   m_Layer: 0
   m_Name: Stretcher
   m_TagString: Untagged
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6587386
+--- !u!65 &2595571654325374979
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,5 +106,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 33.584724, y: 22.408596, z: 13.735061}
-  m_Center: {x: -0.0000076293945, y: -0.00000047683716, z: -0.000001192093}
+  m_Size: {x: 35.86, y: 22.408596, z: 15.4}
+  m_Center: {x: 7.1054274e-15, y: -0.0000042915344, z: -0.000030755997}

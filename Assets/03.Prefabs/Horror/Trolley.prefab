@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 444442}
   - component: {fileID: 3395308}
   - component: {fileID: 2389992}
-  - component: {fileID: 6571696}
+  - component: {fileID: 5268977358226044353}
   m_Layer: 0
   m_Name: Trolley
   m_TagString: Untagged
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6571696
+--- !u!65 &5268977358226044353
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,5 +106,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.775769, y: 2.926325, z: 7.561047}
-  m_Center: {x: -0.0000009536743, y: 0.0000001192093, z: 0.00000023841858}
+  m_Size: {x: 4.3, y: 3.25, z: 7.64}
+  m_Center: {x: 5.3290705e-15, y: 0.00000005960465, z: -0.0000009536743}

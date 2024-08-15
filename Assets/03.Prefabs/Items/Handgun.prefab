@@ -659,7 +659,7 @@ GameObject:
   - component: {fileID: 6315082543650373718}
   - component: {fileID: 3303990392571555063}
   - component: {fileID: 8115045608339037961}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Handgun
   m_TagString: Gun
   m_Icon: {fileID: 0}

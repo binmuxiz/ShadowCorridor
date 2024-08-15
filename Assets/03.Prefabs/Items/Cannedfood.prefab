@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 559665313604015348}
   - component: {fileID: 593285000602764765}
   - component: {fileID: 1829648577467101792}
+  - component: {fileID: 8641466596989393212}
   m_Layer: 7
   m_Name: Cannedfood
   m_TagString: CannedFood
@@ -99,3 +100,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd8e50651a44882bcea972a40a1e0d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &8641466596989393212
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5148299468311584887}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.29691964, y: 0.4726624, z: 0.2894623}
+  m_Center: {x: -0.0014978799, y: 0.0000009536743, z: -0.000003814742}

@@ -101,6 +101,7 @@ public class Inventory : MonoBehaviour
      */
     private Slot InstantiateSlot(Item item)
     {
+        Debug.Log("InstantiateSlot : " + item.name);
         // 새 슬롯 생성 
         Transform slotGB = Instantiate(itemSlotPrefab, transform).transform;
         
