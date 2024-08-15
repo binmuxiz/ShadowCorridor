@@ -13,6 +13,14 @@ public class Collectable: MonoBehaviour, IInteractable
     {
         if (PickUp())
         {
+            if (gameObject.CompareTag("Firstaid"))
+            {
+                GlobalAudioManager.Instance.Play(GlobalAudioName.FirstAidPickUp);
+            }
+            else
+            {
+                GlobalAudioManager.Instance.Play(GlobalAudioName.ItemPickUp);
+            }
             Destroy(gameObject);    
         }
     }
