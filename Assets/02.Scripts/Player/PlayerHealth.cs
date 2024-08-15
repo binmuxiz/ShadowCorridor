@@ -10,11 +10,13 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
     public TextMeshProUGUI healthText; // TextMeshProUGUI 타입의 필드
     public GameObject gameOverCanvas; // GameOverCanvas 참조
+    public GameObject gameCanvas;
 
     private float healthRegenTimer = 0f; // 체력 회복 타이머
     public float healthRegenInterval = 10f; // 10초마다 회복
-
+    public AudioSource hurtAudio;
     private bool isGameOver = false; // 게임 오버 상태를 추적
+    public float startTime = 0.4f; // 원하는 시작 시간 (초)
 
     void Awake()
     {
@@ -58,6 +60,8 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("HarmfulObject")) // Box Collider가 있는 오브젝트에 "HarmfulObject" 태그를 추가
         {
             TakeDamage(10);
+            hurtAudio.Play();
+            hurtAudio.time = startTime;  // 재생 시작 지점 설정
         }
         else if (other.gameObject.CompareTag("Zombie")) // 좀비와 충돌을 감지
         {
@@ -83,14 +87,17 @@ public class PlayerHealth : MonoBehaviour
 
     void UpdateHealthText()
     {
-        healthText.text = "Health: " + currentHealth;
+        healthText.text = "" + currentHealth;
     }
 
     void Die()
     {
         // 체력이 0이 되었을 때 GameOverCanvas 활성화
         Debug.Log("Player Died!");
+        gameCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);
+        
+        
         isGameOver = true; // 게임 오버 상태로 설정
         Time.timeScale = 0f; // 게임을 멈추기 위해 TimeScale을 0으로 설정
     }

@@ -19,18 +19,30 @@ public class LeftClickInteraction : MonoBehaviour
             Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
             RaycastHit hit;
 
+            Debug.Log("좌클릭");
+                
             // 세번쨰 매개값 : raycast의 최대거리. 기본적으로는 무한대로 설정됨
             if (Physics.Raycast(ray, out hit, rayDistance, _layerMask))
             {
                 IInteractable iInteractable = hit.transform.GetComponent<IInteractable>();
-
+                Debug.Log(iInteractable);
+                
                 if (iInteractable != null)
                 {
+                    
+                    if (iInteractable is Collectable)
+                    {
+                        Collectable c = (Collectable) iInteractable;
+                        if (c.gameObject.CompareTag("Firstaid"))
+                        {
+                            GlobalAudioManager.Instance.Play(GlobalAudioName.FirstAidPickUp);
+                        }
+                        else
+                        {
+                            GlobalAudioManager.Instance.Play(GlobalAudioName.ItemPickUp);
+                        }
+                    }
                     iInteractable.Interact();
-                    
-                    // 아이템 줍기 사운드
-                    GlobalAudioManager.Instance.Play("ItemPickUp");
-                    
                 }
             }
         }

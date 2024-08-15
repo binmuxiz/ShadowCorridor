@@ -5,59 +5,25 @@ using UnityEngine;
 public class GameEnding: MonoBehaviour
 {
     public static GameEnding Instance;
-    
-    public float fadeDuration = 1f;
-    public CanvasGroup exitCanvasGroup;
-    public AudioSource exitAudio;
 
-    private bool _isPlayerAtExit = false; // 탈출했는지
-    private float _timer;
-    private bool _hasAudioPlayed;
-
-
-    public bool IsPlayerAtExit
-    {
-        get => _isPlayerAtExit;
-        set => _isPlayerAtExit = value;
-    }
+    public GameObject gameCanvas;
+    public GameObject exitCanvas;
 
     private void Awake()
     {
         Instance = this;
     }
 
-    private void Update()
+    private void Start()
     {
-        if (_isPlayerAtExit)
-        {
-            EndLevel(exitCanvasGroup, false, exitAudio);
-        }
+        exitCanvas.SetActive(false);
     }
 
-    private void EndLevel(CanvasGroup canvasGroup, bool doRestart, AudioSource audioSource)
+    public void EndLevel()
     {
-        if (!_hasAudioPlayed)
-        {
-            // audioSource.Play();
-            _hasAudioPlayed = true;
-        }
-
-        _timer += Time.deltaTime;
-        canvasGroup.alpha = _timer / fadeDuration;
-
-        if (_timer > fadeDuration)
-        {
-            if (doRestart)
-            {
-                
-            }
-            else
-            {
-                // TODO 게임 인트로 씬으로 이동 
-                Debug.Log("게임 끝!!");
-                Application.Quit();
-            }
-        }
-    }
-    
+        gameCanvas.SetActive(false);
+        exitCanvas.SetActive(true);
+        
+        GlobalAudioManager.Instance.Play(GlobalAudioName.GameClear);
+    }   
 }

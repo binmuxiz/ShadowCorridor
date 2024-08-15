@@ -19,6 +19,6 @@ public class Rustkey : IUsable
     
     public void Use() 
     {
-        Debug.Log("Use RustKey");
+        GlobalAudioManager.Instance.Play(GlobalAudioName.Key);
     }
 }

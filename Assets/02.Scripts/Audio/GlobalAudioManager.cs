@@ -1,33 +1,55 @@
 using System;
+using System.Collections.Generic;
+using System.Reflection;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class GlobalAudioManager : MonoBehaviour {
-
+public class GlobalAudioManager : MonoBehaviour
+{
     public static GlobalAudioManager Instance;
+    private Dictionary<GlobalAudioName, AudioSource> _audioDict;
 
-    public Sound[] sounds ;
-
-    void Awake ()
+    private void Awake()
     {
         Instance = this;
+    }
 
-        foreach (Sound s in sounds)
+    private void Start()
+    {
+        _audioDict = new Dictionary<GlobalAudioName, AudioSource>();
+
+        for (int i = 0; i < gameObject.transform.childCount; i++)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.name = s.name;
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
+            Transform child = gameObject.transform.GetChild(i);
+            
+            GlobalAudioName name = EnumUtil<GlobalAudioName>.StringToEnum(child.name);
+            AudioSource value = child.gameObject.GetComponent<AudioSource>();
+            _audioDict.Add(name, value);
+            
         }
     }
 
-    public void Play(string soundName)
+    public void Play(GlobalAudioName audioName)
     {
-        Array.Find(sounds, item => item.name == soundName).source.Play();
+        AudioSource audioSource = _audioDict[audioName];
+        
+        if (audioSource)
+        {
+            audioSource.Play();
+        }
     }
-    public void Stop(string soundName)
+    
+    public void Stop(GlobalAudioName audioName)
     {
-        Array.Find(sounds, item => item.name == soundName).source.Stop();
+        AudioSource audioSource = _audioDict[audioName];
+
+        if (audioSource)
+        {
+            audioSource.Stop();
+        }
+    }
+
+    public void AllStop()
+    {
     }
 }

@@ -55,6 +55,7 @@ public class Box : MonoBehaviour, IInteractable
         if (Random.value < activationChance)
         {
             spider.SetActive(true); // 일정 확률로 거미 활성화
+            GlobalAudioManager.Instance.Play(GlobalAudioName.Spider);
         }
     }
 }
