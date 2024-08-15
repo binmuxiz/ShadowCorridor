@@ -23,5 +23,6 @@ public class GameEnding: MonoBehaviour
     {
         gameCanvas.SetActive(false);
         exitCanvas.SetActive(true);
+        GlobalAudioManager.Instance.Play(GlobalAudioName.GameClear);
     }
 }
