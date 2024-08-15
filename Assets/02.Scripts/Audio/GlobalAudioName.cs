@@ -10,5 +10,6 @@ public enum GlobalAudioName
     FlashLight,
     Key,
     Walk,
-    Run
+    Run,
+    Spider
 }
