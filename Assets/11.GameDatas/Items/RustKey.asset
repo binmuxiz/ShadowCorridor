@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RustKey
   m_EditorClassIdentifier: 
   _itemName: 1
-  _maxCount: 4
+  _maxCount: 10
   _sprite: {fileID: 21300000, guid: 398dcd9e158d0cf48b5144c1f7d1db1c, type: 3}
