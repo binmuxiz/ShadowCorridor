@@ -27,12 +27,13 @@ public class RightClickInteraction : MonoBehaviour
                 if (IsLockedDoorClicked())
                 {
                     item.Use();
+                    Inventory.Instance.ControlItemCount(currentIdx);
+                    return;
                 }  
-                else return;
+                return;
             }
 
             item.Use();
-            
             if (item is not Handgun) // 총은 SimpleShoot에서 개수 조절 
             {
                 Inventory.Instance.ControlItemCount(currentIdx);
