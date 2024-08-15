@@ -50,6 +50,13 @@ public class PlayerController : MonoBehaviour
     public AudioClip enterCabinetSound;
     public AudioClip exitCabinetSound;
 
+    // 추가된 변수들
+    public AudioClip walkSound; // 걷는 소리
+    public AudioClip runSound; // 뛰는 소리
+    private float stepTimer = 0.0f; // 발자국 소리 간격을 위한 타이머
+    public float walkStepInterval = 0.5f; // 걷기 시 발자국 소리 간격
+    public float runStepInterval = 0.3f; // 뛰기 시 발자국 소리 간격
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -77,6 +84,7 @@ public class PlayerController : MonoBehaviour
             staminaSlider.value = currentStamina;
         }
 
+        // 오디오 소스 초기화
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -140,6 +148,9 @@ public class PlayerController : MonoBehaviour
                 }
                 healthRegenTimer = 0f;
             }
+
+            // 발자국 소리 처리
+            HandleFootsteps();
         }
         else
         {
@@ -301,6 +312,40 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Zombie") && !isInsideCabinet)
         {
             Die();
+        }
+    }
+
+    // 발자국 소리 처리 메서드
+    void HandleFootsteps()
+    {
+        // 플레이어가 움직이고 있는지 확인
+        bool isMoving = Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0;
+        
+        if (isMoving)
+        {
+            // 걷고 있는지, 달리고 있는지에 따라 다른 소리를 재생
+            stepTimer -= Time.deltaTime;
+
+            if (stepTimer <= 0)
+            {
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    // 달리기
+                    audioSource.PlayOneShot(runSound);
+                    stepTimer = runStepInterval;
+                }
+                else
+                {
+                    // 걷기
+                    audioSource.PlayOneShot(walkSound);
+                    stepTimer = walkStepInterval;
+                }
+            }
+        }
+        else
+        {
+            // 플레이어가 움직이지 않을 때 타이머 초기화
+            stepTimer = 0.0f;
         }
     }
 }
