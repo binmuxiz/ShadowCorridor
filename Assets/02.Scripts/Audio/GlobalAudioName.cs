@@ -2,6 +2,7 @@ public enum GlobalAudioName
 {
     GameBackground,
     GameClear,
+    GameOver,
     ItemPickUp,
     FirstAidPickUp,
     HeartBeat,

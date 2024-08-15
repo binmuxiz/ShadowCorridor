@@ -97,6 +97,8 @@ public class PlayerHealth : MonoBehaviour
         gameCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);
         
+        GlobalAudioManager.Instance.Stop(GlobalAudioName.GameBackground);
+        GlobalAudioManager.Instance.Play(GlobalAudioName.GameOver);
         
         isGameOver = true; // 게임 오버 상태로 설정
         Time.timeScale = 0f; // 게임을 멈추기 위해 TimeScale을 0으로 설정

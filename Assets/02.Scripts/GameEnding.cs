@@ -24,6 +24,7 @@ public class GameEnding: MonoBehaviour
         gameCanvas.SetActive(false);
         exitCanvas.SetActive(true);
         
+        GlobalAudioManager.Instance.Stop(GlobalAudioName.GameBackground);
         GlobalAudioManager.Instance.Play(GlobalAudioName.GameClear);
     }   
 }

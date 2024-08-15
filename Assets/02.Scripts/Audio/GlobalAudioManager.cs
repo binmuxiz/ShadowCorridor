@@ -48,8 +48,4 @@ public class GlobalAudioManager : MonoBehaviour
             audioSource.Stop();
         }
     }
-
-    public void AllStop()
-    {
-    }
 }
