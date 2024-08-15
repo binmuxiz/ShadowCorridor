@@ -5139,6 +5139,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.558149
       objectReference: {fileID: 0}
+    - target: {fileID: 5877502496988861677, guid: c1d877df4cb98df418b689f5dca60fc8, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 14ce762c00f79754b883a399195635e9, type: 2}
     - target: {fileID: 6263183098450863620, guid: c1d877df4cb98df418b689f5dca60fc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.73
