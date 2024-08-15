@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    // 기존 변수들
     public float walkSpeed = 3.0f;
     public float runSpeed = 2.0f;
     public float crouchSpeed = 2.5f;
@@ -20,42 +19,36 @@ public class PlayerController : MonoBehaviour
 
     public float rotationSpeed = 1.0f;
 
-    // 체력 관련 변수
     public int maxHealth = 100;
     private int currentHealth;
     public TextMeshProUGUI healthText;
     [SerializeField] private RawImage healthImage;
 
-    // 체력 증가 관련 변수
-    private float healthRegenTimer = 0f; // 체력 회복 타이머
-    public float healthRegenInterval = 2f; // 2초마다 회복
+    private float healthRegenTimer = 0f;
+    public float healthRegenInterval = 2f;
 
-    // 게임 오버 패널
     [SerializeField] private GameObject gameOverPanel;
 
-    // 스테미너 바 UI 오브젝트
-    // public GameObject staminaBar;
-
-    // 스테미너 관련 변수
     public float maxStamina = 100f;
     private float currentStamina;
-    public float staminaRegenRate = 5f; // 스테미너 회복 속도
-    public float staminaDrainRate = 10f; // 스테미너 감소 속도
-    public float staminaThreshold = 40f; // 속도가 감소하는 스테미너 임계값
-    public float lowStaminaSpeed = 1.5f; // 스테미너가 낮을 때의 속도
-    public Slider staminaSlider; // 스테미너 UI
+    public float staminaRegenRate = 5f;
+    public float staminaDrainRate = 10f;
+    public float staminaThreshold = 40f;
+    public float lowStaminaSpeed = 1.5f;
+    public Slider staminaSlider;
 
-    // 캐비닛 관련 변수
-    private bool isInsideCabinet = false;
+    public static bool isInsideCabinet = false;
     private Vector3 originalCameraPosition;
     private Vector3 originalCameraRotation;
 
+    private Vector3 originalPlayerPosition;
+    private Quaternion originalPlayerRotation;
+
     private int _layerMask;
 
-    // 오디오 관련 변수
-    public AudioSource audioSource; // 오디오 소스
-    public AudioClip enterCabinetSound; // 캐비닛에 들어갈 때 사운드
-    public AudioClip exitCabinetSound; // 캐비닛에서 나올 때 사운드
+    public AudioSource audioSource;
+    public AudioClip enterCabinetSound;
+    public AudioClip exitCabinetSound;
 
     void Start()
     {
@@ -77,7 +70,6 @@ public class PlayerController : MonoBehaviour
 
         _layerMask = 1 << LayerMask.NameToLayer("Cabinet");
 
-        // 스테미너 초기화
         currentStamina = maxStamina;
         if (staminaSlider != null)
         {
@@ -85,7 +77,6 @@ public class PlayerController : MonoBehaviour
             staminaSlider.value = currentStamina;
         }
 
-        // 오디오 소스 초기화
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -96,7 +87,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!isInsideCabinet)
         {
-            // 마우스 입력 처리
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -125,7 +115,6 @@ public class PlayerController : MonoBehaviour
                 Heal(10);
             }
 
-            // 스테미너 감소 및 회복 로직
             if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
             {
                 currentStamina -= staminaDrainRate * Time.deltaTime;
@@ -142,7 +131,6 @@ public class PlayerController : MonoBehaviour
                 staminaSlider.value = currentStamina;
             }
 
-            // 체력 증가 로직
             healthRegenTimer += Time.deltaTime;
             if (healthRegenTimer >= healthRegenInterval)
             {
@@ -150,12 +138,11 @@ public class PlayerController : MonoBehaviour
                 {
                     Heal(1);
                 }
-                healthRegenTimer = 0f; // 타이머 초기화
+                healthRegenTimer = 0f;
             }
         }
         else
         {
-            // 캐비닛 내부에 있을 때 E 키를 누르면 캐비닛에서 나옴
             if (Input.GetKeyDown(KeyCode.E))
             {
                 ExitCabinet();
@@ -232,7 +219,7 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        UpdateHealthUI(); // UI 업데이트
+        UpdateHealthUI();
     }
 
     private void UpdateHealthUI()
@@ -247,21 +234,6 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player has died!");
 
-        // if (healthText != null)
-        // {
-        //     healthText.gameObject.SetActive(false);
-        // }
-        //
-        // if (healthImage != null)
-        // {
-        //     healthImage.gameObject.SetActive(false);
-        // }
-        //
-        // if (staminaBar != null)
-        // {
-        //     staminaBar.SetActive(false); // 스테미너 바 비활성화
-        // }
-
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
@@ -271,17 +243,34 @@ public class PlayerController : MonoBehaviour
     private void EnterCabinet(GameObject cabinet)
     {
         isInsideCabinet = true;
+
+        // 플레이어의 위치와 회전을 저장
+        originalPlayerPosition = transform.position;
+        originalPlayerRotation = transform.rotation;
+
+        // 플레이어의 위치를 캐비닛 안으로 이동
+        Transform playerPosition = cabinet.transform.Find("PlayerPosition");
+        Transform cameraPosition = cabinet.transform.Find("CameraPosition");
+
+        if (playerPosition == null || cameraPosition == null)
+        {
+            Debug.LogError("PlayerPosition or CameraPosition not found in the cabinet!");
+            return;
+        }
+
+        transform.position = playerPosition.position;
+        transform.rotation = playerPosition.rotation;
+
+        // 카메라의 위치와 회전 저장
         originalCameraPosition = cameraTransform.localPosition;
         originalCameraRotation = cameraTransform.localEulerAngles;
 
-        // 캐비닛 안쪽으로 카메라 위치 이동
-        cameraTransform.position = cabinet.transform.Find("CameraPosition").position;
-        cameraTransform.rotation = Quaternion.LookRotation(cabinet.transform.forward);
+        // 카메라의 위치와 회전을 캐비닛 내부에 맞춤
+        cameraTransform.position = cameraPosition.position;
+        cameraTransform.rotation = cameraPosition.rotation;
 
-        // 플레이어 움직임과 회전 비활성화
         rb.isKinematic = true;
 
-        // 캐비닛에 들어갈 때 사운드 재생
         if (audioSource != null && enterCabinetSound != null)
         {
             audioSource.PlayOneShot(enterCabinetSound);
@@ -292,19 +281,24 @@ public class PlayerController : MonoBehaviour
     {
         isInsideCabinet = false;
 
-        // 플레이어 움직임과 회전 활성화
+        // 플레이어의 위치와 회전을 원래대로 복원
+        transform.position = originalPlayerPosition;
+        transform.rotation = originalPlayerRotation;
+
         rb.isKinematic = false;
 
-        // 캐비닛에서 나올 때 사운드 재생
         if (audioSource != null && exitCabinetSound != null)
         {
             audioSource.PlayOneShot(exitCabinetSound);
         }
+
+        cameraTransform.localPosition = originalCameraPosition;
+        cameraTransform.localEulerAngles = originalCameraRotation;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Zombie"))
+        if (other.CompareTag("Zombie") && !isInsideCabinet)
         {
             Die();
         }
