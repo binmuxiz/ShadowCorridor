@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
     public TextMeshProUGUI healthText; // TextMeshProUGUI 타입의 필드
     public GameObject gameOverCanvas; // GameOverCanvas 참조
+    public GameObject gameCanvas;
 
     private float healthRegenTimer = 0f; // 체력 회복 타이머
     public float healthRegenInterval = 10f; // 10초마다 회복
@@ -93,7 +94,10 @@ public class PlayerHealth : MonoBehaviour
     {
         // 체력이 0이 되었을 때 GameOverCanvas 활성화
         Debug.Log("Player Died!");
+        gameCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);
+        
+        
         isGameOver = true; // 게임 오버 상태로 설정
         Time.timeScale = 0f; // 게임을 멈추기 위해 TimeScale을 0으로 설정
     }

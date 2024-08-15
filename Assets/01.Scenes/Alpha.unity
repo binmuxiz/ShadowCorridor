@@ -1029,6 +1029,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2525999402317195254, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: gameCanvas
+      value: 
+      objectReference: {fileID: 339858501}
+    - target: {fileID: 2525999402317195254, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: healthText
       value: 
       objectReference: {fileID: 2069494000}
