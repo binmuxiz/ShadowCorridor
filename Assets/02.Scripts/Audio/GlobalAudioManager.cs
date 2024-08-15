@@ -1,31 +1,55 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GlobalAudioManager : MonoBehaviour
 {
     public static GlobalAudioManager Instance;
+    private Dictionary<GlobalAudioName, AudioSource> _audioDict;
 
     private void Awake()
     {
         Instance = this;
     }
 
-    public void Play(GlobalAudioName name)
+    private void Start()
     {
-        Debug.Log(this.GetType().Name + ": " + MethodBase.GetCurrentMethod().Name);
+        _audioDict = new Dictionary<GlobalAudioName, AudioSource>();
+
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            Transform child = gameObject.transform.GetChild(i);
+            
+            GlobalAudioName name = EnumUtil<GlobalAudioName>.StringToEnum(child.name);
+            AudioSource value = child.gameObject.GetComponent<AudioSource>();
+            _audioDict.Add(name, value);
+            
+        }
+    }
+
+    public void Play(GlobalAudioName audioName)
+    {
+        AudioSource audioSource = _audioDict[audioName];
         
-        // todo 예외처리 
-        // GlobalAudioManager 게임오브젝트의 자식 오브젝트를 이륾으로 가져온다. 
-        GameObject audioGO = gameObject.transform.Find(name.ToString()).gameObject;
-        audioGO.GetComponent<AudioSource>().Play();
+        if (audioSource)
+        {
+            audioSource.Play();
+        }
     }
     
-    public void Stop(GlobalAudioName name)
+    public void Stop(GlobalAudioName audioName)
     {
-        Debug.Log(this.GetType().Name + ": " + MethodBase.GetCurrentMethod().Name);
-        
-        GameObject audioGO = gameObject.transform.Find(name.ToString()).gameObject;
-        audioGO.GetComponent<AudioSource>().Stop();
+        AudioSource audioSource = _audioDict[audioName];
+
+        if (audioSource)
+        {
+            audioSource.Stop();
+        }
+    }
+
+    public void AllStop()
+    {
     }
 }
