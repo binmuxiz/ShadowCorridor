@@ -45,8 +45,6 @@ public class Slot
             _outlineImage.enabled = true;
         }
     }
-
-    
     
     // itemCount 조정 
     public void IncreaseCount()
@@ -57,7 +55,7 @@ public class Slot
     
     public int DecreaseCount()
     {
-        if (this._item.ItemName == ItemName.Flashlight)
+        if (_item.ItemName == ItemName.Flashlight)
         {
             Debug.Log("Cannot decrease count of Flashlight");
             return -1; 

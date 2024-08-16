@@ -23,7 +23,7 @@ public class Handgun : MonoBehaviour, IUsable
         centerPointUI.SetActive(false);
         aimPointUI.SetActive(true);
 
-        return true;
+        return false;
     }
     
     public void Cancel()

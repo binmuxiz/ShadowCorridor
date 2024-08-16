@@ -19,23 +19,11 @@ public class RightClickInteraction : MonoBehaviour
         // 우클릭 시 인벤토리에 초점이 맞춰진 아이템 사용 
         if (Input.GetMouseButtonDown(1)) 
         {
-            int currentIdx = Inventory.Instance.CurrentIdx;
-            IUsable item = GetItem(currentIdx);
+            int idx = Inventory.Instance.CurrentIdx;
 
-            // if (item is Rustkey)
-            // {
-            //     if (IsLockedDoorClicked())
-            //     {
-            //         item.Use();
-            //         Inventory.Instance.ControlItemCount(currentIdx);
-            //         return;
-            //     }  
-            //     return;
-            // }
-
-            if (item.Use())
+            if (GetItem(idx).Use())
             {
-                Inventory.Instance.ControlItemCount(currentIdx);
+                Inventory.Instance.ControlItemCount(idx);
             }
         }
     }
@@ -46,21 +34,4 @@ public class RightClickInteraction : MonoBehaviour
         ItemName name = slot.Item.ItemName;
         return usableItemDict[name];
     }
-    
-    // private bool IsLockedDoorClicked()
-    // {
-    //     Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-    //     RaycastHit hit;
-    //
-    //     if (Physics.Raycast(ray, out hit))
-    //     {
-    //         Door door = hit.transform.GetComponent<Door>();
-    //
-    //         if (door!= null) // 열쇠를 문을 향해 사용한 경우 
-    //         {
-    //             if (door.Unlock()) return true;
-    //         }
-    //     }
-    //     return false;
-    // }
 }

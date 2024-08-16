@@ -77,10 +77,6 @@ public class Inventory : MonoBehaviour
     
     public void ControlItemCount(int index)
     {
-        ItemName tempName = _slotList[index].Item.ItemName;
-        // Flashlight는 계속 가지고 있는 템. Gun은 우클릭 조준, 좌클릭시 사용됨 
-        if (tempName == ItemName.Flashlight || tempName == ItemName.Gun) return; 
-        
         int count = _slotList[index].DecreaseCount();
 
         if (count == 0) // 슬롯 삭제
@@ -93,10 +89,9 @@ public class Inventory : MonoBehaviour
         }
     }
     
-    public ItemName GetCurrentSlotItem()
+    public ItemName GetCurrentSlotItemName()
     {
-        Slot slot = Inventory.Instance.SlotList[_currentIdx];
-        return slot.Item.ItemName;
+        return SlotList[_currentIdx].Item.ItemName;
     }
     
     /**

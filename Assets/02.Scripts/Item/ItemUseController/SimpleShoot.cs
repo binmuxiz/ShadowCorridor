@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.XR;
 
 //TODO 이거 먼지 이해하기
 // [AddComponentMenu("Nokobot/Modern Guns/Simple Shoot")]
@@ -50,34 +52,36 @@ public class SimpleShoot : MonoBehaviour
             gunAnimator = GetComponentInChildren<Animator>();
         
         // todo 이거 이해하기 
-        _layerMask = 1 << LayerMask.NameToLayer("Zombie");
+        _layerMask = LayerMask.GetMask("Zombie");
     }
 
     void Update()
     {
-        //If you want a different input, change it here
         if (Input.GetMouseButtonDown(0))
         {
-            //Calls animation on the gun that has the relevant animation events that will fire
             gunAnimator.SetTrigger("Fire");
-            
-            // TODO 총 사운드
-            GlobalAudioManager.Instance.Play(GlobalAudioName.GunShoot);
             
             Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, rayDistance, _layerMask))
             {
-                Ghoul ghoul = hit.transform.gameObject.GetComponent<Ghoul>();
-                ghoul.TakeDamage();
+                hit.transform.gameObject.GetComponent<Ghoul>().TakeDamage();
             }
             
-            // 인벤토리에 총 사용 -> 개수 감소 
-            // int currentIdx = Inventory.Instance.CurrentIdx;
-            // Inventory.Instance.ControlItemCount(currentIdx);
-            // Handgun.Instance.Cancel();                         
+            // 총 사용 시 인벤토리에서 개수 감소
+            int currentIdx = Inventory.Instance.CurrentIdx;
+            Inventory.Instance.ControlItemCount(currentIdx);
+
+            GlobalAudioManager.Instance.Play(GlobalAudioName.GunShoot);
+            StartCoroutine(CancelHandgun());
         }
+    }
+    
+    IEnumerator CancelHandgun()
+    {
+        yield return new WaitForSeconds(0.4f);
+        Handgun.Instance.Cancel();
     }
 
     /**
