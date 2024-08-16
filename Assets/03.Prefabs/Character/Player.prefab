@@ -369,8 +369,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -891,6 +891,7 @@ MonoBehaviour:
   staminaThreshold: 40
   lowStaminaSpeed: 1.5
   staminaSlider: {fileID: 0}
+  isHiding: 0
   audioSource: {fileID: 0}
   enterCabinetSound: {fileID: 8300000, guid: 9485bf88f1650ae478281426b0bff7aa, type: 3}
   exitCabinetSound: {fileID: 8300000, guid: 7975f480e88c7b64a83256f8a1f102d5, type: 3}
@@ -923,7 +924,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!114 &9048036526554073533
 MonoBehaviour:

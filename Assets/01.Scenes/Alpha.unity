@@ -1129,10 +1129,6 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1456741579}
-    - target: {fileID: 3915549090962270686, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
-      propertyPath: m_Constraints
-      value: 84
-      objectReference: {fileID: 0}
     - target: {fileID: 4799266627302893037, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: aimPointUI
       value: 
@@ -1141,14 +1137,6 @@ PrefabInstance:
       propertyPath: centerPointUI
       value: 
       objectReference: {fileID: 1767677057}
-    - target: {fileID: 5007936298823688604, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
-      propertyPath: m_Antialiasing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007936298823688604, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5067525015038192383, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: m_Name
       value: Player
