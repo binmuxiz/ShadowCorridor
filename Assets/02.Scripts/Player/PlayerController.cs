@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public Slider staminaSlider;
 
     public static bool isInsideCabinet = false;
+    public bool isHiding = false; // 캐비닛에 숨었는지 여부를 나타내는 변수 추가
     private Vector3 originalCameraPosition;
     private Vector3 originalCameraRotation;
 
@@ -254,6 +255,7 @@ public class PlayerController : MonoBehaviour
     private void EnterCabinet(GameObject cabinet)
     {
         isInsideCabinet = true;
+        isHiding = true; // 플레이어가 캐비닛에 숨었음을 표시
 
         // 플레이어의 위치와 회전을 저장
         originalPlayerPosition = transform.position;
@@ -291,6 +293,7 @@ public class PlayerController : MonoBehaviour
     private void ExitCabinet()
     {
         isInsideCabinet = false;
+        isHiding = false; // 플레이어가 캐비닛에서 나왔음을 표시
 
         // 플레이어의 위치와 회전을 원래대로 복원
         transform.position = originalPlayerPosition;
