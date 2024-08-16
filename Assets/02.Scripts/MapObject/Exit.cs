@@ -3,7 +3,7 @@ using UnityEngine;
 public class Exit : MonoBehaviour, IInteractable
 {
     private const string Message = "나가기";
-    private const string WarningMessage = "구급상자를 모두 모야야 한다.";
+    private const string WarningMessage = "구급상자를 모두 모아야 한다.";
 
     public void ShowMessage()
     {
