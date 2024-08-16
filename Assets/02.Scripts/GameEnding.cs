@@ -1,5 +1,6 @@
 
 using System;
+using TMPro;
 using UnityEngine;
 
 public class GameEnding: MonoBehaviour
@@ -8,6 +9,8 @@ public class GameEnding: MonoBehaviour
 
     public GameObject gameCanvas;
     public GameObject exitCanvas;
+
+    public PlayTimeManager playTimeManager;
 
     private void Awake()
     {
@@ -24,6 +27,9 @@ public class GameEnding: MonoBehaviour
         gameCanvas.SetActive(false);
         exitCanvas.SetActive(true);
         
+        playTimeManager.ShowCompletionTime();
+        
+        // 오디오 
         GlobalAudioManager.Instance.Stop(GlobalAudioName.GameBackground);
         GlobalAudioManager.Instance.Play(GlobalAudioName.GameClear);
     }   

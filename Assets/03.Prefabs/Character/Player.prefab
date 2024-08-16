@@ -842,6 +842,7 @@ MonoBehaviour:
   maxHealth: 100
   healthText: {fileID: 0}
   gameOverCanvas: {fileID: 0}
+  gameCanvas: {fileID: 0}
   healthRegenInterval: 10
   hurtAudio: {fileID: 3671477272768733896}
   startTime: 0.4
@@ -893,6 +894,10 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   enterCabinetSound: {fileID: 8300000, guid: 9485bf88f1650ae478281426b0bff7aa, type: 3}
   exitCabinetSound: {fileID: 8300000, guid: 7975f480e88c7b64a83256f8a1f102d5, type: 3}
+  walkSound: {fileID: 0}
+  runSound: {fileID: 0}
+  walkStepInterval: 0.5
+  runStepInterval: 0.3
 --- !u!54 &3915549090962270686
 Rigidbody:
   m_ObjectHideFlags: 0
