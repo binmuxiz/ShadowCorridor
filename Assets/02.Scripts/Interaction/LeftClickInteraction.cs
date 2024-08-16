@@ -29,19 +29,6 @@ public class LeftClickInteraction : MonoBehaviour
                 
                 if (iInteractable != null)
                 {
-                    
-                    if (iInteractable is Collectable)
-                    {
-                        Collectable c = (Collectable) iInteractable;
-                        if (c.gameObject.CompareTag("Firstaid"))
-                        {
-                            GlobalAudioManager.Instance.Play(GlobalAudioName.FirstAidPickUp);
-                        }
-                        else
-                        {
-                            GlobalAudioManager.Instance.Play(GlobalAudioName.ItemPickUp);
-                        }
-                    }
                     iInteractable.Interact();
                 }
             }
