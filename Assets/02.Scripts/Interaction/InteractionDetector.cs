@@ -10,7 +10,8 @@ public class InteractionDetector : MonoBehaviour
 
     private void Start()
     {
-        _layerMask = 1 << LayerMask.NameToLayer("Interactable");
+        // _layerMask = 1 << LayerMask.NameToLayer("Interactable");
+        _layerMask = LayerMask.GetMask("Interactable");
     }
 
     private void Update()
