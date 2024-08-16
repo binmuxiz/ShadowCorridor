@@ -22,19 +22,18 @@ public class RightClickInteraction : MonoBehaviour
             int currentIdx = Inventory.Instance.CurrentIdx;
             IUsable item = GetItem(currentIdx);
 
-            if (item is Rustkey)
-            {
-                if (IsLockedDoorClicked())
-                {
-                    item.Use();
-                    Inventory.Instance.ControlItemCount(currentIdx);
-                    return;
-                }  
-                return;
-            }
+            // if (item is Rustkey)
+            // {
+            //     if (IsLockedDoorClicked())
+            //     {
+            //         item.Use();
+            //         Inventory.Instance.ControlItemCount(currentIdx);
+            //         return;
+            //     }  
+            //     return;
+            // }
 
-            item.Use();
-            if (item is not Handgun) // 총은 SimpleShoot에서 개수 조절 
+            if (item.Use())
             {
                 Inventory.Instance.ControlItemCount(currentIdx);
             }
@@ -48,20 +47,20 @@ public class RightClickInteraction : MonoBehaviour
         return usableItemDict[name];
     }
     
-    private bool IsLockedDoorClicked()
-    {
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            Door door = hit.transform.GetComponent<Door>();
-
-            if (door != null) // 열쇠를 문을 향해 사용한 경우 
-            {
-                if (door.Unlock()) return true;
-            }
-        }
-        return false;
-    }
+    // private bool IsLockedDoorClicked()
+    // {
+    //     Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+    //     RaycastHit hit;
+    //
+    //     if (Physics.Raycast(ray, out hit))
+    //     {
+    //         Door door = hit.transform.GetComponent<Door>();
+    //
+    //         if (door!= null) // 열쇠를 문을 향해 사용한 경우 
+    //         {
+    //             if (door.Unlock()) return true;
+    //         }
+    //     }
+    //     return false;
+    // }
 }

@@ -15,13 +15,15 @@ public class Handgun : MonoBehaviour, IUsable
         aimPointUI.SetActive(false);
     }
     
-    public void Use()
+    public bool Use()
     {
         // 조준점 ui 생성, Center ui 제거
         gameObject.SetActive(true);
         
         centerPointUI.SetActive(false);
         aimPointUI.SetActive(true);
+
+        return true;
     }
     
     public void Cancel()

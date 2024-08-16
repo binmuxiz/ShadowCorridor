@@ -20,9 +20,10 @@ public class Cannedfood : IUsable
         return _instance;
     }
 
-    public void Use()
+    public bool Use()
     {
         GlobalAudioManager.Instance.Play(GlobalAudioName.CannedFood);
         PlayerHealth.Instance.IncreaseHealth(health);
+        return true;
     }
 }

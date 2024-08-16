@@ -1,4 +1,4 @@
 public interface IUsable
 {
-    void Use();
+    bool Use();
 }

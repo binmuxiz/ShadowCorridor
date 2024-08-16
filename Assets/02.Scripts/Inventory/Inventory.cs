@@ -77,7 +77,10 @@ public class Inventory : MonoBehaviour
     
     public void ControlItemCount(int index)
     {
-        if (index == 0) return; // flashlight는 개수 감소 없음 
+        ItemName tempName = _slotList[index].Item.ItemName;
+        // Flashlight는 계속 가지고 있는 템. Gun은 우클릭 조준, 좌클릭시 사용됨 
+        if (tempName == ItemName.Flashlight || tempName == ItemName.Gun) return; 
+        
         int count = _slotList[index].DecreaseCount();
 
         if (count == 0) // 슬롯 삭제
