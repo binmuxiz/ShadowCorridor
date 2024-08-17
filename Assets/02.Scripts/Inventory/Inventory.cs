@@ -77,7 +77,6 @@ public class Inventory : MonoBehaviour
     
     public void ControlItemCount(int index)
     {
-        if (index == 0) return; // flashlight는 개수 감소 없음 
         int count = _slotList[index].DecreaseCount();
 
         if (count == 0) // 슬롯 삭제
@@ -90,10 +89,9 @@ public class Inventory : MonoBehaviour
         }
     }
     
-    public ItemName GetCurrentSlotItem()
+    public ItemName GetCurrentSlotItemName()
     {
-        Slot slot = Inventory.Instance.SlotList[_currentIdx];
-        return slot.Item.ItemName;
+        return SlotList[_currentIdx].Item.ItemName;
     }
     
     /**

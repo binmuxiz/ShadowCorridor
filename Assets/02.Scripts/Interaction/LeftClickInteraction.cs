@@ -9,7 +9,7 @@ public class LeftClickInteraction : MonoBehaviour
     
     private void Start()
     {
-        _layerMask = 1 << LayerMask.NameToLayer("Interactable");
+        _layerMask = LayerMask.GetMask("Interactable");
     }
     
     void Update()

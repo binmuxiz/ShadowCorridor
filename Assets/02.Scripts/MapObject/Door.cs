@@ -63,9 +63,9 @@ public class Door : MonoBehaviour, IInteractable
     {
         if (lockedDoor && !unlocked)
         {
-            unlocked = true;
-            return true;
+            return unlocked = true;
         }
+        
         return false;
     }
 

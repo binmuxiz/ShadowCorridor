@@ -19,9 +19,10 @@ public class Flashlight: IUsable {
         return _instance;
     }
 
-    public void Use()
+    public bool Use()
     {
         _light.enabled = !_light.enabled;
         GlobalAudioManager.Instance.Play(GlobalAudioName.FlashLight);
+        return true;
     }
 }

@@ -9,7 +9,7 @@ public class InventoryItemSelector: MonoBehaviour
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
         if (wheelInput == 0) return;
 
-        if (Inventory.Instance.GetCurrentSlotItem() == ItemName.Gun)
+        if (Inventory.Instance.GetCurrentSlotItemName() == ItemName.Gun)
         {
             Handgun.Instance.Cancel();
         } 
