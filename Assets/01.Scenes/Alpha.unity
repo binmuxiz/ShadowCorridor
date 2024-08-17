@@ -1055,6 +1055,10 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1456741579}
+    - target: {fileID: 3915549090962270686, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4799266627302893037, guid: b1bc914843c7335478a65cf9dcd6de1c, type: 3}
       propertyPath: aimPointUI
       value: 

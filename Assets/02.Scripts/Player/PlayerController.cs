@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     private float stepTimer = 0.0f; // 발자국 소리 간격을 위한 타이머
     public float walkStepInterval = 0.5f; // 걷기 시 발자국 소리 간격
     public float runStepInterval = 0.3f; // 뛰기 시 발자국 소리 간격
+    private bool isRunning = false; // 현재 달리고 있는지 여부를 추적
 
     void Start()
     {
@@ -326,22 +327,25 @@ public class PlayerController : MonoBehaviour
         
         if (isMoving)
         {
-            // 걷고 있는지, 달리고 있는지에 따라 다른 소리를 재생
+            // 스테미너에 따라 걸음 소리 또는 뛰는 소리를 결정
+            bool shouldRun = Input.GetKey(KeyCode.LeftShift) && currentStamina > staminaThreshold;
             stepTimer -= Time.deltaTime;
 
             if (stepTimer <= 0)
             {
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (shouldRun)
                 {
                     // 달리기
                     audioSource.PlayOneShot(runSound);
                     stepTimer = runStepInterval;
+                    isRunning = true;
                 }
                 else
                 {
                     // 걷기
                     audioSource.PlayOneShot(walkSound);
                     stepTimer = walkStepInterval;
+                    isRunning = false;
                 }
             }
         }
@@ -349,6 +353,22 @@ public class PlayerController : MonoBehaviour
         {
             // 플레이어가 움직이지 않을 때 타이머 초기화
             stepTimer = 0.0f;
+            isRunning = false;
+        }
+
+        // 스테미너가 부족할 경우 달리기 중지 후 걷는 소리로 전환
+        if (currentStamina <= staminaThreshold && isRunning)
+        {
+            // 달리는 소리를 멈추고 걷는 소리로 전환
+            audioSource.Stop(); 
+            isRunning = false;
+
+            // 걷는 소리 재생
+            if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+            {
+                audioSource.PlayOneShot(walkSound);
+                stepTimer = walkStepInterval;
+            }
         }
     }
 }
