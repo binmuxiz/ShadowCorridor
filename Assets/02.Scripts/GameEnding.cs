@@ -1,7 +1,7 @@
-
-using System;
-using TMPro;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameEnding: MonoBehaviour
 {
@@ -32,5 +32,15 @@ public class GameEnding: MonoBehaviour
         // 오디오 
         GlobalAudioManager.Instance.Stop(GlobalAudioName.GameBackground);
         GlobalAudioManager.Instance.Play(GlobalAudioName.GameClear);
-    }   
+
+        StartCoroutine(ExitGame());
+    }
+    
+    IEnumerator ExitGame()
+    {
+        yield return new WaitForSeconds(5f);
+        
+        Debug.Log("게임 종료");
+        Application.Quit();
+    }
 }
