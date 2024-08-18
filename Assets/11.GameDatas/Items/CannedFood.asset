@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CannedFood
   m_EditorClassIdentifier: 
   _itemName: 3
-  _maxCount: 10
+  _maxCount: 5
   _sprite: {fileID: 21300000, guid: ac5889facde46154e9b21625e6034282, type: 3}
